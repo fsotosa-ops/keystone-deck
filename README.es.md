@@ -14,7 +14,7 @@ Un plugin de Claude Code que convierte tu argumento, tus cifras y tu marca en un
 
 [English](README.md) · [Español](README.es.md)
 
-[Por qué](#por-qué) · [Instalación](#instalación) · [Escenas](#escenas) · [Cómo funciona](#cómo-funciona) · [Ejemplo](#ejemplo) · [Comparación](#comparación) · [Preguntas](#preguntas-frecuentes)
+[Por qué](#por-qué) · [Instalación](#instalación) · [Escenas](#escenas) · [Cómo funciona](#cómo-funciona) · [Video narrado](#video-narrado-con-tu-voz) · [Ejemplo](#ejemplo) · [Comparación](#comparación) · [Preguntas](#preguntas-frecuentes)
 
 <img src="docs/assets/hero.png" width="900" alt="Tres láminas de un pitch hecho con keystone-deck: una población que se queda en el camino, el producto funcionando en un laptop y un celular, y una proyección con la brecha rotulada">
 
@@ -98,6 +98,21 @@ Eliges el tipo y el método adapta el orden y las reglas:
 | **Keynote** | un momento vivido → la tensión → el giro → tres ideas con una historia cada una → qué hacer el lunes → la frase que la gente repite |
 | **Clase** | intuición → ejemplo con números → versión formal → pregunta de chequeo → trampas |
 | **Informe** | la decisión que se necesita → qué cambió → evidencia → opciones → recomendación → próximos pasos |
+
+## Video narrado con tu voz
+
+`keystone-video` convierte el mismo guion en un video narrado, integrado con [ElevenLabs](https://elevenlabs.io):
+
+1. Agrega tu voz a ElevenLabs (clonada o de su biblioteca) y pon su id en `deck.json`:
+   ```json
+   "voice": { "id": "<id de la voz>", "model": "eleven_v4", "direction": "cálida, segura, tono de charla" }
+   ```
+2. Exporta tu clave: `export ELEVENLABS_API_KEY=…` (se lee del entorno y nunca se escribe en disco).
+3. Pídele a Claude: *«haz un video narrado del deck»*.
+
+Toda la narración se genera en una sola toma y se corta por lámina con las marcas de tiempo de cada palabra, así que cada escena dura lo que su frase y los clics caen cuando la voz los nombra. Cada corte se transcribe y se compara con el guion antes de armar el video. Sin clave, el video sale sin voz. Al volver a generarlo, solo se regraban las láminas que cambiaron.
+
+> Declara las voces sintéticas. Los videos hechos así deberían decir que la voz fue generada con IA; la demo de arriba lo hace.
 
 ## Cómo funciona
 

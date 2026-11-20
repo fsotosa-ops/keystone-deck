@@ -168,7 +168,7 @@ def encode(frames, end, out_mp4, ff, audio=None, lead=0.0):
             args += ["-i", audio, "-filter_complex", f"[1:a]adelay={int(lead * 1000)}:all=1,apad[a]", "-map", "0:v", "-map", "[a]", "-shortest"]
         else:
             args += ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo", "-map", "0:v", "-map", "1:a", "-shortest"]
-        args += ["-r", "30", "-pix_fmt", "yuv420p", "-c:v", "libx264", "-crf", "18", "-preset", "medium",
+        args += ["-r", "30", "-pix_fmt", "yuv420p", "-c:v", "libx264", "-crf", "18", "-preset", "veryfast",
                  "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-ac", "2", out_mp4]
         run(*args)
 
@@ -185,6 +185,7 @@ def main(argv=None):
     ap.add_argument("--speed", type=float)
     ap.add_argument("--no-voice", action="store_true")
     ap.add_argument("--per-slide", action="store_true", help="one voice take per slide (default: one take for the whole talk)")
+    ap.add_argument("--jobs", type=int, default=3, help="slides recorded in parallel")
     ap.add_argument("--lead", type=float, default=0.5, help="seconds before the voice starts on each slide")
     ap.add_argument("--tail", type=float, default=0.8, help="seconds after the voice ends on each slide")
     a = ap.parse_args(argv)
@@ -274,8 +275,24 @@ def main(argv=None):
     srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), handler)
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     url = f"http://127.0.0.1:{srv.server_address[1]}/stage/index.html#1"
-    clips = []
-    try:
+    clips = [None] * len(plan)
+    # Cache: a slide is re-recorded only if its scene, its voice or its timing changed.
+    stage_html = (deck_dir / "build" / "stage" / "index.html").read_bytes()
+    js = b"".join(f.read_bytes() for f in sorted((deck_dir / "build" / "stage").glob("*.js")))
+    resolved_txt = (deck_dir / "build" / "deck.resolved.json").read_text()
+    todo = []
+    for i_, it in enumerate(plan):
+        sl = next(x for x in json.loads(resolved_txt)["slides"] if x["id"] == it["id"])
+        audio_h = hashlib.sha1(Path(it["audio"]).read_bytes()).hexdigest() if it["audio"] else "silent"
+        key_ = hashlib.sha1(json.dumps([sl, audio_h, it["len"], it["hold"], it["clicks"], a.lead, a.tail], sort_keys=True, default=str).encode()
+                            + hashlib.sha1(stage_html + js).digest()).hexdigest()[:16]
+        out = deck_dir / "build" / "video" / f"{it['id']}-{key_}.mp4"
+        clips[i_] = out
+        if not out.exists():
+            todo.append((i_, it, out))
+    print(f"  recording {len(todo)} of {len(plan)} slides ({len(plan) - len(todo)} cached), {a.jobs} in parallel")
+
+    def worker(batch):
         with sync_playwright() as p:
             try:
                 b = p.chromium.launch(channel="chrome", args=["--window-size=1920,1080", "--autoplay-policy=no-user-gesture-required"])
@@ -285,14 +302,18 @@ def main(argv=None):
             page.goto(url); page.wait_for_timeout(2500)
             cdp = page.context.new_cdp_session(page)
             all_ids = page.evaluate("window.__deck.ids")
-            for it in plan:
+            for i_, it, out in batch:
                 secs = a.lead + it["len"] + a.tail + it["hold"]
                 frames, end = record_slide(page, cdp, all_ids.index(it["id"]), secs, it["clicks"])
-                out = deck_dir / "build" / "video" / f"{it['id']}.mp4"
                 out.parent.mkdir(parents=True, exist_ok=True)
                 encode(frames, end, out, ff, it["audio"], a.lead)
-                clips.append(out)
             b.close()
+
+    from concurrent.futures import ThreadPoolExecutor
+    batches = [todo[k::a.jobs] for k in range(a.jobs)]
+    try:
+        with ThreadPoolExecutor(max_workers=a.jobs) as ex:
+            list(ex.map(worker, [b_ for b_ in batches if b_]))
     finally:
         srv.shutdown()
 

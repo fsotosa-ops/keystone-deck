@@ -14,7 +14,7 @@ A Claude Code plugin that turns your argument, your numbers and your brand into 
 
 [English](README.md) · [Español](README.es.md)
 
-[Why](#why) · [Install](#install) · [Scenes](#scenes) · [How it works](#how-it-works) · [Example](#example) · [Compared](#how-it-compares) · [FAQ](#faq)
+[Why](#why) · [Install](#install) · [Scenes](#scenes) · [How it works](#how-it-works) · [Narrated video](#narrated-video-with-your-voice) · [Example](#example) · [Compared](#how-it-compares) · [FAQ](#faq)
 
 <img src="docs/assets/hero.png" width="900" alt="Three slides of a pitch built with keystone-deck: a population that drops out, the product working in a laptop and a phone, and a projection with the gap labelled">
 
@@ -98,6 +98,21 @@ Pick the type and the method adapts its order and rules:
 | **Keynote** | a lived moment → the tension → the turn → three ideas with a story each → what to do on Monday → the line people repeat |
 | **Class** | intuition → worked example with numbers → formal version → check question → traps |
 | **Report** | the decision needed → what changed → evidence → options → recommendation → next steps |
+
+## Narrated video with your voice
+
+`keystone-video` turns the same talk into a narrated video, integrated with [ElevenLabs](https://elevenlabs.io):
+
+1. Add your voice to ElevenLabs (a cloned or a library voice) and put its id in `deck.json`:
+   ```json
+   "voice": { "id": "<voice id>", "model": "eleven_v4", "direction": "warm, confident, conference talk" }
+   ```
+2. Export your key: `export ELEVENLABS_API_KEY=…` (read from the environment, never written to disk).
+3. Ask Claude: *"make a narrated video of the deck"*.
+
+The whole talk is generated in one take and cut per slide by word timestamps, so each scene lasts as long as its line and clicks fire on the spoken cue. Each cut is transcribed and checked against the talk before the video is assembled. Without a key, the video comes out silent. Re-runs only re-record the slides that changed.
+
+> Disclose synthetic voices. Videos made this way should say the voice was generated with AI; the demo above does.
 
 ## How it works
 
