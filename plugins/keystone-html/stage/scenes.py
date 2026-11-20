@@ -194,7 +194,7 @@ def projection(s):
     if g is not None:
         n = g.get("period", 1); p = per[n]; x = 150 + n * 290
         out.append(f'<g class="p" data-paso="1"><path d="M{x + 214} {y(p["cost"])}h20v{y(p["income"]) - y(p["cost"]):.0f}h-20" stroke="var(--ambar-o)" stroke-width="3" fill="none"/>'
-                   f'<text x="{x + 224}" y="{y(p["cost"]) - 50:.0f}" text-anchor="middle" style="font-size:24px;font-weight:700;fill:var(--ambar-o)">{md(g["text"])}</text></g>')
+                   f'<text x="{x + 48}" y="{min(y(p["cost"]), y(p["income"])) - 52:.0f}" text-anchor="middle" style="font-size:24px;font-weight:700;fill:var(--ambar-o)">{md(g["text"])}</text></g>')
     leg = s.get("legend", ["Cost", "Income"])
     out.append(f'<rect x="640" y="18" width="22" height="22" rx="5" fill="var(--suave-o)"/><text class="eje" x="672" y="36">{md(leg[0])}</text>'
                f'<rect x="770" y="18" width="22" height="22" rx="5" fill="var(--menta)"/><text class="eje" x="802" y="36">{md(leg[1])}</text></svg>')
