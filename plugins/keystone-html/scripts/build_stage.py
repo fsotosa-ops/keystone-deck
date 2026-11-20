@@ -76,7 +76,7 @@ def main(argv=None):
         if layout not in scenes.SCENES:
             raise SystemExit(f"{s.get('id')}: layout {layout!r} is not a stage scene ({', '.join(scenes.SCENES)})")
         theme = s.get("theme") or ("light" if layout in scenes.LIGHT else "dark")
-        body = scenes.SCENES[layout]({**s, "logo": logo})
+        body = scenes.SCENES[layout]({**s, "logo": logo, "_deck_dir": str(deck_dir)})
         src = "  ·  ".join(f"{str(n).translate(SUP)} {t}" for n, t in s.get("_sources", []))
         tiers = [x for x in s.get("_tiers", []) if x in ("S", "D")]
         lbl = ("Fuentes: ", "Cifras ilustrativas.") if meta.get("lang", "en").startswith("es") else ("Sources: ", "Illustrative figures.")

@@ -13,6 +13,17 @@ Every figure that comes from the ledger shows its reference as a superscript (42
 1. Write talk.md with **narrative-arc**, and pick the type (`meta.type`: pitch, keynote, class, report). For a pitch, follow `references/pitch.md` of narrative-arc: it maps each slide to a scene.
 2. Put every figure in evidence.json (**evidence-ledger**); scenes reference them as `{{fig:id}}`.
 
+## Pick the scene that shows it
+
+- A population where only part makes it (students who finish, producers who sell direct, patients who come back): **`journey`**, the people that drop out, never a percentage in a box.
+- Anything that happens in a place (distance, coverage, who is near whom): **`map`**. Get the outline with
+  `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/geo.py" <ISO3> --level ADM1 [--name REGION] -o <deck>/assets/<name>.geojson`
+  and cite the line it prints (geoBoundaries, CC BY) in the slide's `source_note`.
+- The product doing its job: **`product`**, driven by a scene script, never a screenshot.
+- Two quantities that diverge over time: **`projection`**, with the gap labelled.
+
+A deck where every slide is `figures` or `cards` reads like any other presentation; use at least one scene that moves people, places or the product.
+
 ## Scenes (layout → fields)
 
 | Scene | Use it for | Fields |
@@ -20,6 +31,7 @@ Every figure that comes from the ledger shows its reference as a superscript (42
 | `cover` | promise + product | `kicker` (brand name), `title`, `text`, `device_route` |
 | `persona` | a named person on a concrete day | `kicker`, `title`, `text`, `chips[]`, `device_route` |
 | `journey` | a population; only part arrives | `title`, `total`, `arrive`, `stages[]`, `goal`, `proof` |
+| `map` | where things are: people, producers, schools in a territory | `outline` (GeoJSON from `scripts/geo.py`), `bbox`, `hub{lon,lat,label}`, `rings[km]`, `points[{lon,lat,label,step}]`, `callout{text,step}` |
 | `mirror` | each cause → its answer, per click | `pairs[{problem, problem_text, answer, answer_text}]` |
 | `product` | the live product, driven by clicks | `laptop_route`, `phone_route`, plus a `scene` script |
 | `why-now` | 2-3 reasons side by side | `reasons[{title, text}]` |

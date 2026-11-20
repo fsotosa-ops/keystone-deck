@@ -17,6 +17,7 @@ LAYOUTS = {
     "funnel":          "something that filters, from many to few",
     "comparison":      "two things side by side",
     "matrix":          "a 2x2 positioning",
+    "map":             "a territory with points that light up by click (stage engine)",
     "device":          "the product in a phone or laptop frame, in context",
     "quote":           "a person's own words, attributed",
     "appendix-thread": "backup slides chained as questions",

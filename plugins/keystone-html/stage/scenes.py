@@ -103,6 +103,86 @@ def journey(s):
             f'<div class="meta-c">{md(s.get("goal", ""))}</div>' + "".join(out) + "</div>" + proof)
 
 
+def _geo_rings(geo):
+    """Outer rings of a GeoJSON Feature/FeatureCollection/Geometry as lists of (lon, lat)."""
+    out = []
+    def geom(g):
+        if not g:
+            return
+        t, c = g.get("type"), g.get("coordinates")
+        if t == "Polygon":
+            out.append(c[0])
+        elif t == "MultiPolygon":
+            out.extend(poly[0] for poly in c)
+        elif t == "GeometryCollection":
+            for x in g.get("geometries", []):
+                geom(x)
+    if geo.get("type") == "FeatureCollection":
+        for f in geo.get("features", []):
+            geom(f.get("geometry"))
+    elif geo.get("type") == "Feature":
+        geom(geo.get("geometry"))
+    else:
+        geom(geo)
+    return out
+
+
+def map_(s):
+    """A territory with points that light up click by click. Fields: outline (GeoJSON file in the deck folder,
+    e.g. from Natural Earth), bbox [lon0, lat0, lon1, lat1] to zoom, hub {lon, lat, label}, rings [km], points
+    [{lon, lat, label, step}] (step = click that reveals it; lines to the hub draw on reveal), callout {text, step}."""
+    import json as _j, math
+    from pathlib import Path as _P
+    deck_dir = _P(s.get("_deck_dir", "."))
+    rings_geo = []
+    if s.get("outline"):
+        rings_geo = _geo_rings(_j.loads((deck_dir / s["outline"]).read_text(encoding="utf-8")))
+    pts, hub = s.get("points", []), s.get("hub")
+    lons = [x for r in rings_geo for x, _ in r] + [q["lon"] for q in pts] + ([hub["lon"]] if hub else [])
+    lats = [y for r in rings_geo for _, y in r] + [q["lat"] for q in pts] + ([hub["lat"]] if hub else [])
+    lon0, lat0, lon1, lat1 = s.get("bbox") or (min(lons), min(lats), max(lons), max(lats))
+    kx = math.cos(math.radians((lat0 + lat1) / 2))
+    W, H, X0, Y0 = 980, 820, 860, 150
+    sc = min(W / max((lon1 - lon0) * kx, 1e-9), H / max(lat1 - lat0, 1e-9))
+    ox = X0 + (W - (lon1 - lon0) * kx * sc) / 2
+    oy = Y0 + (H - (lat1 - lat0) * sc) / 2
+    def xy(lon, lat):
+        return ox + (lon - lon0) * kx * sc, oy + (lat1 - lat) * sc
+    paths = ""
+    for r in rings_geo:
+        if not any(lon0 - 2 <= x <= lon1 + 2 and lat0 - 2 <= y <= lat1 + 2 for x, y in r):
+            continue
+        d = "M" + "L".join(f"{a:.1f},{b:.1f}" for a, b in (xy(x, y) for x, y in r)) + "Z"
+        paths += f'<path d="{d}"/>'
+    clip = f'<clipPath id="mclip"><rect x="{X0 - 60}" y="{Y0 - 60}" width="{W + 120}" height="{H + 120}" rx="24"/></clipPath>'
+    svg = [f'<svg class="mapa-svg" viewBox="0 0 1920 1080" width="1920" height="1080"><defs>{clip}</defs><g class="tierra" clip-path="url(#mclip)">{paths}</g>']
+    if hub:
+        hx, hy = xy(hub["lon"], hub["lat"])
+        for i, km in enumerate(s.get("rings", [])):
+            rad = km / 111.32 * sc
+            svg.append(f'<circle class="anillo a" style="--i:{i + 2}" cx="{hx:.1f}" cy="{hy:.1f}" r="{rad:.1f}"/>'
+                       f'<text class="anillo-t a" style="--i:{i + 2}" x="{hx + rad * .72:.0f}" y="{hy - rad * .72:.0f}">{km} km</text>')
+    for q in pts:
+        x, y = xy(q["lon"], q["lat"]); st = int(q.get("step", 0))
+        cls = f'class="punto p" data-paso="{st}"' if st else 'class="punto a" style="--i:3"'
+        line = ""
+        if hub:
+            line = f'<line class="hilo" x1="{x:.1f}" y1="{y:.1f}" x2="{hx:.1f}" y2="{hy:.1f}"/>'
+        svg.append(f'<g {cls}>{line}<circle cx="{x:.1f}" cy="{y:.1f}" r="13"/>'
+                   f'<text x="{x + 20:.0f}" y="{y + 7:.0f}">{_h.escape(q.get("label", ""))}</text></g>')
+    if hub:
+        svg.append(f'<g class="hub a" style="--i:2"><circle cx="{hx:.1f}" cy="{hy:.1f}" r="20"/>'
+                   f'<text x="{hx + 30:.0f}" y="{hy + 9:.0f}">{_h.escape(hub.get("label", ""))}</text></g>')
+    svg.append("</svg>")
+    co = s.get("callout")
+    call = ""
+    if co:
+        st = int(co.get("step", 0))
+        attr = f'class="mapa-call p" data-paso="{st}"' if st else 'class="mapa-call a" style="--i:4"'
+        call = f'<div {attr}>{md(co["text"])}</div>'
+    return f'<div class="mapa-izq">{head(s, 58, 16)}</div>' + "".join(svg) + call
+
+
 def mirror(s):
     """Problem and solution in mirror, one pair per click. Fields: pairs[{problem, problem_text, answer, answer_text}]."""
     rows = ""
@@ -243,13 +323,35 @@ def custom(s):
 
 
 SCENES = {"cover": cover, "persona": persona, "journey": journey, "mirror": mirror, "product": product,
-          "why-now": why_now, "matrix": matrix, "model": model, "funnel": funnel, "timeline": timeline,
+          "why-now": why_now, "map": map_, "matrix": matrix, "model": model, "funnel": funnel, "timeline": timeline,
           "projection": projection, "team": team, "ask": ask, "closing": closing, "html": custom}
 
 # Light slides by default for these scenes (the rest are dark), unless the slide sets "theme".
 LIGHT = {"mirror", "product", "matrix", "model", "team"}
 
 EXTRA_CSS = """
+.mapa-izq { position: absolute; left: 140px; top: 150px; width: 640px; }
+.mapa-svg { position: absolute; inset: 0; pointer-events: none; }
+.mapa-svg .tierra path { fill: color-mix(in srgb, var(--menta) 10%, transparent); stroke: color-mix(in srgb, var(--menta) 55%, transparent); stroke-width: 2; }
+.clara .mapa-svg .tierra path { fill: color-mix(in srgb, var(--azul) 7%, transparent); stroke: color-mix(in srgb, var(--azul) 40%, transparent); }
+.mapa-svg .anillo { fill: none; stroke: currentColor; stroke-dasharray: 6 8; opacity: .35; color: var(--tinta-o); }
+.clara .mapa-svg .anillo { color: var(--tinta-c); }
+.mapa-svg .anillo-t { font-size: 20px; fill: var(--suave-o); }
+.clara .mapa-svg .anillo-t { fill: var(--suave-c); }
+.mapa-svg .punto circle { fill: var(--menta); stroke: var(--fondo-o); stroke-width: 4; }
+.clara .mapa-svg .punto circle { fill: var(--azul); stroke: #fff; }
+.mapa-svg .punto text, .mapa-svg .hub text { font-size: 22px; font-weight: 600; fill: var(--tinta-o); }
+.clara .mapa-svg .punto text, .clara .mapa-svg .hub text { fill: var(--tinta-c); }
+.mapa-svg .hilo { stroke: var(--menta); stroke-width: 3; stroke-dasharray: 600; stroke-dashoffset: 600; transition: stroke-dashoffset 1s var(--curva) .15s; }
+.clara .mapa-svg .hilo { stroke: var(--azul); }
+.mapa-svg .punto.ver .hilo, .mapa-svg .punto.a .hilo { stroke-dashoffset: 0; }
+.mapa-svg .punto.ver circle { animation: late 1.2s var(--curva) 1; transform-box: fill-box; transform-origin: center; }
+@keyframes late { 0% { transform: scale(0); } 55% { transform: scale(1.5); } 100% { transform: scale(1); } }
+.mapa-svg .hub circle { fill: #F4A93C; stroke: var(--fondo-o); stroke-width: 5; }
+.clara .mapa-svg .hub circle { stroke: #fff; }
+.mapa-call { position: absolute; left: 140px; bottom: 170px; width: 620px; font-size: 30px; line-height: 1.3; padding: 22px 26px; border-radius: 14px; background: color-mix(in srgb, var(--menta) 14%, transparent); }
+.clara .mapa-call { background: color-mix(in srgb, var(--azul) 9%, transparent); }
+
 .disclosure { position: fixed; right: 26px; top: 22px; z-index: 50; font: 500 15px var(--ks-font-body, sans-serif); color: #fff; background: rgba(15, 23, 42, .62); padding: 6px 12px; border-radius: 6px; letter-spacing: .01em; }
 .win { transition: transform 1.2s var(--curva); transform-origin: var(--zx, 50%) var(--zy, 50%); }
 .big-line { position: absolute; inset: 0; display: grid; place-items: center; font: 700 110px var(--ks-font-display); letter-spacing: -.03em; color: #fff; }
