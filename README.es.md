@@ -7,7 +7,7 @@
 **Presentaciones que dicen lo que quieres decir, como lo quieres decir.**<br>
 Un plugin de Claude Code que convierte tu argumento, tus cifras y tu marca en un deck en vivo con movimiento, lo exporta a PowerPoint y lo narra en video con tu propia voz vía ElevenLabs.
 
-[![Versión](https://img.shields.io/badge/versión-0.2.0-1652E0)](CHANGELOG.md)
+[![Versión](https://img.shields.io/badge/versión-0.2.1-1652E0)](CHANGELOG.md)
 [![Licencia: MIT](https://img.shields.io/badge/licencia-MIT-1652E0)](LICENSE)
 [![Estado: alpha](https://img.shields.io/badge/estado-alpha-F4A93C)](#preguntas-frecuentes)
 [![Plugin de Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-F4A93C)](https://docs.claude.com/en/docs/claude-code/plugins)

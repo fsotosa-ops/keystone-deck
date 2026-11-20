@@ -1,6 +1,6 @@
 {
   "name": "keystone-html",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Live 1920x1080 decks with high-impact scenes: populations that move, the live product in phones and laptops with callouts, mirrors, matrices, projections with labelled gaps.",
   "author": { "name": "Felipe Soto Santibáñez", "url": "https://github.com/fsotosa-ops" },
   "homepage": "https://github.com/fsotosa-ops/keystone-deck",

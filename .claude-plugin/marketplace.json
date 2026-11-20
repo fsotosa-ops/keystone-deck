@@ -11,7 +11,7 @@
       "name": "keystone",
       "source": "./plugins/keystone",
       "description": "Core method and brand kit. No dependencies beyond Python 3.10.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "license": "MIT",
       "category": "productivity"
     },
@@ -19,7 +19,7 @@
       "name": "keystone-html",
       "source": "./plugins/keystone-html",
       "description": "Live decks with high-impact scenes and the product running in devices.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "license": "MIT",
       "category": "productivity"
     },
@@ -27,7 +27,7 @@
       "name": "keystone-pptx",
       "source": "./plugins/keystone-pptx",
       "description": "PowerPoint export that keeps the motion: scenes as video, titles as native text.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "license": "MIT",
       "category": "productivity"
     },
@@ -35,7 +35,7 @@
       "name": "keystone-video",
       "source": "./plugins/keystone-video",
       "description": "Narrated video from the talk, with ElevenLabs voice.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "license": "MIT",
       "category": "productivity"
     }

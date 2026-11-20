@@ -7,7 +7,7 @@
 **Presentations that say what you mean, the way you mean it.**<br>
 A Claude Code plugin that turns your argument, your numbers and your brand into a live deck with motion, exports it to PowerPoint, and narrates it as a video with your own voice via ElevenLabs.
 
-[![Version](https://img.shields.io/badge/version-0.2.0-1652E0)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.1-1652E0)](CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/license-MIT-1652E0)](LICENSE)
 [![Status: alpha](https://img.shields.io/badge/status-alpha-F4A93C)](#faq)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-F4A93C)](https://docs.claude.com/en/docs/claude-code/plugins)
