@@ -9,6 +9,7 @@ A Claude Code plugin that turns your argument, your numbers and your brand into 
 
 [![Version](https://img.shields.io/badge/version-0.2.0-1652E0)](CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/license-MIT-1652E0)](LICENSE)
+[![Status: alpha](https://img.shields.io/badge/status-alpha-F4A93C)](#faq)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-F4A93C)](https://docs.claude.com/en/docs/claude-code/plugins)
 
 [English](README.md) · [Español](README.es.md)
@@ -145,6 +146,8 @@ Use an AI slide generator when you need many good-looking pieces fast. Use keyst
 **Do I need to know code?** No. You talk to Claude; it writes the files. The output is a link to open in a browser and a `.pptx` to present.
 
 **Can I edit the PowerPoint?** Titles, text and notes are native and editable. The animated part of each slide is a video; to change it, ask Claude and export again.
+
+**How mature is it?** Alpha. Tested on macOS with Chrome and Claude Code; Linux and Windows are untested. The three contracts (talk, evidence, brand) are stable; scene fields may still change before 1.0.
 
 **Is my data sent anywhere?** The plugins run locally. Fonts load from Google Fonts; nothing else leaves your machine unless you opt into an integration.
 

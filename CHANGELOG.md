@@ -12,6 +12,7 @@ All notable changes to this project are documented here. The format follows [Kee
 - Presentation types in `narrative-arc`: pitch, keynote, class and report.
 - `keystone-pptx`: PowerPoint export that records each scene to video and keeps titles as native text; `pptx-export` skill. Morph-based export kept as `build_morph.py`.
 - `examples/pitch-asisto`: a full pitch for a fictitious startup.
+- `keystone-video`: narrated video from the talk with ElevenLabs voice, one-take narration cut per slide by character timestamps, clicks on spoken cues; `narrated-video` skill.
 
 ## [0.1.0] - 2026-11-19
 

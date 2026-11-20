@@ -9,6 +9,7 @@ Un plugin de Claude Code que convierte tu argumento, tus cifras y tu marca en un
 
 [![Versión](https://img.shields.io/badge/versión-0.2.0-1652E0)](CHANGELOG.md)
 [![Licencia: MIT](https://img.shields.io/badge/licencia-MIT-1652E0)](LICENSE)
+[![Estado: alpha](https://img.shields.io/badge/estado-alpha-F4A93C)](#preguntas-frecuentes)
 [![Plugin de Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-F4A93C)](https://docs.claude.com/en/docs/claude-code/plugins)
 
 [English](README.md) · [Español](README.es.md)
@@ -145,6 +146,8 @@ Usa un generador de láminas con IA cuando necesitas muchas piezas bonitas rápi
 **¿Necesito saber programar?** No. Le hablas a Claude y él escribe los archivos. El resultado es un enlace para abrir en el navegador y un `.pptx` para presentar.
 
 **¿Puedo editar el PowerPoint?** Los títulos, el texto y las notas son nativos y editables. La parte animada de cada lámina es un video; para cambiarla, se lo pides a Claude y exportas de nuevo.
+
+**¿Qué tan maduro está?** Alpha. Probado en macOS con Chrome y Claude Code; Linux y Windows sin probar. Los tres contratos (guion, evidencia, marca) son estables; los campos de las escenas todavía pueden cambiar antes de la 1.0.
 
 **¿Mis datos salen de mi computador?** Los plugins corren en local. Las fuentes se cargan desde Google Fonts; nada más sale de tu equipo salvo que actives una integración.
 
