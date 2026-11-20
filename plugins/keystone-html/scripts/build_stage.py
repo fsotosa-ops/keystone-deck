@@ -95,8 +95,9 @@ def main(argv=None):
 <link rel="stylesheet" href="deck.css">
 <style>{scenes.EXTRA_CSS}</style>
 </head>
-<body data-app="{html.escape(app)}" data-channel="keystone-{html.escape(deck_dir.name)}" data-reset="{html.escape(reset)}">
+<body data-disclosure="{html.escape(meta.get('voice', {}).get('disclosure', ''))}" data-app="{html.escape(app)}" data-channel="keystone-{html.escape(deck_dir.name)}" data-reset="{html.escape(reset)}">
 {chr(10).join(secs)}
+{f'<div class="disclosure">{html.escape(meta["voice"]["disclosure"])}</div>' if meta.get("voice", {}).get("disclosure") else ""}
 <script src="escenas.js"></script>
 <script src="deck.js"></script>
 </body>

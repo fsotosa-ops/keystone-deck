@@ -23,13 +23,15 @@ A Claude Code plugin that turns your argument, your numbers and your brand into 
 
 ## Why
 
-Slide tools decide what you can say. You pick a template, then bend the story to fit its boxes: a bullet list where a person should be, a stock chart where your numbers should move, an animation menu instead of the moment you need to show.
+A presentation is an attempt to make someone else understand what you already know: a class, a talk, a pitch, a report. Slide tools get in the way of that. They decide what you can say. You pick a template, then bend the story to fit its boxes: a bullet list where a person should be, a stock chart where your numbers should move, an animation menu instead of the moment you need to show.
 
 keystone-deck turns it around. You describe the argument; Claude writes the talk, checks every figure, and composes each slide as a scene built for that point: the people who drop out, the product running in someone's hands, the gap in the projection. The result runs in a browser, opens in PowerPoint, and wears your brand.
 
 <div align="center">
 <img src="docs/assets/demo.gif" width="760" alt="A slide where a patient taps 'I can't make it' on her phone and the clinic's agenda reassigns the slot by itself">
 <br><sub>The product slide of the example pitch: the phone and the laptop are a live mock, driven click by click.</sub>
+<br><br>
+<a href="docs/assets/demo.mp4"><b>▶ Watch the narrated demo</b></a> <sub>(70 s, Spanish with subtitles; built with keystone-deck itself)</sub>
 </div>
 
 ## What you get
@@ -111,7 +113,7 @@ Pick the type and the method adapts its order and rules:
 2. Export your key: `export ELEVENLABS_API_KEY=…` (read from the environment, never written to disk).
 3. Ask Claude: *"make a narrated video of the deck"*.
 
-The whole talk is generated in one take and cut per slide by word timestamps, so each scene lasts as long as its line and clicks fire on the spoken cue. Each cut is transcribed and checked against the talk before the video is assembled. Without a key, the video comes out silent. Re-runs only re-record the slides that changed.
+The whole talk is generated in one take and cut per slide by word timestamps. Each scene lasts as long as its line: scenes read the line's length and fit their motion to it, and clicks fire on the spoken cue. Each cut is transcribed and checked against the talk, and the build fails if the finished video has a silence longer than 0.8 s. Add `--captions` to burn the talk in as subtitles, since social feeds play video muted. Without a key, the video comes out silent. Re-runs only re-record the slides that changed.
 
 > Disclose synthetic voices. Videos made this way should say the voice was generated with AI; the demo above does.
 

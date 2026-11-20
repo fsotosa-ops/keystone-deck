@@ -23,13 +23,15 @@ Un plugin de Claude Code que convierte tu argumento, tus cifras y tu marca en un
 
 ## Por qué
 
-Las herramientas de presentaciones deciden qué puedes decir. Eliges una plantilla y doblas la historia para que quepa en sus cajas: una lista de viñetas donde debería haber una persona, un gráfico genérico donde tus cifras deberían moverse, un menú de animaciones en vez del momento que necesitas mostrar.
+Presentar es intentar que otro entienda lo que tú ya sabes: en una clase, una charla, un pitch o un informe. Las herramientas de presentaciones se ponen en medio. Deciden qué puedes decir. Eliges una plantilla y doblas la historia para que quepa en sus cajas: una lista de viñetas donde debería haber una persona, un gráfico genérico donde tus cifras deberían moverse, un menú de animaciones en vez del momento que necesitas mostrar.
 
 keystone-deck lo da vuelta. Tú describes el argumento; Claude escribe el guion, revisa cada cifra y compone cada lámina como una escena hecha para ese punto: las personas que se quedan en el camino, el producto funcionando en las manos de alguien, la brecha en la proyección. El resultado corre en el navegador, se abre en PowerPoint y lleva tu marca.
 
 <div align="center">
 <img src="docs/assets/demo.gif" width="760" alt="Una lámina donde una paciente toca «No puedo» en su celular y la agenda del centro reasigna la hora sola">
 <br><sub>La lámina del producto en el pitch de ejemplo: el celular y el laptop son una maqueta en vivo, manejada clic a clic.</sub>
+<br><br>
+<a href="docs/assets/demo.mp4"><b>▶ Mira la demo narrada</b></a> <sub>(70 s, en español con subtítulos; hecha con el mismo keystone-deck)</sub>
 </div>
 
 ## Qué incluye
@@ -111,7 +113,7 @@ Eliges el tipo y el método adapta el orden y las reglas:
 2. Exporta tu clave: `export ELEVENLABS_API_KEY=…` (se lee del entorno y nunca se escribe en disco).
 3. Pídele a Claude: *«haz un video narrado del deck»*.
 
-Toda la narración se genera en una sola toma y se corta por lámina con las marcas de tiempo de cada palabra, así que cada escena dura lo que su frase y los clics caen cuando la voz los nombra. Cada corte se transcribe y se compara con el guion antes de armar el video. Sin clave, el video sale sin voz. Al volver a generarlo, solo se regraban las láminas que cambiaron.
+Toda la narración se genera en una sola toma y se corta por lámina con las marcas de tiempo de cada palabra. Cada escena dura lo que su frase: las escenas leen cuánto dura la línea y ajustan su movimiento a ella, y los clics caen cuando la voz los nombra. Cada corte se transcribe y se compara con el guion, y el build falla si el video terminado tiene un silencio de más de 0,8 s. Con `--captions` el guion queda como subtítulos en el video, porque las redes lo reproducen en silencio. Sin clave, el video sale sin voz. Al volver a generarlo, solo se regraban las láminas que cambiaron.
 
 > Declara las voces sintéticas. Los videos hechos así deberían decir que la voz fue generada con IA; la demo de arriba lo hace.
 

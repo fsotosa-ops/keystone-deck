@@ -1,40 +1,52 @@
 # keystone-deck · demo
 
-**Audiencia:** personas que presentan seguido y usan Claude; deciden si lo prueban.
+**Audiencia:** personas que enseñan, exponen o presentan seguido y usan Claude; deciden si lo prueban.
 
-**Hilo:** me cansé de adaptarme a las herramientas de presentaciones; keystone-deck arma el hilo, compone cada lámina como escena, usa tu marca y sale en PowerPoint.
+**Hilo:** presentar es transmitir lo que sabes; las herramientas se ponían en medio, y keystone-deck parte por lo que quieres que el otro entienda.
 
-## repo · Felipe · 0:08
-Me cansé de adaptarme a lo que me ofrecen las herramientas de presentaciones. Por eso construí keystone-deck.
-**Pasa a:** ¿cómo se usa?
+## idea · Felipe · 0:04
+Presentar es intentar que otro entienda lo que tú ya sabes.
+**Pasa a:** ¿qué se interponía?
 
-## instalar · Felipe · 0:06
-Es un plugin abierto para Claude Code. Se instala con dos comandos.
-**Pasa a:** ¿qué hace primero?
+## plantilla · Felipe · 0:06
+Cada vez que lo intentaba, la herramienta se ponía en medio. Elegía una plantilla y acomodaba la idea a sus cajas.
+**Pasa a:** ¿y el resto?
 
-## pedir · Felipe · 0:10
-Le cuento qué quiero decir. Antes de diseñar, Claude arma el hilo: cada lámina contesta la pregunta que dejó la anterior.
-**Pasa a:** ¿cómo se ven las láminas?
+## piezas · Felipe · 0:07
+El gráfico lo hacía en otro lado, el producto entraba como captura y la marca iba a mano. Lo que más importaba explicar quedaba fuera.
+**Pasa a:** ¿qué hice?
 
-## escena · Felipe · 0:06
-Y cada lámina es una escena pensada para su argumento, no una plantilla.
-**Pasa a:** ¿y el producto?
+## sesion · Felipe · 0:05
+Así que armé otra forma. Parto por lo que quiero que el otro entienda, y Claude arma el resto.
+**Pasa a:** ¿cómo se ve?
 
-## producto · Felipe · 0:05
-El producto se muestra funcionando, clic a clic.
-**Pasa a:** ¿y las cifras?
+## resultado · Felipe · 0:06
+Cada lámina contesta la pregunta que dejó la anterior. Si hay que mostrar cómo funciona algo, funciona ahí mismo.
+**Pasa a:** ¿y los números?
 
-## cifras · Felipe · 0:04
-Las cifras se calculan y llevan su fuente.
-**Pasa a:** ¿puedo usar mi marca?
+## brecha · Felipe · 0:04
+Cada cifra trae su fuente, porque lo que enseñas tiene que sostenerse.
+**Pasa a:** ¿sirve para otras cosas?
 
-## marca · Felipe · 0:06
-La marca vive en un solo archivo. La cambio, y cambia todo el deck.
-**Pasa a:** ¿y si no uso HTML?
+## tipos · Felipe · 0:04
+Lo uso para una clase, una charla, un pitch o un informe.
+**Pasa a:** ¿con qué aspecto?
 
-## powerpoint · Felipe · 0:07
-Y para quien no usa HTML, sale en PowerPoint, con el movimiento y el texto editable.
+## marca · Felipe · 0:03
+Con mi marca, o con la de quien me lo pide.
+**Pasa a:** ¿y quien no usa código?
+
+## powerpoint · Felipe · 0:04
+Quien no usa código lo abre en PowerPoint, con el movimiento.
+**Pasa a:** ¿y esta voz?
+
+## voz · Felipe · 0:03
+Hasta esta voz sale del mismo guion.
 **Pasa a:** ¿cómo lo pruebo?
 
+## instalar · Felipe · 0:02
+Es abierto, para Claude Code.
+**Pasa a:** ¿cómo se llama?
+
 ## cierre · Felipe · 0:04
-Es abierto. Si presentas seguido, pruébalo.
+keystone-deck. Presentaciones que dicen lo que quieres decir, como lo quieres decir.

@@ -4,6 +4,17 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+- `keystone-video`: `--captions` burns the talk in as subtitles; `--max-gap` fails the build on silences longer than 0.8 s.
+- Scenes read `window.KS_DUR` to fit their motion to the spoken line.
+- Narrated demo (`docs/assets/demo.mp4`) with a real terminal session recorded as asciicast.
+
+### Changed
+- The voice take plays whole under the video and slides cross-fade in the pauses between lines, so no word is cut.
+
+### Fixed
+- Recorded clips no longer lose their first second when Chrome sends the first frame late.
+
 ## [0.2.0] - 2026-11-20
 
 ### Added

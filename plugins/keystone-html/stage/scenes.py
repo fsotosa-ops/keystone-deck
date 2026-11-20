@@ -250,6 +250,9 @@ SCENES = {"cover": cover, "persona": persona, "journey": journey, "mirror": mirr
 LIGHT = {"mirror", "product", "matrix", "model", "team"}
 
 EXTRA_CSS = """
+.disclosure { position: fixed; right: 26px; top: 22px; z-index: 50; font: 500 15px var(--ks-font-body, sans-serif); color: #fff; background: rgba(15, 23, 42, .62); padding: 6px 12px; border-radius: 6px; letter-spacing: .01em; }
+.win { transition: transform 1.2s var(--curva); transform-origin: var(--zx, 50%) var(--zy, 50%); }
+.big-line { position: absolute; inset: 0; display: grid; place-items: center; font: 700 110px var(--ks-font-display); letter-spacing: -.03em; color: #fff; }
 .win { position: absolute; border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 40px 90px -30px rgba(11,31,77,.45); border: 1px solid var(--borde-c); }
 .wbar { height: 40px; background: #EEF1F5; display: flex; align-items: center; gap: 8px; padding: 0 16px; font-size: 16px; color: #5B6575; }
 .wbar i { width: 12px; height: 12px; border-radius: 50%; background: #D5DAE1; } .wbar i:nth-child(1){background:#FF5F57} .wbar i:nth-child(2){background:#FEBC2E} .wbar i:nth-child(3){background:#28C840}
