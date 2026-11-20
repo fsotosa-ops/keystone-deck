@@ -9,97 +9,90 @@
     "signature": "",
     "logo_svg": "<svg width=\"34\" height=\"34\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect width=\"512\" height=\"512\" rx=\"112\" fill=\"#1652E0\"/>\n<path d=\"M104 404 V300 A152 152 0 0 1 408 300 V404\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"58\" stroke-linejoin=\"round\"/>\n<path d=\"M214 118 H298 L284 214 H228 Z\" fill=\"#F4A93C\"/></svg>\n",
     "voice": {
-      "id": "TGPGWiQgABwWWS62Y527",
       "model": "eleven_v4",
       "speed": 1.12,
       "direction": "Chilean Spanish accent, reflective and warm, sharing a personal story about teaching and presenting, steady natural pace, no long pauses",
       "disclosure": "Voz generada con IA (ElevenLabs) a partir de la voz de Felipe"
     },
     "audience": "Personas que presentan seguido",
-    "duration": "1:10"
+    "duration": "0:45"
   },
   "slides": [
     {
-      "id": "idea",
+      "id": "portada",
       "layout": "html",
+      "scene": "frame",
       "theme": "dark",
-      "html": "<style>\n#idea .ps{position:absolute;bottom:250px;width:170px;fill:#5E7499}#idea .ps svg{width:170px;height:272px;display:block} #idea .ps.l{left:330px} #idea .ps.r{right:330px}\n#idea .lb{position:absolute;bottom:180px;width:420px;text-align:center;font-size:30px;color:var(--suave-o)} #idea .lb.l{left:205px} #idea .lb.r{right:205px}\n#idea .via{position:absolute;left:520px;right:520px;top:560px;border-top:4px dashed rgba(255,255,255,.18)}\n#idea .mv{position:absolute;left:300px;top:300px;width:240px;color:#fff;transition:left var(--d,3s) cubic-bezier(.45,0,.25,1)}\n#idea .mv .net{width:240px;display:block} #idea.go .mv{left:1380px} #idea.go .mv .net{animation:arco var(--d,3s) cubic-bezier(.45,0,.25,1) both}\n@keyframes arco{50%{transform:translateY(-170px) scale(1.12)}}\n#idea .eco{position:absolute;left:1380px;top:380px;width:240px;color:#fff;opacity:0;transition:opacity .6s} #idea.lleg .lb.r b{color:#F4A93C}\n#idea .lb b{color:#fff;font-weight:600}\n</style><div id=\"idea\"><div class=\"via\"></div><div class=\"ps l\"><svg viewBox=\"0 0 100 160\"><circle cx=\"50\" cy=\"34\" r=\"28\"/><path d=\"M8 160V112a42 42 0 0 1 84 0v48z\"/></svg></div><div class=\"ps r\"><svg viewBox=\"0 0 100 160\"><circle cx=\"50\" cy=\"34\" r=\"28\"/><path d=\"M8 160V112a42 42 0 0 1 84 0v48z\"/></svg></div>\n<div class=\"lb l\"><b>lo que sabes</b></div><div class=\"lb r\"><b>lo que el otro entiende</b></div><div class=\"mv\"><svg viewBox=\"0 0 240 180\" class=\"net\"><g stroke=\"currentColor\" stroke-width=\"5\" opacity=\".55\"><line x1=\"40\" y1=\"40\" x2=\"120\" y2=\"90\"/><line x1=\"120\" y1=\"90\" x2=\"200\" y2=\"36\"/><line x1=\"120\" y1=\"90\" x2=\"70\" y2=\"150\"/><line x1=\"120\" y1=\"90\" x2=\"190\" y2=\"140\"/><line x1=\"40\" y1=\"40\" x2=\"70\" y2=\"150\"/><line x1=\"200\" y1=\"36\" x2=\"190\" y2=\"140\"/></g><circle cx=\"120\" cy=\"90\" r=\"22\" fill=\"#F4A93C\"/><g fill=\"currentColor\"><circle cx=\"40\" cy=\"40\" r=\"15\"/><circle cx=\"200\" cy=\"36\" r=\"15\"/><circle cx=\"70\" cy=\"150\" r=\"15\"/><circle cx=\"190\" cy=\"140\" r=\"15\"/></g></svg></div></div>",
-      "scene": "idea"
-    },
-    {
-      "id": "plantilla",
-      "layout": "html",
-      "theme": "light",
-      "html": "<style>\n#pl .ed{position:absolute;inset:0;stroke:var(--azul);stroke-width:4;opacity:.45;transition:opacity .5s} #pl.s1 .ed{opacity:0}\n#pl .nd{position:absolute;width:150px;height:60px;line-height:60px;text-align:center;border-radius:30px;background:var(--azul);color:#fff;font-size:26px;font-weight:600;\n  transition:left .9s cubic-bezier(.5,0,.2,1),top .9s cubic-bezier(.5,0,.2,1),background .6s,color .6s,width .9s,border-radius .9s,opacity .8s,transform .9s;z-index:3}\n#pl .nd.n0{background:#F4A93C;color:#1E293B}\n#pl .tpl{position:absolute;left:960px;top:150px;width:820px;height:760px;background:#fff;border:2px solid #D5DAE1;border-radius:10px;box-shadow:0 30px 70px -30px rgba(11,31,77,.35)}\n#pl .tpl .h{margin:56px 56px 0;height:84px;border:2px dashed #C3C9D2;border-radius:6px;color:#9AA3AF;font-size:30px;line-height:80px;padding-left:26px}\n#pl .tpl .b{margin:34px 56px 0;height:70px;border-bottom:2px solid #EEF1F5;display:flex;align-items:center;gap:20px;color:#9AA3AF;font-size:26px}\n#pl.s1 .tpl .b{color:transparent}#pl .tpl .b::before{content:\"\";width:12px;height:12px;border-radius:50%;background:#C3C9D2}\n#pl .tpl .im{margin:40px 56px 0;height:170px;background:#EEF1F5;border-radius:6px;display:grid;place-items:center;color:#9AA3AF;font-size:24px}\n#pl .tag{position:absolute;left:960px;top:96px;font-size:22px;color:var(--suave-c)}\n#pl.s1 .nd.in{background:transparent!important;color:#5B6575!important;width:420px;text-align:left;border-radius:0}\n#pl.s1 .nd.out{opacity:0;transform:translateY(180px) rotate(-8deg)}\n#pl .perd{position:absolute;left:150px;top:860px;width:700px;line-height:1.5;font-size:26px;color:var(--suave-c);opacity:0;transition:opacity .6s} #pl.s2 .perd{opacity:1}\n#pl .perd s{color:#B42318}\n</style><div id=\"pl\"><svg class=\"ed\" viewBox=\"0 0 1920 1080\"><line x1=\"320\" y1=\"330\" x2=\"590\" y2=\"240\"/><line x1=\"590\" y1=\"240\" x2=\"710\" y2=\"500\"/><line x1=\"320\" y1=\"330\" x2=\"220\" y2=\"500\"/><line x1=\"220\" y1=\"500\" x2=\"400\" y2=\"640\"/><line x1=\"400\" y1=\"640\" x2=\"710\" y2=\"500\"/><line x1=\"710\" y1=\"500\" x2=\"630\" y2=\"750\"/><line x1=\"320\" y1=\"330\" x2=\"710\" y2=\"500\"/></svg><div class=\"nd n0\" style=\"left:250px;top:300px\">causa</div><div class=\"nd n1\" style=\"left:520px;top:210px\">dato</div><div class=\"nd n2\" style=\"left:640px;top:470px\">ejemplo</div><div class=\"nd n3\" style=\"left:330px;top:610px\">excepción</div><div class=\"nd n4\" style=\"left:150px;top:470px\">historia</div><div class=\"nd n5\" style=\"left:560px;top:720px\">pregunta</div>\n<div class=\"tag\">Plantilla · Título y viñetas</div><div class=\"tpl\"><div class=\"h\">Haga clic para agregar título</div>\n<div class=\"b\">Primer punto</div><div class=\"b\">Segundo punto</div><div class=\"b\">Tercer punto</div><div class=\"im\">imagen</div></div>\n<div class=\"perd\">no cupieron: <s>excepción</s> · <s>historia</s> · <s>pregunta</s> · y cómo se conectaban</div></div>",
-      "scene": "plantilla"
-    },
-    {
-      "id": "piezas",
-      "layout": "html",
-      "theme": "light",
-      "html": "<style>\n#pz .w{position:absolute;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 30px 70px -25px rgba(11,31,77,.4);border:1px solid #D5DAE1;opacity:0;transform:translateY(30px) rotate(var(--r));transition:opacity .5s,transform .7s cubic-bezier(.2,.8,.2,1),filter 1s}\n#pz .w.on{opacity:1;transform:translateY(0) rotate(var(--r))}\n#pz .bar{height:40px;background:#EEF1F5;display:flex;align-items:center;padding:0 16px;font-size:17px;color:#5B6575;gap:8px} #pz .bar i{width:11px;height:11px;border-radius:50%;background:#D5DAE1}\n#pz .ch{display:flex;align-items:flex-end;gap:26px;height:260px;padding:30px 40px 20px;border-bottom:2px solid #EEF1F5} #pz .ch div{width:60px;background:#8FA3BF}\n#pz .ch div:nth-child(2){background:#C0504D} #pz .ch div:nth-child(4){background:#9BBB59}\n#pz .cap{position:relative;height:500px;overflow:hidden} #pz .cap iframe{border:0;transform:scale(.62);transform-origin:0 0;position:absolute}\n#pz .w2.mu{filter:grayscale(1) opacity(.55)}\n#pz .sello{position:absolute;left:820px;top:620px;font:700 34px var(--ks-font-display);color:#B42318;border:4px solid #B42318;padding:8px 22px;border-radius:8px;transform:rotate(-6deg) scale(1.4);opacity:0;transition:opacity .35s,transform .35s cubic-bezier(.2,1.4,.4,1);z-index:9;background:rgba(255,255,255,.85)}\n#pz .sello.on{opacity:1;transform:rotate(-6deg) scale(1)}\n#pz .hx{padding:30px 34px;font-size:26px;color:#1E293B} #pz .hx .f{margin-top:14px;border:2px solid #C3C9D2;border-radius:6px;padding:10px 14px;font-family:var(--ks-font-mono,monospace)}\n#pz .hx .sw{display:inline-block;width:26px;height:26px;border-radius:4px;background:#1652E0;vertical-align:middle;margin-right:10px}\n#pz .hx .cnt{margin-top:16px;color:#5B6575;font-size:22px}\n</style><div id=\"pz\">\n<div class=\"w w1\" style=\"--r:-3deg;left:150px;top:190px;width:560px\"><div class=\"bar\"><i></i><i></i><i></i>gráfico.xlsx</div><div class=\"ch\"><div style=\"height:40%\"></div><div style=\"height:75%\"></div><div style=\"height:55%\"></div><div style=\"height:90%\"></div><div style=\"height:65%\"></div></div><div style=\"padding:16px 40px;color:#5B6575;font-size:20px\">copiar · pegar como imagen</div></div>\n<div class=\"w w2\" style=\"--r:2deg;left:690px;top:300px;width:700px\"><div class=\"bar\"><i></i><i></i><i></i>captura-producto.png</div><div class=\"cap\"><iframe data-src=\"assets/asisto/app/index.html\" width=\"1130\" height=\"806\"></iframe></div></div>\n<div class=\"w w3\" style=\"--r:-2deg;left:1380px;top:170px;width:420px\"><div class=\"bar\"><i></i><i></i><i></i>Formato › Color</div><div class=\"hx\">Color de relleno<div class=\"f\"><span class=\"sw\"></span><span class=\"ty\"></span></div><div class=\"cnt\">lámina <b class=\"k\">1</b> de 14</div></div></div>\n<div class=\"sello\">quedaba fuera</div></div>",
-      "scene": "piezas"
+      "html": "<div class=\"win z\" style=\"--i:1;left:120px;top:50px;width:1680px;height:985px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Cosecha Cerca · deck en vivo</span></div><div class=\"wbody\" style=\"height:945px\"><iframe data-src=\"assets/rural/stage/index.html#1\" data-keys=\"0\" width=\"1920\" height=\"1080\" style=\"transform:scale(0.875)\"></iframe></div></div>"
     },
     {
       "id": "sesion",
       "layout": "html",
-      "scene": "sesion",
+      "scene": "terminal",
       "theme": "dark",
-      "html": "<div class=\"win a rpw\" style=\"--i:1;transition:opacity .5s;left:210px;top:110px;width:1500px;height:900px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Mi terminal · carpeta vacía</span></div><div class=\"wbody\" style=\"height:860px\"><iframe data-src=\"\" data-base=\"assets/terminal.html#src=clase-sesion.cast&len=305.5&label=mi%20terminal%2C%20real\" class=\"rp\" width=\"1500\" height=\"860\" style=\"transform:scale(1.0)\"></iframe></div></div><div class=\"win\" style=\"left:173px;top:70px;width:1574px;height:925px;opacity:0;transition:opacity .8s\" id=\"lumo\"><div class=\"wbar\"><i></i><i></i><i></i><span>La clase que armó Claude</span></div><div class=\"wbody\" style=\"height:885px\"><iframe data-src=\"assets/clase-deck/html/index.html#1\" width=\"1920\" height=\"1080\" style=\"transform:scale(.82)\"></iframe></div></div>"
+      "html": "<div class=\"win a rpw\" style=\"--i:1;transition:opacity .5s;left:210px;top:110px;width:1500px;height:900px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Mi terminal · carpeta vacía</span></div><div class=\"wbody\" style=\"height:860px\"><iframe data-src=\"\" data-base=\"assets/terminal.html#src=rural.cast&len=1039.7&label=mi%20terminal%2C%20real\" class=\"rp\" width=\"1500\" height=\"860\" style=\"transform:scale(1.0)\"></iframe></div></div>"
     },
     {
-      "id": "resultado",
+      "id": "persona",
       "layout": "html",
-      "scene": "resultado",
-      "theme": "light",
-      "html": "<div class=\"win z\" style=\"--i:1;left:173px;top:70px;width:1574px;height:925px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Asisto · deck en vivo</span></div><div class=\"wbody\" style=\"height:885px\"><iframe data-src=\"assets/asisto/stage/index.html#5\" width=\"1920\" height=\"1080\" style=\"transform:scale(0.82)\"></iframe></div></div>"
-    },
-    {
-      "id": "brecha",
-      "layout": "html",
-      "scene": "brecha",
-      "theme": "light",
-      "html": "<div class=\"win z\" style=\"--i:1;left:173px;top:70px;width:1574px;height:925px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Asisto · deck en vivo</span></div><div class=\"wbody\" style=\"height:885px\"><iframe data-src=\"assets/asisto/stage/index.html#11\" width=\"1920\" height=\"1080\" style=\"transform:scale(0.82)\"></iframe></div></div>"
-    },
-    {
-      "id": "tipos",
-      "layout": "html",
+      "scene": "frame",
       "theme": "dark",
-      "html": "<style>\n#tp{position:absolute;left:150px;right:150px;top:150px;display:grid;grid-template-columns:repeat(4,1fr);gap:36px}\n#tp .t{font:700 50px var(--ks-font-display);color:#fff;margin-bottom:30px;opacity:0;transition:opacity .4s calc(var(--k)*var(--u,1s))}\n#tp .hi .t{color:#F4A93C}\n#tp .c{font-size:27px;color:var(--tinta-o);padding:14px 20px;margin-bottom:14px;border-radius:12px;background:rgba(255,255,255,.07);border-left:5px solid var(--menta);\n  opacity:0;transform:translateX(-14px);transition:opacity .35s calc(var(--k)*var(--u,1s)),transform .35s calc(var(--k)*var(--u,1s))}\n#tp .hi .c{border-left-color:#F4A93C}\n#tp.go .t,#tp.go .c{opacity:1;transform:none}\n.tp-pie{position:absolute;left:150px;bottom:120px;font-size:26px;color:var(--suave-o)}\n</style><div id=\"tp\"><div class=\"col hi\" style=\"--k:0.0\"><div class=\"t\">Clase</div><div class=\"c\" style=\"--k:0.0\">intuición</div><div class=\"c\" style=\"--k:0.35\">ejemplo con números</div><div class=\"c\" style=\"--k:0.7\">versión formal</div><div class=\"c\" style=\"--k:1.0499999999999998\">pregunta de control</div><div class=\"c\" style=\"--k:1.4\">trampas</div></div><div class=\"col\" style=\"--k:0.5\"><div class=\"t\">Charla</div><div class=\"c\" style=\"--k:0.5\">un momento vivido</div><div class=\"c\" style=\"--k:0.85\">la tensión</div><div class=\"c\" style=\"--k:1.2\">el giro</div><div class=\"c\" style=\"--k:1.5499999999999998\">tres ideas</div><div class=\"c\" style=\"--k:1.9\">qué hacer el lunes</div></div><div class=\"col\" style=\"--k:1.0\"><div class=\"t\">Pitch</div><div class=\"c\" style=\"--k:1.0\">persona</div><div class=\"c\" style=\"--k:1.35\">problema</div><div class=\"c\" style=\"--k:1.7\">producto en uso</div><div class=\"c\" style=\"--k:2.05\">por qué ahora</div><div class=\"c\" style=\"--k:2.4\">modelo</div><div class=\"c\" style=\"--k:2.75\">el pedido</div></div><div class=\"col\" style=\"--k:1.5\"><div class=\"t\">Informe</div><div class=\"c\" style=\"--k:1.5\">la decisión</div><div class=\"c\" style=\"--k:1.85\">qué cambió</div><div class=\"c\" style=\"--k:2.2\">evidencia</div><div class=\"c\" style=\"--k:2.55\">opciones</div><div class=\"c\" style=\"--k:2.9\">recomendación</div></div></div>",
-      "scene": "tipos"
+      "html": "<div class=\"win z\" style=\"--i:1;left:120px;top:50px;width:1680px;height:985px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Cosecha Cerca · deck en vivo</span></div><div class=\"wbody\" style=\"height:945px\"><iframe data-src=\"assets/rural/stage/index.html#2\" data-keys=\"0\" width=\"1920\" height=\"1080\" style=\"transform:scale(0.875)\"></iframe></div></div>"
     },
     {
-      "id": "marca",
+      "id": "problema",
       "layout": "html",
-      "scene": "marca",
-      "theme": "light",
-      "html": "<div class=\"win a\" style=\"--i:1;left:173px;top:70px;width:1574px;height:925px\"><div class=\"wbar\"><i></i><i></i><i></i><span class=\"lbl\">brand.json</span></div><div class=\"wbody\" style=\"height:885px\"><iframe class=\"st\" data-src=\"assets/asisto/stage/index.html#1\" width=\"1920\" height=\"1080\" style=\"transform:scale(0.82);transition:opacity .35s\"></iframe><iframe class=\"st\" data-src=\"assets/asisto-alt/stage/index.html#1\" width=\"1920\" height=\"1080\" style=\"transform:scale(0.82);transition:opacity .35s\"></iframe><iframe class=\"st\" data-src=\"assets/asisto-ink/stage/index.html#1\" width=\"1920\" height=\"1080\" style=\"transform:scale(0.82);transition:opacity .35s\"></iframe></div></div>"
+      "scene": "frame",
+      "theme": "dark",
+      "html": "<div class=\"win z\" style=\"--i:1;left:120px;top:50px;width:1680px;height:985px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Cosecha Cerca · deck en vivo</span></div><div class=\"wbody\" style=\"height:945px\"><iframe data-src=\"assets/rural/stage/index.html#4\" data-keys=\"0\" data-zoom=\"1.12,50%,173%\" width=\"1920\" height=\"1080\" style=\"transform:scale(0.875)\"></iframe></div></div>"
     },
     {
-      "id": "powerpoint",
+      "id": "cambio",
       "layout": "html",
-      "scene": "ppt",
+      "scene": "terminal",
+      "theme": "dark",
+      "html": "<div class=\"win a rpw\" style=\"--i:1;transition:opacity .5s;left:210px;top:110px;width:1500px;height:900px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Mi terminal · el mismo deck</span></div><div class=\"wbody\" style=\"height:860px\"><iframe data-src=\"\" data-base=\"assets/terminal.html#src=rural-cambio2.cast&len=395.1&label=mi%20terminal%2C%20real\" class=\"rp\" width=\"1500\" height=\"860\" style=\"transform:scale(1.0)\"></iframe></div></div>"
+    },
+    {
+      "id": "cien",
+      "layout": "html",
+      "scene": "frame",
+      "theme": "dark",
+      "html": "<div class=\"win z\" style=\"--i:1;left:120px;top:50px;width:1680px;height:985px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Cosecha Cerca · deck en vivo</span></div><div class=\"wbody\" style=\"height:945px\"><iframe data-src=\"assets/rural/stage/index.html#3\" data-keys=\"0\" width=\"1920\" height=\"1080\" style=\"transform:scale(0.875)\"></iframe></div></div>"
+    },
+    {
+      "id": "mapa",
+      "layout": "html",
+      "scene": "frame",
+      "theme": "dark",
+      "html": "<div class=\"win z\" style=\"--i:1;left:120px;top:50px;width:1680px;height:985px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Cosecha Cerca · deck en vivo</span></div><div class=\"wbody\" style=\"height:945px\"><iframe data-src=\"assets/rural/stage/index.html#5\" data-keys=\"7\" width=\"1920\" height=\"1080\" style=\"transform:scale(0.875)\"></iframe></div></div>"
+    },
+    {
+      "id": "producto",
+      "layout": "html",
+      "scene": "frame",
       "theme": "light",
-      "html": "<div class=\"win a\" style=\"--i:1;left:250px;top:110px;width:1420px;height:840px\"><div class=\"wbar pp\"><i></i><i></i><i></i><span>asisto-pitch.pptx · PowerPoint · Presentación</span></div><video src=\"assets/powerpoint-producto.mp4\" muted playsinline style=\"width:1420px;height:800px;display:block;background:#000\"></video></div>"
+      "html": "<div class=\"win z\" style=\"--i:1;left:120px;top:50px;width:1680px;height:985px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Cosecha Cerca · deck en vivo</span></div><div class=\"wbody\" style=\"height:945px\"><iframe data-src=\"assets/rural/stage/index.html#7\" data-keys=\"3\" width=\"1920\" height=\"1080\" style=\"transform:scale(0.875)\"></iframe></div></div>"
+    },
+    {
+      "id": "app",
+      "layout": "html",
+      "scene": "clip",
+      "theme": "dark",
+      "html": "<div class=\"win a\" style=\"--i:1;left:200px;top:90px;width:1520px;height:990px;height:auto\"><div class=\"wbar\"><i></i><i></i><i></i><span>claude.ai · Personalización › Plugins</span></div><video src=\"assets/claudeai-setup.mp4\" data-len=\"25.2\" muted playsinline style=\"width:1520px;height:950px;display:block;background:#fff;object-fit:cover;object-position:top\"></video></div>"
     },
     {
       "id": "voz",
       "layout": "html",
+      "scene": "terminal",
       "theme": "dark",
-      "html": "<style>\n#vz .md{position:absolute;left:150px;top:200px;width:880px;background:#1b1d23;border-radius:14px;padding:34px 40px;font:24px/1.6 var(--ks-font-mono,monospace);color:#8a8f98}\n#vz .md .on{color:#fff;background:rgba(244,169,60,.16);border-left:4px solid #F4A93C;padding-left:12px;margin-left:-16px} #vz .md .h{color:#8DB6FF}\n#vz .wv{position:absolute;left:1110px;top:300px;width:660px;height:300px;display:flex;align-items:center;gap:9px}\n#vz .wv i{flex:1;background:#F4A93C;border-radius:6px;height:12%;animation:wv .9s ease-in-out infinite alternate;animation-delay:calc(var(--j)*-.13s)}\n@keyframes wv{to{height:var(--h)}}\n#vz .ds{position:absolute;left:1110px;top:680px;width:660px;font-size:30px;line-height:1.4;color:#fff;border:2px solid rgba(255,255,255,.25);border-radius:12px;padding:22px 28px}\n#vz .ds small{display:block;font-size:20px;color:var(--suave-o);margin-top:6px}\n</style><div id=\"vz\"><div class=\"md\"><div class=\"h\">## powerpoint</div><div>Quien no usa código lo abre en PowerPoint, con el movimiento.</div><br><div class=\"h\">## voz</div><div class=\"on\">Hasta esta voz sale del mismo guion.</div><br><div class=\"h\">## instalar</div><div>Es abierto, para Claude Code.</div></div>\n<div class=\"wv\"><i style=\"--j:0;--h:20%\"></i><i style=\"--j:1;--h:57%\"></i><i style=\"--j:2;--h:94%\"></i><i style=\"--j:3;--h:51%\"></i><i style=\"--j:4;--h:88%\"></i><i style=\"--j:5;--h:45%\"></i><i style=\"--j:6;--h:82%\"></i><i style=\"--j:7;--h:39%\"></i><i style=\"--j:8;--h:76%\"></i><i style=\"--j:9;--h:33%\"></i><i style=\"--j:10;--h:70%\"></i><i style=\"--j:11;--h:27%\"></i><i style=\"--j:12;--h:64%\"></i><i style=\"--j:13;--h:21%\"></i><i style=\"--j:14;--h:58%\"></i><i style=\"--j:15;--h:95%\"></i><i style=\"--j:16;--h:52%\"></i><i style=\"--j:17;--h:89%\"></i><i style=\"--j:18;--h:46%\"></i><i style=\"--j:19;--h:83%\"></i><i style=\"--j:20;--h:40%\"></i><i style=\"--j:21;--h:77%\"></i><i style=\"--j:22;--h:34%\"></i><i style=\"--j:23;--h:71%\"></i><i style=\"--j:24;--h:28%\"></i><i style=\"--j:25;--h:65%\"></i><i style=\"--j:26;--h:22%\"></i><i style=\"--j:27;--h:59%\"></i><i style=\"--j:28;--h:96%\"></i><i style=\"--j:29;--h:53%\"></i><i style=\"--j:30;--h:90%\"></i><i style=\"--j:31;--h:47%\"></i><i style=\"--j:32;--h:84%\"></i><i style=\"--j:33;--h:41%\"></i></div>\n<div class=\"ds\">Voz generada con IA (ElevenLabs) a partir de la voz de Felipe<small>talk.md → una toma → cortada por lámina</small></div></div>"
-    },
-    {
-      "id": "instalar",
-      "layout": "html",
-      "scene": "instalar",
-      "theme": "dark",
-      "html": "<div class=\"win a \" style=\"--i:1;left:310px;top:330px;width:1300px;height:460px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Terminal</span></div><div class=\"wbody\" style=\"height:420px\"><iframe data-src=\"\" data-base=\"assets/terminal.html#src=clase-install.cast&len=14.3&label=mi%20terminal%2C%20real\" width=\"1300\" height=\"420\" style=\"transform:scale(1.0)\"></iframe></div></div>"
+      "html": "<div class=\"win a rpw\" style=\"--i:1;transition:opacity .5s;left:210px;top:110px;width:1500px;height:900px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Mi terminal · video narrado</span></div><div class=\"wbody\" style=\"height:860px\"><iframe data-src=\"\" data-base=\"assets/terminal.html#src=voz.cast&len=13.8&label=mi%20terminal%2C%20real\" class=\"rp\" width=\"1500\" height=\"860\" style=\"transform:scale(1.0)\"></iframe></div></div>"
     },
     {
       "id": "cierre",
       "layout": "html",
       "theme": "dark",
-      "html": "<div style=\"position:absolute;left:0;right:0;top:250px;text-align:center\"><div class=\"a\"><svg width=\"150\" height=\"150\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect width=\"512\" height=\"512\" rx=\"112\" fill=\"#1652E0\"/>\n<path d=\"M104 404 V300 A152 152 0 0 1 408 300 V404\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"58\" stroke-linejoin=\"round\"/>\n<path d=\"M214 118 H298 L284 214 H228 Z\" fill=\"#F4A93C\"/></svg>\n</div><div class=\"tit a\" style=\"--i:1;font-size:96px;max-width:none;margin-top:30px\">keystone-deck</div><div class=\"bajada a\" style=\"--i:2;max-width:none;font-size:34px\">Presentaciones que dicen lo que quieres decir, como lo quieres decir.</div><div class=\"cmd a\" style=\"--i:3\">/plugin marketplace add fsotosa-ops/keystone-deck</div></div>"
+      "html": "<div style=\"position:absolute;left:0;right:0;top:250px;text-align:center\"><div class=\"a\"><svg width=\"150\" height=\"150\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect width=\"512\" height=\"512\" rx=\"112\" fill=\"#1652E0\"/>\n<path d=\"M104 404 V300 A152 152 0 0 1 408 300 V404\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"58\" stroke-linejoin=\"round\"/>\n<path d=\"M214 118 H298 L284 214 H228 Z\" fill=\"#F4A93C\"/></svg>\n</div><div class=\"tit a\" style=\"--i:1;font-size:96px;max-width:none;margin-top:30px\">keystone-deck</div><div class=\"cmd a\" style=\"--i:3\">github.com/fsotosa-ops/keystone-deck</div></div>"
     }
   ]
 }

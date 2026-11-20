@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cosecha Cerca · demo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,700&display=swap">
+<style>
+  :root {
+    --tierra: #14241A; --hoja: #2E6B3F; --brote: #A8D88F; --trigo: #E9B44C; --papel: #F8F5EC;
+    --papel-2: #EFEADB; --tinta: #1C2A20; --suave: #56614F; --borde: #DCD6C2; --rojo: #B3261E;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1440px; height: 900px; overflow: hidden; font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif; color: var(--tinta); }
+  body { background: transparent; }
+  body.lap { background: var(--papel); }
+  button { font: inherit; cursor: pointer; border: 0; }
+  .ser { font-family: 'Fraunces', Georgia, serif; }
+
+  /* ---------------- Celular de la productora ---------------- */
+  .celular { position: absolute; left: 24px; top: 24px; width: 410px; height: 840px; border-radius: 54px; background: #0B130E; padding: 14px; }
+  .pantalla { position: relative; width: 100%; height: 100%; border-radius: 42px; overflow: hidden; background: var(--papel); display: flex; flex-direction: column; }
+  .barra-e { display: flex; justify-content: space-between; padding: 14px 26px 6px; font-size: 15px; font-weight: 700; }
+  .isla { position: absolute; left: 50%; top: 10px; width: 110px; height: 30px; translate: -50% 0; background: #0B130E; border-radius: 20px; }
+  .cab { padding: 10px 22px 14px; }
+  .cab small { color: var(--suave); font-size: 15px; }
+  .cab h1 { font-size: 30px; line-height: 1.1; margin-top: 2px; }
+  .scroll { flex: 1; overflow: hidden; padding: 0 16px 16px; display: flex; flex-direction: column; gap: 12px; }
+  .tarjeta { background: #fff; border: 1px solid var(--borde); border-radius: 20px; padding: 14px 16px; }
+  .tarjeta h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .06em; color: var(--suave); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+  .estado { font-size: 12px; padding: 3px 10px; border-radius: 999px; background: var(--papel-2); color: var(--suave); letter-spacing: .02em; }
+  .estado.ok { background: #DDEFD3; color: var(--hoja); }
+  .estado.nuevo { background: var(--trigo); color: var(--tinta); }
+  .item { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0; border-top: 1px solid var(--papel-2); font-size: 17px; }
+  .item:first-of-type { border-top: 0; }
+  .item b { font-weight: 700; } .item span { color: var(--suave); font-size: 15px; }
+  .btn { display: block; width: 100%; margin-top: 10px; padding: 14px; border-radius: 14px; background: var(--hoja); color: #fff; font-weight: 700; font-size: 18px; }
+  .btn.sec { background: var(--papel-2); color: var(--hoja); }
+  .btn:disabled { background: #DDEFD3; color: var(--hoja); cursor: default; }
+  #oferta.pub .item { display: none; } #oferta.pub .btn { margin-top: 2px; }
+  #oferta .resumen { display: none; font-size: 16px; color: var(--suave); } #oferta.pub .resumen { display: block; }
+  .pedido { font-size: 16px; line-height: 1.35; }
+  .pedido .quien { font-size: 18px; font-weight: 700; }
+  .pedido .det { color: var(--suave); }
+  .pedido .monto { font-weight: 700; font-size: 18px; margin-top: 4px; }
+  .pedido + .pedido { border-top: 1px solid var(--papel-2); margin-top: 10px; padding-top: 10px; }
+  .pedido.llega { animation: llega .7s cubic-bezier(.2,.7,.2,1); }
+  @keyframes llega { from { transform: translateY(-14px); opacity: 0; background: #FFF4D6; } }
+  .ventas { background: var(--tierra); color: #fff; border: 0; }
+  .ventas h2 { color: var(--brote); }
+  .ventas .cifra { font-size: 38px; font-weight: 700; letter-spacing: -.02em; }
+  .ventas .sub { font-size: 14px; color: #B9C4AE; }
+  .nav { display: flex; justify-content: space-around; padding: 10px 0 18px; border-top: 1px solid var(--borde); background: #fff; font-size: 13px; color: var(--suave); }
+  .nav b { color: var(--hoja); }
+
+  /* ---------------- Panel de la cocina compradora ---------------- */
+  .panel { display: none; position: absolute; inset: 0; grid-template-columns: 270px 1fr; }
+  body.lap .panel { display: grid; } body.lap .celular { display: none; }
+  .lado { background: var(--tierra); color: #F4F1E6; padding: 30px 24px; }
+  .lado .marca { font-size: 30px; display: flex; gap: 10px; align-items: center; }
+  .lado .marca i { width: 34px; height: 34px; border-radius: 10px; background: var(--brote); display: inline-block; }
+  .lado ul { list-style: none; margin-top: 44px; display: flex; flex-direction: column; gap: 8px; font-size: 24px; }
+  .lado li { padding: 12px 14px; border-radius: 12px; color: #B9C4AE; } .lado li.on { background: #1F3527; color: #fff; font-weight: 700; }
+  .main { padding: 36px 44px; display: flex; flex-direction: column; gap: 22px; }
+  .top { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: end; }
+  .top small { font-size: 22px; color: var(--suave); } .top h1 { font-size: 50px; }
+  .chip { font-size: 18px; padding: 8px 16px; border-radius: 999px; background: var(--papel-2); color: var(--hoja); font-weight: 700; }
+  .ofertas { display: flex; flex-direction: column; gap: 12px; }
+  .ofertas h3, .lateral h3 { font-size: 21px; text-transform: uppercase; letter-spacing: .06em; color: var(--suave); }
+  .of { background: #fff; border: 1px solid var(--borde); border-radius: 22px; padding: 18px 26px; display: grid; grid-template-columns: 76px 1fr auto; gap: 18px; align-items: center; transition: all .5s; }
+  .of .av { width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 24px; background: var(--papel-2); color: var(--hoja); }
+  .of .n { font-size: 30px; font-weight: 700; } .of .d { font-size: 23px; color: var(--suave); margin-top: 2px; }
+  .of .km { font-size: 22px; color: var(--hoja); font-weight: 700; }
+  .of.vacia { opacity: .45; } .of.nueva { border: 2px solid var(--trigo); box-shadow: 0 10px 30px -12px rgba(233,180,76,.7); animation: llega .8s cubic-bezier(.2,.7,.2,1); }
+  .of .pedir { padding: 16px 26px; border-radius: 14px; background: var(--hoja); color: #fff; font-weight: 700; font-size: 24px; margin-top: 6px; }
+  .of .pedir:disabled { background: var(--papel-2); color: var(--suave); cursor: default; }
+  .lateral { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; } .lateral h3 { display: none; } .lateral .local { order: 2; }
+  .caja { background: #fff; border: 1px solid var(--borde); border-radius: 22px; padding: 28px; }
+  .local .pct { font-size: 72px; font-weight: 700; letter-spacing: -.03em; line-height: 1; }
+  .local .pct.sube { color: var(--hoja); }
+  .barra { position: relative; height: 18px; background: var(--papel-2); border-radius: 9px; margin: 12px 0 8px; }
+  .barra .llen { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 9px; background: var(--hoja); transition: width 1s cubic-bezier(.2,.7,.2,1); }
+  .barra .meta { position: absolute; top: -8px; bottom: -8px; width: 3px; background: var(--trigo); }
+  .local .leg { font-size: 20px; color: var(--suave); }
+  .peds { font-size: 22px; } .peds div { padding: 8px 0; border-top: 1px solid var(--papel-2); display: flex; justify-content: space-between; gap: 8px; }
+  .peds div:first-of-type { border-top: 0; }
+</style>
+</head>
+<body>
+<!-- Celular de Rosa (productora) -->
+<div class="celular"><div class="pantalla">
+  <div class="isla"></div>
+  <div class="barra-e"><span id="hora">6:04</span><span>▂▄▆ 4G</span></div>
+  <div class="cab"><small>Huerta Santa Rosa · Pumanque</small><h1 class="ser">Hola, Rosa</h1></div>
+  <div class="scroll">
+    <div class="tarjeta" id="oferta">
+      <h2>Mi oferta · semana 47 <span class="estado" id="estado-oferta">Borrador</span></h2>
+      <div class="item"><b>Lechuga costina</b><span>60 un · $500</span></div>
+      <div class="item"><b>Tomate limachino</b><span>40 kg · $1.400</span></div>
+      <div class="item"><b>Cilantro</b><span>30 atados · $400</span></div>
+      <div class="resumen">Lechuga, tomate y cilantro · 3 productos</div>
+      <button class="btn" id="publicar">Publicar a compradores cercanos</button>
+    </div>
+    <div class="tarjeta" id="pedidos"><h2>Pedidos <span class="estado" id="n-pedidos">1</span></h2><div id="lista-pedidos"></div></div>
+    <div class="tarjeta ventas" id="ventas"><h2>Vendido directo · esta semana</h2><div class="cifra" id="ventas-cifra">$10.000</div><div class="sub" id="ruta">Ruta jueves: 1 entrega · 8 km</div></div>
+  </div>
+  <div class="nav"><b>● Inicio</b><span>Pedidos</span><span>Ruta</span><span>Pagos</span></div>
+</div></div>
+
+<!-- Panel de la cocina (comprador) -->
+<div class="panel">
+  <aside class="lado">
+    <div class="marca ser"><i></i>Cosecha Cerca</div>
+    <ul><li class="on">Ofertas cerca</li><li>Mis pedidos</li><li>Compra local</li><li>Pagos y boletas</li></ul>
+  </aside>
+  <section class="main">
+    <div class="top"><div><small>Cocina · Escuela Los Maitenes</small><h1 class="ser">Ofertas a menos de 30 km</h1></div><span class="chip">Entrega jueves</span></div>
+    <div class="ofertas" id="ofertas">
+      <h3>Productores de la zona</h3>
+      <div class="of vacia" id="oferta-rosa"><div class="av">RS</div><div><div class="n">Huerta Santa Rosa</div><div class="d" id="rosa-d">Sin oferta publicada esta semana</div></div><div style="text-align:right"><div class="km">9 km</div><button class="pedir" id="pedir" disabled>Pedir</button></div></div>
+      <div class="of"><div class="av">AR</div><div><div class="n">Apícola Los Robles</div><div class="d">Miel 1 kg · 20 frascos · $6.500</div></div><div style="text-align:right"><div class="km">18 km</div><button class="pedir" disabled>Pedido</button></div></div>
+      <div class="of"><div class="av">FC</div><div><div class="n">Familia Catalán</div><div class="d">Papa · 300 kg · $650/kg</div></div><div style="text-align:right"><div class="km">22 km</div><button class="pedir" disabled>Pedido</button></div></div>
+    </div>
+    <div class="lateral">
+      <h3>Este mes</h3>
+      <div class="caja local" id="local"><div class="leg">Compra local del mes</div><div class="pct" id="pct">2,0%</div>
+        <div class="barra"><div class="llen" id="llen"></div><div class="meta" style="left:50%"></div></div>
+        <div class="leg">Meta de las bases: 5% (línea amarilla)</div></div>
+      <div class="caja"><div class="leg" style="font-size:20px;color:var(--suave);margin-bottom:6px">Pedidos de la semana</div><div class="peds" id="peds"></div></div>
+    </div>
+  </section>
+</div>
+
+<script>
+(() => {
+  const KEY = 'cc-estado';
+  const fmt = n => '$' + Math.round(n).toLocaleString('es-CL');
+  const pct = x => x.toFixed(1).replace('.', ',') + '%';
+  const BASE = { total: 1200000, local: 24000 };         // compras del mes de la cocina (ilustrativo)
+  const DON_LALO = { id: 'lalo', quien: 'Restorán Don Lalo', km: 8, det: '20 lechugas · jueves 9:00', monto: 10000, estado: 'aceptado' };
+  const ESCUELA = { id: 'escuela', quien: 'Escuela Los Maitenes', km: 9, det: '40 lechugas + 15 kg tomate · jueves 8:00', monto: 41000, estado: 'nuevo' };
+
+  const ruta = location.hash.replace(/^#\/?/, '');
+  if (ruta.startsWith('comprador')) document.body.classList.add('lap');
+  const inicial = () => ruta.endsWith('/fin')
+    ? { publicado: true, pedidos: [{ ...ESCUELA, estado: 'aceptado' }, DON_LALO] }
+    : { publicado: false, pedidos: [DON_LALO] };
+  const leer = () => { try { return JSON.parse(localStorage.getItem(KEY)) || inicial(); } catch (e) { return inicial(); } };
+  const guardar = s => { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} render(); };
+  const $ = id => document.getElementById(id);
+
+  function render() {
+    const s = leer();
+    // Celular
+    $('estado-oferta').textContent = s.publicado ? 'Publicada' : 'Borrador';
+    $('estado-oferta').className = 'estado' + (s.publicado ? ' ok' : '');
+    $('publicar').disabled = s.publicado; $('oferta').classList.toggle('pub', s.publicado);
+    $('publicar').textContent = s.publicado ? '✓ Publicada a 3 compradores' : 'Publicar a compradores cercanos';
+    const prev = $('lista-pedidos').dataset.ids || '';
+    $('lista-pedidos').innerHTML = s.pedidos.map(p => `
+      <div class="pedido ${!prev.includes(p.id) && prev ? 'llega' : ''}" id="${p.estado === 'nuevo' ? 'pedido-nuevo' : 'pedido-' + p.id}">
+        <div class="quien">${p.quien} <span class="estado ${p.estado === 'nuevo' ? 'nuevo' : 'ok'}">${p.estado === 'nuevo' ? 'Nuevo' : 'Aceptado'}</span></div>
+        <div class="det">${p.det} · ${p.km} km</div><div class="monto">${fmt(p.monto)}</div>
+        ${p.estado === 'nuevo' ? '<button class="btn" id="aceptar">Aceptar pedido</button>' : ''}
+      </div>`).join('');
+    $('lista-pedidos').dataset.ids = s.pedidos.map(p => p.id).join(',') || ' ';
+    $('n-pedidos').textContent = s.pedidos.length;
+    const ok = s.pedidos.filter(p => p.estado === 'aceptado');
+    $('ventas-cifra').textContent = fmt(ok.reduce((a, p) => a + p.monto, 0));
+    $('ruta').textContent = `Ruta jueves: ${ok.length} entrega${ok.length > 1 ? 's' : ''} · ${ok.length > 1 ? 17 : 8} km`;
+    $('aceptar')?.addEventListener('click', aceptar);
+    // Panel comprador
+    const pidio = s.pedidos.some(p => p.id === 'escuela');
+    const acepto = s.pedidos.some(p => p.id === 'escuela' && p.estado === 'aceptado');
+    const of = $('oferta-rosa');
+    of.className = 'of' + (s.publicado ? (pidio ? '' : ' nueva') : ' vacia');
+    $('rosa-d').textContent = s.publicado ? 'Lechuga $500 · Tomate $1.400/kg · Cilantro $400' : 'Sin oferta publicada esta semana';
+    $('pedir').disabled = !s.publicado || pidio;
+    $('pedir').textContent = pidio ? (acepto ? 'Confirmado' : 'Enviado') : 'Pedir';
+    const local = BASE.local + (acepto ? ESCUELA.monto : 0), total = BASE.total + (acepto ? ESCUELA.monto : 0);
+    const p = local / total * 100;
+    $('pct').textContent = pct(p); $('pct').className = 'pct' + (acepto ? ' sube' : '');
+    $('llen').style.width = Math.min(100, p * 10) + '%';
+    $('peds').innerHTML = [['Apícola Los Robles', 'Confirmado'], ['Familia Catalán', 'Confirmado']]
+      .concat(pidio ? [['Huerta Santa Rosa', acepto ? 'Confirmado' : 'Esperando']] : [])
+      .map(([n, e]) => `<div><span>${n}</span><b style="color:${e === 'Esperando' ? 'var(--suave)' : 'var(--hoja)'}">${e}</b></div>`).join('');
+  }
+
+  function publicar() { const s = leer(); s.publicado = true; guardar(s); }
+  function pedir() { const s = leer(); if (!s.pedidos.some(p => p.id === 'escuela')) s.pedidos.unshift({ ...ESCUELA }); guardar(s); }
+  function aceptar() { const s = leer(); s.pedidos.forEach(p => { if (p.id === 'escuela') p.estado = 'aceptado'; }); guardar(s); }
+  $('publicar').addEventListener('click', publicar);
+  $('pedir').addEventListener('click', pedir);
+  addEventListener('storage', e => { if (e.key === KEY || e.key === null) render(); });
+  window.__app = { render, publicar, pedir, aceptar, reset: () => { localStorage.removeItem(KEY); render(); } };
+  render();
+})();
+</script>
+</body>
+</html>

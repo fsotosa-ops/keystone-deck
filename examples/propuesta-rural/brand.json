@@ -1,0 +1,180 @@
+{
+  "$schema": "https://raw.githubusercontent.com/fsotosa-ops/keystone-deck/main/plugins/keystone/schemas/brand.schema.json",
+  "$description": "Cosecha Cerca: tierra, hoja y trigo. Iniciativa ficticia.",
+  "color": {
+    "$type": "color",
+    "bg-dark": {
+      "$value": "#14241A"
+    },
+    "bg-light": {
+      "$value": "#F8F5EC"
+    },
+    "surface-dark": {
+      "$value": "#1F3527"
+    },
+    "surface-light": {
+      "$value": "#EFEADB"
+    },
+    "ink": {
+      "$value": "#1C2A20"
+    },
+    "ink-inverse": {
+      "$value": "#F4F1E6"
+    },
+    "muted": {
+      "$value": "#56614F"
+    },
+    "muted-inverse": {
+      "$value": "#B9C4AE"
+    },
+    "border": {
+      "$value": "#DCD6C2"
+    },
+    "accent": {
+      "$value": "#2E6B3F"
+    },
+    "accent-inverse": {
+      "$value": "#A8D88F"
+    },
+    "on-accent": {
+      "$value": "#FFFFFF"
+    },
+    "accent-2": {
+      "$value": "#B0652A"
+    },
+    "highlight": {
+      "$value": "#E9B44C"
+    },
+    "on-highlight": {
+      "$value": "#1C2A20"
+    },
+    "ok": {
+      "$value": "#2F6F4A"
+    },
+    "bad": {
+      "$value": "#B3261E"
+    },
+    "warn": {
+      "$value": "#8F5300"
+    },
+    "ai": {
+      "$value": "#6247B8"
+    }
+  },
+  "font": {
+    "$type": "fontFamily",
+    "display": {
+      "$value": [
+        "Fraunces",
+        "Georgia",
+        "serif"
+      ]
+    },
+    "body": {
+      "$value": [
+        "DM Sans",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ]
+    },
+    "mono": {
+      "$value": [
+        "DM Mono",
+        "Menlo",
+        "monospace"
+      ]
+    }
+  },
+  "shape": {
+    "radius": {
+      "$type": "dimension",
+      "$value": "18px"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "1px"
+    }
+  },
+  "motion": {
+    "ease": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.2,
+        0.7,
+        0.2,
+        1
+      ]
+    },
+    "step": {
+      "$type": "duration",
+      "$value": "320ms"
+    }
+  },
+  "$extensions": {
+    "keystone": {
+      "name": "Cosecha Cerca",
+      "fontsUrl": "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=DM+Sans:wght@400;600;700&family=DM+Mono&display=swap",
+      "assets": {
+        "logo-light": null,
+        "logo-dark": null,
+        "mark": null
+      },
+      "rules": {
+        "maxAccentsPerSlide": 1,
+        "highlightPieces": 1
+      },
+      "textPairs": [
+        [
+          "ink",
+          "bg-light"
+        ],
+        [
+          "ink",
+          "surface-light"
+        ],
+        [
+          "muted",
+          "bg-light"
+        ],
+        [
+          "ink-inverse",
+          "bg-dark"
+        ],
+        [
+          "ink-inverse",
+          "surface-dark"
+        ],
+        [
+          "muted-inverse",
+          "bg-dark"
+        ],
+        [
+          "on-accent",
+          "accent"
+        ],
+        [
+          "on-highlight",
+          "highlight"
+        ],
+        [
+          "accent",
+          "bg-light",
+          "large"
+        ],
+        [
+          "accent-inverse",
+          "bg-dark"
+        ],
+        [
+          "bad",
+          "bg-light"
+        ],
+        [
+          "ok",
+          "bg-light"
+        ]
+      ]
+    }
+  }
+}

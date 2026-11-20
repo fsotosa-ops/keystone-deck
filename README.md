@@ -15,9 +15,9 @@ A Claude Code plugin that turns your argument, your numbers and your brand into 
 
 [English](README.md) · [Español](README.es.md)
 
-[Why](#why) · [Install](#install) · [Scenes](#scenes) · [How it works](#how-it-works) · [Narrated video](#narrated-video-with-your-voice) · [Example](#example) · [Compared](#how-it-compares) · [FAQ](#faq)
+[Why](#why) · [Install](#install) · [Scenes](#scenes) · [How it works](#how-it-works) · [Narrated video](#narrated-video-with-your-voice) · [Examples](#examples) · [Compared](#how-it-compares) · [FAQ](#faq)
 
-<img src="docs/assets/hero.png" width="900" alt="Three slides of a pitch built with keystone-deck: a population that drops out, the product working in a laptop and a phone, and a projection with the gap labelled">
+<img src="docs/assets/hero.png" width="900" alt="Three slides of a rural initiative built with keystone-deck: of every hundred family producers only six sell direct, a real map of the area with producers lighting up around a school, and the app working in a laptop and a phone">
 
 </div>
 
@@ -31,21 +31,21 @@ keystone-deck turns it around. You describe the argument; Claude writes the talk
 <img src="docs/assets/demo.gif" width="760" alt="A slide where a patient taps 'I can't make it' on her phone and the clinic's agenda reassigns the slot by itself">
 <br><sub>The product slide of the example pitch: the phone and the laptop are a live mock, driven click by click.</sub>
 <br><br>
-<a href="docs/assets/demo.mp4"><b>▶ Watch the narrated demo</b></a> <sub>(70 s, Spanish with subtitles; built with keystone-deck itself)</sub>
+<a href="docs/assets/demo.mp4"><b>▶ Watch the narrated demo</b></a> <sub>(45 s, Spanish with subtitles; real sessions in the terminal and the Claude app)</sub>
 </div>
 
 ## What you get
 
 - **A talk before slides.** `talk.md` holds the audience, the one-sentence thread and what you say on each slide. Every slide answers the question the previous one left open.
 - **Numbers you can defend.** Figures live in an evidence ledger with a tier (verified, own data, assumption, target) and a source. Slides reference them; nothing is typed by hand.
-- **Scenes, not templates.** Fifteen scenes for high-impact decks: a person on a concrete day, a population that drops out, problem and solution in mirror, the product working in devices, competition on two axes, the market as the payer's budget, traction, projections with the gap labelled, the ask with use of funds. When none fits, Claude composes the slide.
+- **Scenes, not templates.** Sixteen scenes for high-impact decks: a person on a concrete day, a population that drops out, a real map where places light up, problem and solution in mirror, the product working in devices, competition on two axes, the market as the payer's budget, traction, projections with the gap labelled, the ask with use of funds. When none fits, Claude composes the slide.
 - **Your brand, everywhere.** One `brand.json` (W3C design tokens), checked for contrast, drives the live deck, the PowerPoint and the figures.
 - **Your talk, narrated.** The same talk becomes a video with your cloned voice (ElevenLabs): each scene lasts as long as its line and clicks fire on the spoken cue.
 - **PowerPoint that keeps the motion.** Each scene is recorded to video and placed in PowerPoint with the titles as native, editable text and the speaker notes from your talk. People who never touch HTML just open it and present.
 
 ## Scenes
 
-Every slide is a scene composed for its point. All fourteen below come from the example pitch, built by the plugin; `html` lets Claude compose anything else.
+Every slide is a scene composed for its point. The map comes from the rural example and the rest from the example pitch, all built by the plugin; `html` lets Claude compose anything else.
 
 | | | |
 |---|---|---|
@@ -57,8 +57,8 @@ Every slide is a scene composed for its point. All fourteen below come from the 
 | `matrix` · Matrix | `model` · Model | `funnel` · Funnel |
 | <img src="docs/assets/scenes/timeline.png" width="260" alt="Timeline"> | <img src="docs/assets/scenes/projection.png" width="260" alt="Projection"> | <img src="docs/assets/scenes/team.png" width="260" alt="Team"> |
 | `timeline` · Timeline | `projection` · Projection | `team` · Team |
-| <img src="docs/assets/scenes/ask.png" width="260" alt="Ask"> | <img src="docs/assets/scenes/closing.png" width="260" alt="Closing"> |
-| `ask` · Ask | `closing` · Closing |
+| <img src="docs/assets/scenes/ask.png" width="260" alt="Ask"> | <img src="docs/assets/scenes/closing.png" width="260" alt="Closing"> | <img src="docs/assets/scenes/map.png" width="260" alt="Map"> |
+| `ask` · Ask | `closing` · Closing | `map` · Map |
 
 Full reference: [`stage-deck` skill](plugins/keystone-html/skills/stage-deck/SKILL.md).
 
@@ -133,7 +133,9 @@ The whole talk is generated in one take and cut per slide by word timestamps. Ea
 
 Three contracts keep content, evidence and brand apart, so you can change the brand or the output without rewriting the story. Details in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
-## Example
+## Examples
+
+[`examples/propuesta-rural`](examples/propuesta-rural) is a 12-slide proposal for a fictitious rural initiative, built by Claude from one request: small producers selling directly to nearby schools and restaurants. Every figure comes from a public Chilean source cited on the slide (ODEPA, INDAP, INE, SUBTEL), the map uses real municipal boundaries, and what is invented is marked as such.
 
 [`examples/pitch-asisto`](examples/pitch-asisto) is a complete 14-slide investor pitch for a fictitious startup: the talk, the ledger, the slides, a mock product with a phone and a clinic dashboard, and the click scripts. Build it, present it, export it:
 
@@ -159,7 +161,7 @@ Use an AI slide generator when you need many good-looking pieces fast. Use keyst
 
 ## FAQ
 
-**Does it work in claude.ai?** The method does: skills and commands load in claude.ai when you add the plugin from *Customize › Plugins*. Building decks runs local scripts and a browser, so the engines need Claude Code.
+**Does it work in the Claude app?** Yes. Add the marketplace from *Customize › Plugins › Add marketplace* with `fsotosa-ops/keystone-deck`, enable Keystone and Keystone html, and ask for a presentation in the chat: Claude builds the live deck as an artifact. PowerPoint export and the narrated video run local tools, so they need Claude Code.
 
 **Do I need to know code?** No. You talk to Claude; it writes the files. The output is a link to open in a browser and a `.pptx` to present.
 

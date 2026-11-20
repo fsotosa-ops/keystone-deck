@@ -373,7 +373,7 @@ EXTRA_CSS = """
 .camino .meta-c { top: 70px !important; right: 120px !important; font-size: 26px !important; }
 .camino .pc.llega svg { fill: #fff; } .lam.activa .camino .pc.llega svg { fill: var(--menta); }
 .camino .via { background: linear-gradient(90deg, var(--sup-o), var(--menta)) !important; }
-.prueba { position: absolute; left: 140px; bottom: 110px; font-size: 24px; color: var(--suave-o); } .prueba em, .prueba b { color: var(--menta); font-style: normal; }
+.prueba { position: absolute; left: 140px; bottom: 150px; font-size: 24px; color: var(--suave-o); } .prueba em, .prueba b { color: var(--menta); font-style: normal; }
 .espejo { display: grid; grid-template-columns: 680px 110px 680px; gap: 22px 0; margin-top: 50px; align-items: stretch; }
 .esp-a, .esp-b { border-radius: 22px; padding: 22px 30px; font-size: 24px; line-height: 1.3; color: var(--suave-c); background: #fff; border: 1px solid var(--borde-c); }
 .esp-b { background: var(--azul); color: #fff; border-color: var(--azul); }

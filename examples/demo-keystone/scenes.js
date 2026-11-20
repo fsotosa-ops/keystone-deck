@@ -8,6 +8,14 @@ const at = (frac, fn, D) => setTimeout(fn, frac * D * 1000)
 const zoom = (lam, s, x, y) => { const w = lam.querySelector('.win.z'); w.style.setProperty('--zx', x); w.style.setProperty('--zy', y); w.style.transform = `scale(${s})` }
 const BUL = [[1046, 329], [1046, 433], [1046, 537]]
 window.ESCENAS = {
+  frame: { preparar(_, lam) { const D = dur(4), f = IF(lam)[0], n = +f.dataset.keys || 0, z = (f.dataset.zoom || '').split(',')
+    load(lam); zoom(lam, 1, '50%', '50%')
+    for (let k = 0; k < n; k++) at(.12 + k * (.78 / Math.max(n, 1)), () => key(f), D)
+    if (z[0]) at(.35, () => zoom(lam, +z[0], z[1], z[2]), D) } },
+  portada: { preparar(_, lam) { const D = dur(5); load(lam); zoom(lam, 1, '50%', '50%'); at(.25, () => zoom(lam, 1.12, '30%', '45%'), D) } },
+  terminal: { preparar(_, lam) { const D = dur(5), f = lam.querySelector('iframe.rp'); f.dataset.src = f.dataset.base + '&dur=' + (D * .95).toFixed(2); load(lam) } },
+  clase: { preparar(_, lam) { const D = dur(3); load(lam); const f = IF(lam)[0]; zoom(lam, 1, '50%', '50%')
+    for (let k = 1; k <= 9; k++) at(.02 + k * .095, () => key(f), D) } },
   idea: { preparar(_, lam) { const D = dur(4), el = lam.querySelector('#idea'); el.classList.remove('go', 'lleg')
     el.style.setProperty('--d', (D * .62) + 's'); at(.1, () => el.classList.add('go'), D); at(.74, () => el.classList.add('lleg'), D) } },
   plantilla: { preparar(_, lam) { const D = dur(6), el = lam.querySelector('#pl'), nd = [...el.querySelectorAll('.nd')]
@@ -38,5 +46,7 @@ window.ESCENAS = {
     show(0); at(.4, () => show(1), D); at(.72, () => show(2), D) } },
   ppt: { preparar(_, lam) { const v = lam.querySelector('video'); v.currentTime = 0; v.play().catch(() => {}) } },
   instalar: { preparar(_, lam) { const D = dur(2.5), f = IF(lam)[0]; f.dataset.src = f.dataset.base + '&dur=' + (D * .92).toFixed(2); load(lam) } },
+  clip: { preparar(_, lam) { const D = dur(5), v = lam.querySelector('video'); const r = +v.dataset.rate || Math.min(16, +v.dataset.len / (D * .97)); const go = () => { v.playbackRate = r; v.currentTime = Math.max(0, +v.dataset.len - D * r); v.play().catch(() => {}) }
+    v.readyState >= 1 ? go() : v.addEventListener('loadedmetadata', go, { once: true }) } },
   iframes: { preparar(_, lam) { load(lam) } },
 }

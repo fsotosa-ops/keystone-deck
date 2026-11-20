@@ -5,6 +5,11 @@ All notable changes to this project are documented here. The format follows [Kee
 ## [Unreleased]
 
 ### Added
+- `map` scene: a territory from public boundaries (`scripts/geo.py`, geoBoundaries) with points that light up click by click.
+- Figures cite their source on the slide (superscript reference and a readable numbered source line).
+- `examples/propuesta-rural`: a rural initiative built by Claude from one request, with public Chilean sources.
+
+### Added
 - `keystone-video`: `--captions` burns the talk in as subtitles; `--max-gap` fails the build on silences longer than 0.8 s.
 - Scenes read `window.KS_DUR` to fit their motion to the spoken line.
 - Narrated demo (`docs/assets/demo.mp4`) with a real terminal session recorded as asciicast.

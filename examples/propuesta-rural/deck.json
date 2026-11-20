@@ -1,0 +1,280 @@
+{
+  "$schema": "https://raw.githubusercontent.com/fsotosa-ops/keystone-deck/main/plugins/keystone/schemas/deck.schema.json",
+  "meta": {
+    "title": "Cosecha Cerca",
+    "type": "pitch",
+    "brand": "brand.json",
+    "engine": "html",
+    "lang": "es",
+    "audience": "Municipio rural, programa de fomento y compradores locales que deciden si prestan una comuna para un piloto",
+    "duration": "9:30",
+    "brand_name": "Cosecha Cerca",
+    "signature": "· iniciativa ficticia",
+    "app": "../app/index.html",
+    "app_reset_keys": [
+      "cc-estado"
+    ]
+  },
+  "slides": [
+    {
+      "id": "portada",
+      "layout": "cover",
+      "kicker": "Cosecha Cerca",
+      "title": "Del huerto a la **cocina de al lado**, desde el celular",
+      "text": "Pequeños productores venden directo a restoranes y colegios a menos de {{fig:piloto-radio}}.",
+      "device_route": "#/productor",
+      "source_note": "Iniciativa ficticia. El radio es una meta de diseño."
+    },
+    {
+      "id": "persona",
+      "layout": "persona",
+      "kicker": "Rosa, 6:04 de la mañana",
+      "title": "Rosa cosecha al alba, pero **el precio lo pone el camión**",
+      "text": "A minutos de su huerta, un colegio debe comprar local.",
+      "chips": [
+        "Personaje ilustrativo",
+        "Lechuga y tomate",
+        "Celular con 4G"
+      ],
+      "device_route": "#/productor"
+    },
+    {
+      "id": "de-cada-cien",
+      "layout": "journey",
+      "kicker": "No es solo Rosa",
+      "title": "De cada cien productores familiares, **casi ninguno vende directo**",
+      "total": 100,
+      "arrive": 6,
+      "stages": [
+        "Cosechan",
+        "",
+        "Otros canales",
+        "",
+        "Venden en circuito corto"
+      ],
+      "goal": "{{fig:afc-cc}} de cada cien llegan",
+      "proof": "Y el circuito corto incluye ventas con un intermediario."
+    },
+    {
+      "id": "problema",
+      "layout": "html",
+      "html": "<style>@font-face{font-family:'KsSup';src:local('Helvetica Neue'),local('HelveticaNeue'),local('Arial'),local('DejaVu Sans');unicode-range:U+00B9,U+00B2,U+00B3,U+2070-209F}body{font-family:'KsSup',var(--fuente)}.lam{background:radial-gradient(1100px 760px at 85% 0%,#2A4A33 0%,var(--fondo-o) 62%)}.lam.clara{background:var(--fondo-c)}.rotulo{border-color:#3E6049}.bajada{color:var(--tinta-o);opacity:.86}.clara .bajada{color:var(--suave-c);opacity:1}.fuente{color:var(--suave-o)}.clara .fuente{color:var(--suave-c)}.hitos{border-top-color:#2F4A37;margin-top:120px}.hitos>div{color:var(--tinta-o)}.hitos .pt{box-shadow:0 0 0 8px rgba(168,216,143,.22)}.hitos .cifra{font-size:110px}.cuadrante .q span{display:none}.cuadrante .ej-x,.cuadrante .ej-y{background:var(--borde-c)}#modelo .laptop{left:810px!important}#modelo .tel{left:1662px!important}.cifras3{display:grid;grid-template-columns:1fr 1.35fr 1.1fr;gap:56px;margin-top:80px}.cifras3>div,.ahora2>div{border-top:3px solid var(--menta);padding-top:26px;font-size:26px;line-height:1.35;color:var(--suave-o)}.cifras3 b{display:block;font-size:68px;letter-spacing:-.03em;color:#fff;line-height:1.05;margin-bottom:12px;font-weight:700}.remate{margin-top:70px;font-size:36px;font-weight:700;color:var(--menta)}.ahora2{display:grid;grid-template-columns:1fr 1fr;gap:90px;margin-top:70px}.ahora2 .eti{display:block;font-size:34px;font-weight:700;color:#fff;margin-bottom:18px}.ahora2 b{display:block;font-size:120px;letter-spacing:-.03em;color:var(--menta);line-height:1;margin-bottom:10px}.ahora2 small{display:block;margin-top:18px;font-size:24px;color:var(--suave-o)}#mapa .fuente{left:140px!important;right:auto;width:620px;bottom:100px}#mapa .mapa-call{bottom:230px}</style><div class=\"kick a\">El problema</div><div class=\"tit a\" style=\"--i:1\">Hay productores y hay compradores; <em>falta el puente</em></div><div class=\"cifras3\"><div class=\"a\" style=\"--i:2\"><b>{{fig:upa-2021}}</b>unidades productivas agropecuarias en Chile, censo 2021</div><div class=\"a\" style=\"--i:3\"><b>{{fig:demanda-publica}}</b>al año en alimentos frescos que compra el Estado</div><div class=\"a\" style=\"--i:4\"><b>{{fig:barreras-afc}}</b>para venderle al Estado: información, gestión, volumen, tecnología</div></div><div class=\"remate p\" data-paso=\"1\">Ninguna de las barreras es falta de producto.</div>"
+    },
+    {
+      "id": "mapa",
+      "layout": "map",
+      "kicker": "La comuna, de cerca",
+      "title": "La cocina del colegio tiene **la cosecha a minutos**",
+      "text": "San Vicente de Tagua Tagua. Escuela y productores ilustrativos.",
+      "outline": "assets/comunas-cachapoal-colchagua.geojson",
+      "bbox": [
+        -71.63,
+        -34.82,
+        -70.53,
+        -34.06
+      ],
+      "hub": {
+        "lon": -71.078,
+        "lat": -34.438,
+        "label": "Escuela Los Maitenes"
+      },
+      "rings": [
+        10,
+        20,
+        30
+      ],
+      "points": [
+        {
+          "lon": -71.1,
+          "lat": -34.545,
+          "label": "Rosa · lechuga",
+          "step": 1
+        },
+        {
+          "lon": -71.14,
+          "lat": -34.315,
+          "label": "Tomate",
+          "step": 2
+        },
+        {
+          "lon": -71.2,
+          "lat": -34.62,
+          "label": "Miel",
+          "step": 3
+        },
+        {
+          "lon": -71.3,
+          "lat": -34.55,
+          "label": "Huevos",
+          "step": 4
+        },
+        {
+          "lon": -70.86,
+          "lat": -34.52,
+          "label": "Zapallo",
+          "step": 5
+        },
+        {
+          "lon": -71.3,
+          "lat": -34.29,
+          "label": "Queso de cabra",
+          "step": 6
+        }
+      ],
+      "callout": {
+        "text": "Todos dentro de {{fig:piloto-radio}}, el radio del piloto. Hoy nadie los conecta con esa cocina.",
+        "step": 7
+      },
+      "source_note": "Límites comunales: geoBoundaries (BCN, OCHA ROLAC), CC BY 3.0 IGO. Escuela y ubicación de productores: ilustrativas."
+    },
+    {
+      "id": "espejo",
+      "layout": "mirror",
+      "kicker": "La respuesta, barrera por barrera",
+      "title": "Cada barrera que nombra INDAP tiene **su respuesta en la app**",
+      "pairs": [
+        {
+          "problem": "Falta de información de mercado",
+          "problem_text": "No sabe quién compra ni a qué precio",
+          "answer": "Pedidos en el celular",
+          "answer_text": "Compradores a menos de {{fig:piloto-radio}} ven su oferta"
+        },
+        {
+          "problem": "Bajos volúmenes",
+          "problem_text": "Una huerta sola no llena un pedido",
+          "answer": "Oferta agrupada",
+          "answer_text": "Vecinos suman su cosecha en la misma ruta"
+        },
+        {
+          "problem": "Gestión e informalidad",
+          "problem_text": "Sin registro de ventas ni pagos",
+          "answer": "Registro automático",
+          "answer_text": "Cada pedido deja boleta y pago trazable"
+        },
+        {
+          "problem": "Planificación de entregas",
+          "problem_text": "Entregas que no calzan con la cocina",
+          "answer": "Ruta semanal",
+          "answer_text": "Un día fijo, pedidos ordenados por distancia"
+        }
+      ],
+      "source_note": "Fuentes: barreras tomadas de INDAP–USACH (2015). Mercados públicos de alimentos y la AFC. Serie Estudios N° 5. indap.gob.cl"
+    },
+    {
+      "id": "producto",
+      "layout": "product",
+      "scene": "demo",
+      "kicker": "El producto, funcionando",
+      "title": "Rosa publica, el colegio pide, **la compra local sube sola**",
+      "laptop_route": "#/comprador",
+      "phone_route": "#/productor",
+      "source_note": "App en vivo. Nombres y montos de la demo son ilustrativos."
+    },
+    {
+      "id": "por-que-ahora",
+      "layout": "html",
+      "html": "<div class=\"kick a\">Por qué ahora</div><div class=\"tit a\" style=\"--i:1\">Dos cosas cambiaron: <em>el teléfono y la regla de compra</em></div><div class=\"ahora2\"><div class=\"a\" style=\"--i:2\"><span class=\"eti\">El celular ya llegó al campo</span><b>{{fig:rural-internet}}</b>de los hogares rurales tiene Internet<small>y {{fig:rural-smartphone}} de ellos se conecta desde el teléfono</small></div><div class=\"a\" style=\"--i:3\"><span class=\"eti\">La escuela debe comprar local</span><b>{{fig:pae-local}}</b>de compra local exigen las bases del PAE<small>En 2023 la agricultura familiar le vendió {{fig:afc-pae-2023}} al PAE, un récord</small></div></div>"
+    },
+    {
+      "id": "alternativas",
+      "layout": "matrix",
+      "kicker": "Alternativas de hoy",
+      "title": "Nadie deja el precio en el productor **y** llega a la cocina",
+      "axes": {
+        "x_low": "Margen en el intermediario",
+        "x_high": "Precio en el productor",
+        "y_low": "Sin compradores institucionales",
+        "y_high": "Llega a colegios y restoranes"
+      },
+      "players": [
+        {
+          "name": "Camión intermediario",
+          "note": "llega, pero fija el precio",
+          "x": 0.18,
+          "y": 0.72
+        },
+        {
+          "name": "Feria mayorista",
+          "note": "volumen, precio bajo",
+          "x": 0.3,
+          "y": 0.4
+        },
+        {
+          "name": "Feria libre",
+          "note": "buen precio, no llega a cocinas",
+          "x": 0.74,
+          "y": 0.2
+        },
+        {
+          "name": "Licitación directa",
+          "note": "papeleo que no se sostiene",
+          "x": 0.58,
+          "y": 0.58
+        }
+      ],
+      "ours": {
+        "name": "Cosecha Cerca",
+        "note": "precio propio, pedido directo",
+        "x": 0.82,
+        "y": 0.86
+      },
+      "source_note": "Posiciones cualitativas, elaboradas por el equipo a partir de las barreras descritas por INDAP (2015)."
+    },
+    {
+      "id": "modelo",
+      "layout": "model",
+      "kicker": "Quién paga",
+      "title": "El productor **no paga**; paga la cocina que compra",
+      "free": {
+        "who": "Productora",
+        "price": "$0",
+        "text": "Publica, recibe pedidos y arma su ruta"
+      },
+      "paid": {
+        "who": "Restorán o colegio",
+        "price": "{{fig:comision}}",
+        "text": "por pedido, a validar"
+      },
+      "laptop_route": "#/comprador/fin",
+      "phone_route": "#/productor/fin",
+      "source_note": "Comisión: meta de diseño, no validada."
+    },
+    {
+      "id": "piloto",
+      "layout": "timeline",
+      "kicker": "Piloto · metas",
+      "title": "Una comuna y **seis meses** bastan para saber si funciona",
+      "milestones": [
+        {
+          "when": "Mes 1",
+          "value": "{{fig:piloto-productores}}",
+          "text": "productores inscritos en terreno"
+        },
+        {
+          "when": "Mes 2",
+          "value": "{{fig:piloto-compradores}}",
+          "text": "restoranes y colegios comprando"
+        },
+        {
+          "when": "Mes 4",
+          "value": "Jueves",
+          "text": "ruta semanal estable"
+        },
+        {
+          "when": "Mes 6",
+          "value": "{{fig:meta-directa}}",
+          "text": "de sus ventas, directas"
+        }
+      ],
+      "source_note": "Todas son metas del piloto, no resultados."
+    },
+    {
+      "id": "cierre",
+      "layout": "closing",
+      "title": "El jueves, Rosa **pone el precio**",
+      "text": "Les pedimos una comuna, {{fig:piloto-colegios}} colegios y {{fig:piloto-restoranes}} restoranes que compren durante {{fig:piloto-meses}}.",
+      "device_route": "#/productor/fin",
+      "source_note": "Iniciativa y personajes ficticios; cantidades = metas del piloto."
+    }
+  ]
+}

@@ -1,52 +1,48 @@
 # keystone-deck · demo
 
-**Audiencia:** personas que enseñan, exponen o presentan seguido y usan Claude; deciden si lo prueban.
+**Audiencia:** cualquier persona que presenta ideas; ven el video en LinkedIn.
 
-**Hilo:** presentar es transmitir lo que sabes; las herramientas se ponían en medio, y keystone-deck parte por lo que quieres que el otro entienda.
+**Hilo:** dejé de adaptar la idea a la plantilla; ahora armo las presentaciones con Claude, y comparto cómo lo hago.
 
-## idea · Felipe · 0:04
-Presentar es intentar que otro entienda lo que tú ya sabes.
-**Pasa a:** ¿qué se interponía?
-
-## plantilla · Felipe · 0:06
-Cada vez que lo intentaba, la herramienta se ponía en medio. Elegía una plantilla y acomodaba la idea a sus cajas.
-**Pasa a:** ¿y el resto?
-
-## piezas · Felipe · 0:07
-El gráfico lo hacía en otro lado, el producto entraba como captura y la marca iba a mano. Lo que más importaba explicar quedaba fuera.
-**Pasa a:** ¿qué hice?
+## portada · Felipe · 0:05
+Nunca me sentí cómodo con las herramientas para presentar: terminaba adaptando la idea a la plantilla.
+**Pasa a:** ¿y ahora?
 
 ## sesion · Felipe · 0:05
-Así que armé otra forma. Parto por lo que quiero que el otro entienda, y Claude arma el resto.
-**Pasa a:** ¿cómo se ve?
+Así que empecé a armarlas con Claude. Le conté una idea de emprendimiento rural y la armó completa.
+**Pasa a:** ¿cómo parte?
 
-## resultado · Felipe · 0:06
-Cada lámina contesta la pregunta que dejó la anterior. Si hay que mostrar cómo funciona algo, funciona ahí mismo.
-**Pasa a:** ¿y los números?
+## persona · Felipe · 0:02
+Partió por una persona, Rosa,
+**Pasa a:** ¿y el problema?
 
-## brecha · Felipe · 0:04
-Cada cifra trae su fuente, porque lo que enseñas tiene que sostenerse.
-**Pasa a:** ¿sirve para otras cosas?
+## problema · Felipe · 0:03
+y por el problema, con datos públicos citados en cada lámina.
+**Pasa a:** ¿se puede cambiar?
 
-## tipos · Felipe · 0:04
-Lo uso para una clase, una charla, un pitch o un informe.
-**Pasa a:** ¿con qué aspecto?
+## cambio · Felipe · 0:04
+Después le pedí mostrar cuántos productores logran vender directo, y dónde están.
+**Pasa a:** ¿qué hizo?
 
-## marca · Felipe · 0:03
-Con mi marca, o con la de quien me lo pide.
-**Pasa a:** ¿y quien no usa código?
+## cien · Felipe · 0:03
+De cada cien productores familiares, solo seis venden directo,
+**Pasa a:** ¿dónde?
 
-## powerpoint · Felipe · 0:04
-Quien no usa código lo abre en PowerPoint, con el movimiento.
-**Pasa a:** ¿y esta voz?
+## mapa · Felipe · 0:04
+y en un mapa real de la zona, los productores aparecen alrededor de la escuela.
+**Pasa a:** ¿y el producto?
 
-## voz · Felipe · 0:03
-Hasta esta voz sale del mismo guion.
-**Pasa a:** ¿cómo lo pruebo?
+## producto · Felipe · 0:03
+Y puso el producto funcionando dentro de la lámina.
+**Pasa a:** ¿solo en la terminal?
 
-## instalar · Felipe · 0:02
-Es abierto, para Claude Code.
-**Pasa a:** ¿cómo se llama?
+## app · Felipe · 0:03
+También se instala en la app de Claude, para usarlo desde el chat.
+**Pasa a:** ¿y la voz?
+
+## voz · Felipe · 0:05
+La voz es la mía, clonada en ElevenLabs: pongo el id de la voz en el deck y el plugin narra el guion.
+**Pasa a:** ¿dónde está?
 
 ## cierre · Felipe · 0:04
-keystone-deck. Presentaciones que dicen lo que quieres decir, como lo quieres decir.
+Lo ordené como un plugin y lo dejé abierto, por si a alguien le sirve.

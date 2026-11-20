@@ -1,0 +1,119 @@
+{
+  "figures": {
+    "upa-2021": {
+      "value": 175556,
+      "display": "175.556",
+      "tier": "V",
+      "source": "odepa-caf2021",
+      "asOf": "2021"
+    },
+    "barreras-afc": {
+      "value": 9,
+      "display": "9 barreras",
+      "tier": "V",
+      "source": "indap-2015",
+      "asOf": "2015",
+      "note": "desconocimiento del sistema de compras públicas; falta de información de mercado; deficiencias en la gestión comercial y financiera; informalidad comercial; desconocimiento de los requerimientos de los clientes; deficiente planificación de producción y entregas; bajos volúmenes de producción; limitado uso de tecnologías de información; dificultad para cumplir exigencias de inocuidad y calidad"
+    },
+    "demanda-publica": {
+      "value": 450,
+      "display": "US$ 450 millones",
+      "tier": "V",
+      "source": "indap-2015",
+      "asOf": "2015"
+    },
+    "rural-internet": {
+      "value": 95.1,
+      "display": "95,1%",
+      "tier": "V",
+      "source": "subtel-2025",
+      "asOf": "2025"
+    },
+    "rural-smartphone": {
+      "value": 99.2,
+      "display": "99,2%",
+      "tier": "V",
+      "source": "subtel-2025",
+      "asOf": "2025"
+    },
+    "afc-pae-2023": {
+      "value": 4126300744,
+      "display": "$4.126 millones",
+      "tier": "V",
+      "source": "latercera-2024",
+      "asOf": "2023"
+    },
+    "pae-local": {
+      "value": 5,
+      "display": "5%",
+      "tier": "V",
+      "source": "latercera-2024",
+      "asOf": "2024"
+    },
+    "afc-cc": {
+      "value": 5.72,
+      "display": "6",
+      "tier": "V",
+      "source": "odepa-cc-2015",
+      "asOf": "2014",
+      "note": "13706 productores en circuitos cortos / 239469 explotaciones AFC"
+    },
+    "piloto-productores": {
+      "value": 25,
+      "display": "25",
+      "tier": "D"
+    },
+    "piloto-restoranes": {
+      "value": 6,
+      "display": "6",
+      "tier": "D"
+    },
+    "piloto-colegios": {
+      "value": 4,
+      "display": "4",
+      "tier": "D"
+    },
+    "piloto-compradores": {
+      "value": 10,
+      "display": "10",
+      "tier": "D"
+    },
+    "piloto-meses": {
+      "value": 6,
+      "display": "6 meses",
+      "tier": "D"
+    },
+    "piloto-radio": {
+      "value": 30,
+      "display": "30 km",
+      "tier": "D"
+    },
+    "comision": {
+      "value": 6,
+      "display": "6%",
+      "tier": "D"
+    },
+    "meta-directa": {
+      "value": 30,
+      "display": "30%",
+      "tier": "D"
+    }
+  },
+  "refs": {
+    "odepa-caf2021": {
+      "text": "ODEPA (2024). Censo Agropecuario y Forestal 2021: distribución de las unidades productivas, con datos INE. odepa.gob.cl"
+    },
+    "subtel-2025": {
+      "text": "SUBTEL (nov. 2025). XII Encuesta de acceso, usos y usuarios de Internet. subtel.gob.cl"
+    },
+    "indap-2015": {
+      "text": "INDAP–USACH (2015). Mercados públicos de alimentos y la AFC. Serie Estudios N° 5. indap.gob.cl"
+    },
+    "odepa-cc-2015": {
+      "text": "ODEPA–Rimisp (2015). Agricultura familiar y circuitos cortos en Chile: situación actual, restricciones y potencialidades, cuadro 7, p. 51 (catastro INDAP 2014 y Censo Agropecuario 2007). odepa.gob.cl"
+    },
+    "latercera-2024": {
+      "text": "La Tercera (27-02-2024), con datos de INDAP y JUNAEB: récord de ventas de la AFC al PAE en 2023. latercera.com"
+    }
+  }
+}
