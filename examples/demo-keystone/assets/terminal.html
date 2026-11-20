@@ -1,0 +1,13 @@
+<!doctype html><html><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#1b1d23;color:#e6e7ea;font:22px/1.6 "JetBrains Mono",Menlo,monospace;padding:34px 40px}
+.l{white-space:pre;opacity:0} .l.on{opacity:1} .p{color:#d97757} .m{color:#8a8f98} .ok{color:#6fd19a} .c{display:inline-block;width:12px;height:24px;background:#e6e7ea;vertical-align:-4px;animation:b 1s steps(1) infinite} @keyframes b{50%{opacity:0}}
+.ban{color:#d97757;margin-bottom:18px}</style></head><body>
+<div class="ban">✻ Claude Code</div>
+<div id="t"></div>
+<script>
+const L=[["p","> ","/plugin marketplace add fsotosa-ops/keystone-deck"],["ok","  ✔ ","Added marketplace keystone-deck (3 plugins)"],["p","> ","/plugin install keystone-html@keystone-deck"],["ok","  ✔ ","Installed keystone, keystone-html, keystone-pptx"]]
+const t=document.getElementById('t');const sleep=ms=>new Promise(r=>setTimeout(r,ms))
+;(async()=>{await sleep(500);for(const [c,pre,txt] of L){const d=document.createElement('div');d.className='l on';t.appendChild(d);
+ if(c==='p'){d.innerHTML='<span class="p">'+pre+'</span><span class="x"></span><span class="c"></span>';const x=d.querySelector('.x');for(const ch of txt){x.textContent+=ch;await sleep(28)}await sleep(350);d.querySelector('.c').remove()}
+ else{await sleep(500);d.innerHTML='<span class="ok">'+pre+txt+'</span>'}await sleep(300)}})()
+</script></body></html>

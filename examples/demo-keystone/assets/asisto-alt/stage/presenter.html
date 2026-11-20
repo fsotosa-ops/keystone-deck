@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Presenter · presentador</title>
+<style>
+  :root { --navy: #10213A; --deep: #0C203D; --azul: #176BFF; --menta: #69DDC6; --gris: #8FA6C6; }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--deep); color: #fff; font-family: 'Avenir Next', Avenir, 'Nunito Sans', system-ui, sans-serif; height: 100vh; display: grid; grid-template-rows: auto 1fr auto; }
+  header { display: flex; gap: 28px; align-items: baseline; padding: 18px 28px; border-bottom: 1px solid #1E3557; }
+  #pos { font-size: 22px; font-weight: 700; }
+  #quien { font-size: 22px; color: var(--menta); font-weight: 600; }
+  #tiempo { font-size: 18px; color: var(--gris); }
+  #reloj { margin-left: auto; font-size: 34px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  #paso { font-size: 18px; color: var(--gris); }
+  main { overflow: auto; padding: 24px 28px; }
+  #notas { font-size: 26px; line-height: 1.45; max-width: 60ch; white-space: pre-wrap; }
+  #notas b { color: var(--menta); }
+  footer { display: flex; gap: 14px; align-items: center; padding: 14px 28px; border-top: 1px solid #1E3557; }
+  #sig { font-size: 18px; color: var(--gris); margin-right: auto; }
+  button { font: 600 18px inherit; padding: 10px 18px; border-radius: 12px; border: 1px solid #2B4B78; background: #13305A; color: #fff; cursor: pointer; }
+  button:focus-visible { outline: 3px solid var(--azul); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<header>
+  <span id="pos">–</span><span id="quien"></span><span id="tiempo"></span><span id="paso"></span>
+  <span id="reloj">00:00</span>
+</header>
+<main><div id="notas">Esperando el deck. Ábrelo y presiona P.</div></main>
+<footer>
+  <span id="sig"></span>
+  <button id="reiniciar" type="button">Reiniciar reloj</button>
+  <button id="atras" type="button">← Atrás</button>
+  <button id="adelante" type="button">Adelante →</button>
+</footer>
+<script>
+  const canal = new BroadcastChannel(new URLSearchParams(location.search).get('channel') || 'keystone-stage');
+  const $ = s => document.querySelector(s);
+  let t0 = Date.now();
+  const formato = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+  canal.onmessage = ({ data: d }) => {
+    if (d.cmd) return;
+    $('#pos').textContent = `${d.i + 1} / ${d.total} · ${d.id}`;
+    $('#quien').textContent = d.quien || '';
+    $('#tiempo').textContent = d.tiempo ? `≈ ${d.tiempo}` : '';
+    $('#paso').textContent = d.pasos ? `paso ${d.paso} de ${d.pasos}` : '';
+    $('#notas').innerHTML = formato(d.notas || '');
+    $('#sig').textContent = d.siguiente ? `Sigue: ${d.siguiente.id} (${d.siguiente.quien})` : 'Última lámina';
+  };
+  setInterval(() => {
+    const s = Math.floor((Date.now() - t0) / 1000);
+    $('#reloj').textContent = `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+  }, 500);
+  $('#reiniciar').onclick = () => { t0 = Date.now(); };
+  $('#adelante').onclick = () => canal.postMessage({ cmd: 'adelante' });
+  $('#atras').onclick = () => canal.postMessage({ cmd: 'atras' });
+  addEventListener('keydown', e => {
+    if (['ArrowRight', ' ', 'PageDown'].includes(e.key)) { e.preventDefault(); canal.postMessage({ cmd: 'adelante' }); }
+    if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); canal.postMessage({ cmd: 'atras' }); }
+  });
+  canal.postMessage({ cmd: 'estado' });
+</script>
+</body>
+</html>

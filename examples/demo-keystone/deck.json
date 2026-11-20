@@ -1,0 +1,92 @@
+{
+  "$schema": "../../plugins/keystone/schemas/deck.schema.json",
+  "meta": {
+    "title": "keystone-deck · demo",
+    "brand": "preset:neutral",
+    "type": "keynote",
+    "lang": "es",
+    "brand_name": "keystone-deck",
+    "signature": "",
+    "logo_svg": "<svg width=\"34\" height=\"34\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect width=\"512\" height=\"512\" rx=\"112\" fill=\"#1652E0\"/>\n<path d=\"M104 404 V300 A152 152 0 0 1 408 300 V404\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"58\" stroke-linejoin=\"round\"/>\n<path d=\"M214 118 H298 L284 214 H228 Z\" fill=\"#F4A93C\"/></svg>\n",
+    "voice": {
+      "id": "TGPGWiQgABwWWS62Y527",
+      "model": "eleven_v4",
+      "direction": "Chilean Spanish accent, presenting at an academic seminar, natural and confident, moderate pace, natural pauses between ideas"
+    },
+    "audience": "Personas que presentan seguido",
+    "duration": "1:30"
+  },
+  "slides": [
+    {
+      "id": "repo",
+      "layout": "html",
+      "scene": "repo",
+      "theme": "light",
+      "hold": 1.5,
+      "html": "<div class=\"kick a\">github.com/fsotosa-ops/keystone-deck</div><div class=\"win a\" style=\"--i:1;left:340px;top:140px;width:1238px;height:814px\"><div class=\"wbar\"><i></i><i></i><i></i><span>keystone-deck · GitHub</span></div><div class=\"wbody\" style=\"height:774px\"><iframe data-src=\"assets/github.html\" width=\"1440\" height=\"900\" style=\"transform:scale(0.86)\"></iframe></div></div>"
+    },
+    {
+      "id": "instalar",
+      "layout": "html",
+      "scene": "iframes",
+      "theme": "dark",
+      "hold": 2.5,
+      "html": "<div class=\"kick a\">Se instala en Claude Code</div><div class=\"tit a\" style=\"--i:1;font-size:56px\">Un plugin abierto. <em>Dos comandos.</em></div><div class=\"win a\" style=\"--i:1;left:310px;top:380px;width:1300px;height:600px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Terminal · Claude Code</span></div><div class=\"wbody\" style=\"height:560px\"><iframe data-src=\"assets/terminal.html\" width=\"1300\" height=\"560\" style=\"transform:scale(1.0)\"></iframe></div></div>"
+    },
+    {
+      "id": "pedir",
+      "layout": "html",
+      "scene": "iframes",
+      "theme": "dark",
+      "hold": 2.5,
+      "html": "<div class=\"kick a\">Primero el hilo</div><div class=\"tit a\" style=\"--i:1;font-size:56px\">Claude pregunta quién decide y <em>arma el hilo</em>.</div><div class=\"win a\" style=\"--i:1;left:310px;top:380px;width:1300px;height:600px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Terminal · Claude Code</span></div><div class=\"wbody\" style=\"height:560px\"><iframe data-src=\"assets/claude.html\" width=\"1300\" height=\"560\" style=\"transform:scale(1.0)\"></iframe></div></div>"
+    },
+    {
+      "id": "escena",
+      "layout": "html",
+      "scene": "asisto3",
+      "theme": "light",
+      "hold": 2.5,
+      "html": "<div class=\"win a\" style=\"--i:1;left:210px;top:110px;width:1497px;height:882px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Asisto · pitch (deck en vivo)</span></div><div class=\"wbody\" style=\"height:842px\"><iframe data-src=\"assets/asisto/stage/index.html#3\" width=\"1920\" height=\"1080\" style=\"transform:scale(0.78)\"></iframe></div></div>"
+    },
+    {
+      "id": "producto",
+      "layout": "html",
+      "scene": "asisto5",
+      "theme": "light",
+      "hold": 9,
+      "html": "<div class=\"win a\" style=\"--i:1;left:210px;top:110px;width:1497px;height:882px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Asisto · pitch (deck en vivo)</span></div><div class=\"wbody\" style=\"height:842px\"><iframe data-src=\"assets/asisto/stage/index.html#5\" width=\"1920\" height=\"1080\" style=\"transform:scale(0.78)\"></iframe></div></div>"
+    },
+    {
+      "id": "cifras",
+      "layout": "html",
+      "scene": "asisto11",
+      "theme": "light",
+      "hold": 7,
+      "html": "<div class=\"win a\" style=\"--i:1;left:210px;top:110px;width:1497px;height:882px\"><div class=\"wbar\"><i></i><i></i><i></i><span>Asisto · pitch (deck en vivo)</span></div><div class=\"wbody\" style=\"height:842px\"><iframe data-src=\"assets/asisto/stage/index.html#11\" width=\"1920\" height=\"1080\" style=\"transform:scale(0.78)\"></iframe></div></div>"
+    },
+    {
+      "id": "marca",
+      "layout": "html",
+      "scene": "marca",
+      "theme": "light",
+      "hold": 3,
+      "html": "<div class=\"kick a\">Tu marca</div><div class=\"tit a\" style=\"--i:1;font-size:52px\">Un archivo, <em>y cambia todo el deck</em>.</div><div class=\"win a\" style=\"--i:1;left:330px;top:300px;width:1260px;height:749px\"><div class=\"wbar\"><i></i><i></i><i></i><span class=\"lbl\">brand.json → preset: warm</span></div><div class=\"wbody\" style=\"height:709px\"><iframe data-src=\"assets/asisto/stage/index.html#1\" width=\"1920\" height=\"1080\" style=\"transform:scale(.6563)\"></iframe><iframe class=\"alt\" data-src=\"assets/asisto-alt/stage/index.html#1\" width=\"1920\" height=\"1080\" style=\"transform:scale(.6563);transition:opacity 1.2s\"></iframe></div></div>"
+    },
+    {
+      "id": "powerpoint",
+      "layout": "html",
+      "scene": "ppt",
+      "theme": "light",
+      "hold": 4,
+      "html": "<div class=\"win a ppt\" style=\"--i:1;left:250px;top:110px;width:1420px;height:840px\"><div class=\"wbar pp\"><i></i><i></i><i></i><span>asisto-pitch.pptx · PowerPoint · Presentación</span></div><video src=\"assets/powerpoint-producto.mp4\" muted playsinline style=\"width:1420px;height:800px;display:block;background:#000\"></video></div>"
+    },
+    {
+      "id": "cierre",
+      "layout": "html",
+      "theme": "dark",
+      "hold": 2,
+      "html": "<div style=\"position:absolute;left:0;right:0;top:250px;text-align:center\"><div class=\"a\"><svg width=\"150\" height=\"150\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect width=\"512\" height=\"512\" rx=\"112\" fill=\"#1652E0\"/>\n<path d=\"M104 404 V300 A152 152 0 0 1 408 300 V404\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"58\" stroke-linejoin=\"round\"/>\n<path d=\"M214 118 H298 L284 214 H228 Z\" fill=\"#F4A93C\"/></svg>\n</div><div class=\"tit a\" style=\"--i:1;font-size:96px;max-width:none;margin-top:30px\">keystone-deck</div><div class=\"bajada a\" style=\"--i:2;max-width:none;font-size:34px\">Presentaciones que dicen lo que quieres decir, como lo quieres decir.</div><div class=\"cmd a\" style=\"--i:3\">/plugin marketplace add fsotosa-ops/keystone-deck</div></div>"
+    }
+  ]
+}

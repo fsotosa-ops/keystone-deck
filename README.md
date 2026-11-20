@@ -13,6 +13,8 @@ A Claude Code plugin that turns your argument, your numbers and your brand into 
 
 [English](README.md) · [Español](README.es.md)
 
+[Why](#why) · [Install](#install) · [Scenes](#scenes) · [How it works](#how-it-works) · [Example](#example) · [Compared](#how-it-compares) · [FAQ](#faq)
+
 <img src="docs/assets/hero.png" width="900" alt="Three slides of a pitch built with keystone-deck: a population that drops out, the product working in a laptop and a phone, and a projection with the gap labelled">
 
 </div>
@@ -34,7 +36,27 @@ keystone-deck turns it around. You describe the argument; Claude writes the talk
 - **Numbers you can defend.** Figures live in an evidence ledger with a tier (verified, own data, assumption, target) and a source. Slides reference them; nothing is typed by hand.
 - **Scenes, not templates.** Fifteen scenes for high-impact decks: a person on a concrete day, a population that drops out, problem and solution in mirror, the product working in devices, competition on two axes, the market as the payer's budget, traction, projections with the gap labelled, the ask with use of funds. When none fits, Claude composes the slide.
 - **Your brand, everywhere.** One `brand.json` (W3C design tokens), checked for contrast, drives the live deck, the PowerPoint and the figures.
+- **Your talk, narrated.** The same talk becomes a video with your cloned voice (ElevenLabs): each scene lasts as long as its line and clicks fire on the spoken cue.
 - **PowerPoint that keeps the motion.** Each scene is recorded to video and placed in PowerPoint with the titles as native, editable text and the speaker notes from your talk. People who never touch HTML just open it and present.
+
+## Scenes
+
+Every slide is a scene composed for its point. All fourteen below come from the example pitch, built by the plugin; `html` lets Claude compose anything else.
+
+| | | |
+|---|---|---|
+| <img src="docs/assets/scenes/cover.png" width="260" alt="Cover"> | <img src="docs/assets/scenes/persona.png" width="260" alt="Persona"> | <img src="docs/assets/scenes/journey.png" width="260" alt="Journey"> |
+| `cover` · Cover | `persona` · Persona | `journey` · Journey |
+| <img src="docs/assets/scenes/mirror.png" width="260" alt="Mirror"> | <img src="docs/assets/scenes/product.png" width="260" alt="Product, live"> | <img src="docs/assets/scenes/why-now.png" width="260" alt="Why now"> |
+| `mirror` · Mirror | `product` · Product, live | `why-now` · Why now |
+| <img src="docs/assets/scenes/matrix.png" width="260" alt="Matrix"> | <img src="docs/assets/scenes/model.png" width="260" alt="Model"> | <img src="docs/assets/scenes/funnel.png" width="260" alt="Funnel"> |
+| `matrix` · Matrix | `model` · Model | `funnel` · Funnel |
+| <img src="docs/assets/scenes/timeline.png" width="260" alt="Timeline"> | <img src="docs/assets/scenes/projection.png" width="260" alt="Projection"> | <img src="docs/assets/scenes/team.png" width="260" alt="Team"> |
+| `timeline` · Timeline | `projection` · Projection | `team` · Team |
+| <img src="docs/assets/scenes/ask.png" width="260" alt="Ask"> | <img src="docs/assets/scenes/closing.png" width="260" alt="Closing"> |
+| `ask` · Ask | `closing` · Closing |
+
+Full reference: [`stage-deck` skill](plugins/keystone-html/skills/stage-deck/SKILL.md).
 
 ## Install
 
@@ -45,6 +67,7 @@ In Claude Code:
 /plugin install keystone@keystone-deck
 /plugin install keystone-html@keystone-deck
 /plugin install keystone-pptx@keystone-deck
+/plugin install keystone-video@keystone-deck
 ```
 
 | Plugin | What it adds | Needs |
@@ -52,6 +75,7 @@ In Claude Code:
 | `keystone` | The method: narrative, evidence, visual grammar, brand kit, checks | Python 3.10+ |
 | `keystone-html` | The stage engine and its scenes | Python, Chrome |
 | `keystone-pptx` | PowerPoint export with motion | Python, Chrome; `python-pptx`, `playwright`, `imageio-ffmpeg` via `uv run --with …` |
+| `keystone-video` | A narrated video from your talk, with your voice via ElevenLabs | Python, Chrome, `imageio-ffmpeg`; optional `ELEVENLABS_API_KEY` |
 
 ## Quickstart
 
@@ -100,6 +124,19 @@ python3 -m http.server 8770 --directory examples/pitch-asisto/build   # open /st
 uv run --with playwright --with python-pptx --with imageio-ffmpeg \
   python plugins/keystone-pptx/scripts/build_pptx.py examples/pitch-asisto
 ```
+
+## How it compares
+
+| | keystone-deck | AI slide generators (Gamma, Beautiful.ai, StarryKit) | Slides as code (Slidev, reveal.js) | PowerPoint / Keynote |
+|---|---|---|---|---|
+| Starts from | your argument and numbers | a prompt or a document | Markdown you write | a blank slide |
+| Narrative checks (thread, sources, words per slide) | yes, the build fails | no | no | no |
+| Product shown working inside the slide | yes, live and scripted | screenshots | possible, by hand | video or screenshots |
+| Your brand | one token file, contrast-checked | theme or brand kit | CSS | template |
+| Runs locally | yes | cloud service | yes | yes |
+| Output | live deck, PowerPoint with motion, narrated video | their editor, PPTX, PDF | web, PDF | PPTX, PDF, video |
+
+Use an AI slide generator when you need many good-looking pieces fast. Use keystone-deck when the presentation must hold up in front of an investor, a committee or an audience that will question the numbers.
 
 ## FAQ
 

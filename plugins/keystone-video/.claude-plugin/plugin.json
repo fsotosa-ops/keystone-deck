@@ -1,0 +1,10 @@
+{
+  "name": "keystone-video",
+  "version": "0.2.0",
+  "description": "Turn a keystone deck and its talk into a narrated video: ElevenLabs voice (yours, if cloned), each scene timed to its line, clicks on the spoken cue.",
+  "author": { "name": "Felipe Soto Santibáñez", "url": "https://github.com/fsotosa-ops" },
+  "homepage": "https://github.com/fsotosa-ops/keystone-deck",
+  "repository": "https://github.com/fsotosa-ops/keystone-deck",
+  "license": "MIT",
+  "keywords": ["video", "narration", "elevenlabs", "presentations"]
+}

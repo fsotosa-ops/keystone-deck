@@ -30,6 +30,14 @@
       "version": "0.2.0",
       "license": "MIT",
       "category": "productivity"
+    },
+    {
+      "name": "keystone-video",
+      "source": "./plugins/keystone-video",
+      "description": "Narrated video from the talk, with ElevenLabs voice.",
+      "version": "0.2.0",
+      "license": "MIT",
+      "category": "productivity"
     }
   ]
 }

@@ -250,6 +250,13 @@ SCENES = {"cover": cover, "persona": persona, "journey": journey, "mirror": mirr
 LIGHT = {"mirror", "product", "matrix", "model", "team"}
 
 EXTRA_CSS = """
+.win { position: absolute; border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 40px 90px -30px rgba(11,31,77,.45); border: 1px solid var(--borde-c); }
+.wbar { height: 40px; background: #EEF1F5; display: flex; align-items: center; gap: 8px; padding: 0 16px; font-size: 16px; color: #5B6575; }
+.wbar i { width: 12px; height: 12px; border-radius: 50%; background: #D5DAE1; } .wbar i:nth-child(1){background:#FF5F57} .wbar i:nth-child(2){background:#FEBC2E} .wbar i:nth-child(3){background:#28C840}
+.wbar span { margin-left: 12px; } .wbar.pp { background: #B7472A; color: #fff; }
+.wbody { position: relative; overflow: hidden; } .wbody iframe { border: 0; transform-origin: 0 0; position: absolute; left: 0; top: 0; }
+.dosmarcas .win { position: absolute; }
+.cmd { display: inline-block; margin-top: 46px; font-family: var(--ks-font-mono, monospace); font-size: 30px; padding: 16px 28px; border-radius: 12px; background: rgba(255,255,255,.08); color: var(--menta); }
 .lam em { font-style: normal; color: var(--menta); } .lam.clara em { color: var(--azul); }
 .marca-p svg { width: 84px; height: 84px; }
 .firma svg { border-radius: 9px; } .firma b { color: var(--suave-o); font-weight: 500; font-size: 18px; } .clara .firma b { color: var(--suave-c); }

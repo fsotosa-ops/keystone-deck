@@ -13,6 +13,8 @@ Un plugin de Claude Code que convierte tu argumento, tus cifras y tu marca en un
 
 [English](README.md) · [Español](README.es.md)
 
+[Por qué](#por-qué) · [Instalación](#instalación) · [Escenas](#escenas) · [Cómo funciona](#cómo-funciona) · [Ejemplo](#ejemplo) · [Comparación](#comparación) · [Preguntas](#preguntas-frecuentes)
+
 <img src="docs/assets/hero.png" width="900" alt="Tres láminas de un pitch hecho con keystone-deck: una población que se queda en el camino, el producto funcionando en un laptop y un celular, y una proyección con la brecha rotulada">
 
 </div>
@@ -34,7 +36,27 @@ keystone-deck lo da vuelta. Tú describes el argumento; Claude escribe el guion,
 - **Cifras que puedes defender.** Las cifras viven en un registro de evidencia con su nivel (verificada, dato propio, supuesto, meta) y su fuente. Las láminas las referencian; nada se escribe a mano.
 - **Escenas, no plantillas.** Quince escenas para decks de alto impacto: una persona en un día concreto, una población que se queda en el camino, problema y solución en espejo, el producto funcionando en dispositivos, la competencia en dos ejes, el mercado como presupuesto de quien paga, la tracción, proyecciones con la brecha rotulada y el pedido con uso de fondos. Cuando ninguna calza, Claude compone la lámina.
 - **Tu marca, en todo.** Un solo `brand.json` (design tokens del W3C), revisado por contraste, mueve el deck en vivo, el PowerPoint y las figuras.
+- **Tu guion, narrado.** El mismo guion se convierte en un video con tu voz clonada (ElevenLabs): cada escena dura lo que su frase y los clics caen cuando la voz los nombra.
 - **Un PowerPoint que conserva el movimiento.** Cada escena se graba en video y se pone en PowerPoint con los títulos como texto nativo editable y las notas del orador de tu guion. Quien nunca toca HTML solo lo abre y presenta.
+
+## Escenas
+
+Cada lámina es una escena compuesta para su punto. Las catorce de abajo vienen del pitch de ejemplo, construido por el plugin; `html` le permite a Claude componer cualquier otra.
+
+| | | |
+|---|---|---|
+| <img src="docs/assets/scenes/cover.png" width="260" alt="Portada"> | <img src="docs/assets/scenes/persona.png" width="260" alt="Persona"> | <img src="docs/assets/scenes/journey.png" width="260" alt="Población en el camino"> |
+| `cover` · Portada | `persona` · Persona | `journey` · Población en el camino |
+| <img src="docs/assets/scenes/mirror.png" width="260" alt="Espejo"> | <img src="docs/assets/scenes/product.png" width="260" alt="Producto en vivo"> | <img src="docs/assets/scenes/why-now.png" width="260" alt="Por qué ahora"> |
+| `mirror` · Espejo | `product` · Producto en vivo | `why-now` · Por qué ahora |
+| <img src="docs/assets/scenes/matrix.png" width="260" alt="Matriz"> | <img src="docs/assets/scenes/model.png" width="260" alt="Modelo"> | <img src="docs/assets/scenes/funnel.png" width="260" alt="Embudo"> |
+| `matrix` · Matriz | `model` · Modelo | `funnel` · Embudo |
+| <img src="docs/assets/scenes/timeline.png" width="260" alt="Línea de tiempo"> | <img src="docs/assets/scenes/projection.png" width="260" alt="Proyección"> | <img src="docs/assets/scenes/team.png" width="260" alt="Equipo"> |
+| `timeline` · Línea de tiempo | `projection` · Proyección | `team` · Equipo |
+| <img src="docs/assets/scenes/ask.png" width="260" alt="Pedido"> | <img src="docs/assets/scenes/closing.png" width="260" alt="Cierre"> |
+| `ask` · Pedido | `closing` · Cierre |
+
+Referencia completa: [skill `stage-deck`](plugins/keystone-html/skills/stage-deck/SKILL.md).
 
 ## Instalación
 
@@ -45,6 +67,7 @@ En Claude Code:
 /plugin install keystone@keystone-deck
 /plugin install keystone-html@keystone-deck
 /plugin install keystone-pptx@keystone-deck
+/plugin install keystone-video@keystone-deck
 ```
 
 | Plugin | Qué agrega | Requiere |
@@ -52,6 +75,7 @@ En Claude Code:
 | `keystone` | El método: narrativa, evidencia, gramática visual, kit de marca, chequeos | Python 3.10+ |
 | `keystone-html` | El motor de escenas | Python, Chrome |
 | `keystone-pptx` | La exportación a PowerPoint con movimiento | Python, Chrome; `python-pptx`, `playwright`, `imageio-ffmpeg` con `uv run --with …` |
+| `keystone-video` | Un video narrado desde tu guion, con tu voz vía ElevenLabs | Python, Chrome, `imageio-ffmpeg`; opcional `ELEVENLABS_API_KEY` |
 
 ## Inicio rápido
 
@@ -100,6 +124,19 @@ python3 -m http.server 8770 --directory examples/pitch-asisto/build   # abre /st
 uv run --with playwright --with python-pptx --with imageio-ffmpeg \
   python plugins/keystone-pptx/scripts/build_pptx.py examples/pitch-asisto
 ```
+
+## Comparación
+
+| | keystone-deck | Generadores de láminas con IA (Gamma, Beautiful.ai, StarryKit) | Láminas como código (Slidev, reveal.js) | PowerPoint / Keynote |
+|---|---|---|---|---|
+| Parte de | tu argumento y tus cifras | un prompt o un documento | Markdown que escribes | una lámina en blanco |
+| Chequeos de narrativa (hilo, fuentes, palabras por lámina) | sí, el build falla | no | no | no |
+| Producto funcionando dentro de la lámina | sí, en vivo y guionado | capturas | posible, a mano | video o capturas |
+| Tu marca | un archivo de tokens, con contraste revisado | tema o kit de marca | CSS | plantilla |
+| Corre en local | sí | servicio en la nube | sí | sí |
+| Salida | deck en vivo, PowerPoint con movimiento, video narrado | su editor, PPTX, PDF | web, PDF | PPTX, PDF, video |
+
+Usa un generador de láminas con IA cuando necesitas muchas piezas bonitas rápido. Usa keystone-deck cuando la presentación tiene que sostenerse frente a un inversionista, un comité o una audiencia que va a cuestionar las cifras.
 
 ## Preguntas frecuentes
 
