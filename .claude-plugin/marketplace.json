@@ -1,0 +1,35 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "keystone-deck",
+  "description": "High-impact decks as code: talk-first narrative, an evidence ledger, a visual grammar and bring-your-own-brand tokens, rendered by interchangeable engines.",
+  "owner": {
+    "name": "Felipe Soto Santibáñez",
+    "url": "https://github.com/fsotosa-ops"
+  },
+  "plugins": [
+    {
+      "name": "keystone",
+      "source": "./plugins/keystone",
+      "description": "Core method and brand kit. No dependencies beyond Python 3.10.",
+      "version": "0.2.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "keystone-html",
+      "source": "./plugins/keystone-html",
+      "description": "Live decks with high-impact scenes and the product running in devices.",
+      "version": "0.2.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "keystone-pptx",
+      "source": "./plugins/keystone-pptx",
+      "description": "PowerPoint export that keeps the motion: scenes as video, titles as native text.",
+      "version": "0.2.0",
+      "license": "MIT",
+      "category": "productivity"
+    }
+  ]
+}

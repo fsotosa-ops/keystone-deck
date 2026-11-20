@@ -1,0 +1,34 @@
+{
+  "$schema": "https://raw.githubusercontent.com/fsotosa-ops/keystone-deck/main/plugins/keystone/schemas/deck.schema.json",
+  "meta": {
+    "title": "",
+    "brand": "preset:neutral",
+    "engine": "html",
+    "audience": "Who is in the room and what they must decide",
+    "duration": "10:00"
+  },
+  "slides": [
+    {
+      "id": "cover",
+      "layout": "cover",
+      "title": "The promise in one sentence",
+      "subtitle": "Who is presenting, when"
+    },
+    {
+      "id": "problem",
+      "layout": "figures",
+      "kicker": "The problem",
+      "title": "Most people who need this never get it",
+      "figures": [
+        { "value": "{{fig:example-share}}", "label": "of the people who need it get it today" }
+      ]
+    },
+    {
+      "id": "ask",
+      "layout": "thesis",
+      "kicker": "The ask",
+      "title": "What we need from you to start next month",
+      "text": "One sentence with the use of funds"
+    }
+  ]
+}

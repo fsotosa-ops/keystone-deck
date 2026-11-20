@@ -1,0 +1,47 @@
+{
+  "figures": {
+    "noshow": {
+      "value": 22,
+      "display": "22%",
+      "tier": "S",
+      "method": "Cifra ficticia para la demo; en un pitch real sale de los registros de agenda."
+    },
+    "centros": {
+      "value": 1200,
+      "display": "1.200",
+      "tier": "S",
+      "method": "Cifra ficticia."
+    },
+    "digital": {
+      "value": 480,
+      "display": "480",
+      "tier": "S",
+      "method": "Cifra ficticia."
+    },
+    "meta": {
+      "value": 40,
+      "display": "40",
+      "tier": "D",
+      "method": "Meta del equipo ficticio."
+    },
+    "ronda": {
+      "value": 400,
+      "display": "USD 400k",
+      "tier": "D",
+      "method": "Monto definido por el equipo ficticio."
+    },
+    "runway": {
+      "value": 18,
+      "display": "18 meses",
+      "tier": "D",
+      "method": "Plazo del plan ficticio."
+    },
+    "centros_meta": {
+      "value": 40,
+      "display": "40",
+      "tier": "D",
+      "method": "Meta del plan ficticio."
+    }
+  },
+  "refs": {}
+}

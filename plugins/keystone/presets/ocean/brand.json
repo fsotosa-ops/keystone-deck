@@ -1,0 +1,181 @@
+{
+  "$schema": "../../schemas/brand.schema.json",
+  "$description": "Deep navy, sea blue and a coral counterpoint. Calm, technical.",
+  "color": {
+    "$type": "color",
+    "bg-dark": {
+      "$value": "#0A1A2A"
+    },
+    "bg-light": {
+      "$value": "#F7FAFC"
+    },
+    "surface-dark": {
+      "$value": "#12263A"
+    },
+    "surface-light": {
+      "$value": "#EAF1F7"
+    },
+    "ink": {
+      "$value": "#0B1B2B"
+    },
+    "ink-inverse": {
+      "$value": "#EEF4FA"
+    },
+    "muted": {
+      "$value": "#4A5B6C"
+    },
+    "muted-inverse": {
+      "$value": "#9FB3C6"
+    },
+    "border": {
+      "$value": "#CFDCE8"
+    },
+    "accent": {
+      "$value": "#1E74B8"
+    },
+    "accent-inverse": {
+      "$value": "#6CB8F0"
+    },
+    "on-accent": {
+      "$value": "#FFFFFF"
+    },
+    "accent-2": {
+      "$value": "#E2603F"
+    },
+    "highlight": {
+      "$value": "#FFC857"
+    },
+    "on-highlight": {
+      "$value": "#1A1300"
+    },
+    "ok": {
+      "$value": "#1E7A4A"
+    },
+    "bad": {
+      "$value": "#C0362C"
+    },
+    "warn": {
+      "$value": "#9A5B00"
+    },
+    "ai": {
+      "$value": "#6A4FCF"
+    }
+  },
+  "font": {
+    "$type": "fontFamily",
+    "display": {
+      "$value": [
+        "Plus Jakarta Sans",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ]
+    },
+    "body": {
+      "$value": [
+        "Plus Jakarta Sans",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ]
+    },
+    "mono": {
+      "$value": [
+        "IBM Plex Mono",
+        "Menlo",
+        "monospace"
+      ]
+    }
+  },
+  "shape": {
+    "radius": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "1px"
+    }
+  },
+  "motion": {
+    "ease": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.2,
+        0.7,
+        0.2,
+        1
+      ]
+    },
+    "step": {
+      "$type": "duration",
+      "$value": "320ms"
+    }
+  },
+  "$extensions": {
+    "keystone": {
+      "name": "Ocean",
+      "fontsUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=IBM+Plex+Mono&display=swap",
+      "assets": {
+        "logo-light": null,
+        "logo-dark": null,
+        "mark": null
+      },
+      "rules": {
+        "maxAccentsPerSlide": 1,
+        "highlightPieces": 1
+      },
+      "textPairs": [
+        [
+          "ink",
+          "bg-light"
+        ],
+        [
+          "ink",
+          "surface-light"
+        ],
+        [
+          "muted",
+          "bg-light"
+        ],
+        [
+          "ink-inverse",
+          "bg-dark"
+        ],
+        [
+          "ink-inverse",
+          "surface-dark"
+        ],
+        [
+          "muted-inverse",
+          "bg-dark"
+        ],
+        [
+          "on-accent",
+          "accent"
+        ],
+        [
+          "on-highlight",
+          "highlight"
+        ],
+        [
+          "accent",
+          "bg-light",
+          "large"
+        ],
+        [
+          "accent-inverse",
+          "bg-dark"
+        ],
+        [
+          "bad",
+          "bg-light"
+        ],
+        [
+          "ok",
+          "bg-light"
+        ]
+      ]
+    }
+  }
+}

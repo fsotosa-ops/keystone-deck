@@ -1,0 +1,180 @@
+{
+  "$schema": "../../schemas/brand.schema.json",
+  "$description": "Editorial black and white with a vermilion accent and a serif display.",
+  "color": {
+    "$type": "color",
+    "bg-dark": {
+      "$value": "#0D0D0D"
+    },
+    "bg-light": {
+      "$value": "#FAFAF7"
+    },
+    "surface-dark": {
+      "$value": "#1A1A1A"
+    },
+    "surface-light": {
+      "$value": "#F0EFEA"
+    },
+    "ink": {
+      "$value": "#111111"
+    },
+    "ink-inverse": {
+      "$value": "#F5F5F0"
+    },
+    "muted": {
+      "$value": "#55534E"
+    },
+    "muted-inverse": {
+      "$value": "#B3B0A8"
+    },
+    "border": {
+      "$value": "#D8D6CF"
+    },
+    "accent": {
+      "$value": "#D2381E"
+    },
+    "accent-inverse": {
+      "$value": "#FF7A5C"
+    },
+    "on-accent": {
+      "$value": "#FFFFFF"
+    },
+    "accent-2": {
+      "$value": "#1D4ED8"
+    },
+    "highlight": {
+      "$value": "#FFD84D"
+    },
+    "on-highlight": {
+      "$value": "#111111"
+    },
+    "ok": {
+      "$value": "#1F7A45"
+    },
+    "bad": {
+      "$value": "#B42318"
+    },
+    "warn": {
+      "$value": "#9A5B00"
+    },
+    "ai": {
+      "$value": "#5B3FC4"
+    }
+  },
+  "font": {
+    "$type": "fontFamily",
+    "display": {
+      "$value": [
+        "Source Serif 4",
+        "Georgia",
+        "serif"
+      ]
+    },
+    "body": {
+      "$value": [
+        "Source Sans 3",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ]
+    },
+    "mono": {
+      "$value": [
+        "JetBrains Mono",
+        "Menlo",
+        "monospace"
+      ]
+    }
+  },
+  "shape": {
+    "radius": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "1px"
+    }
+  },
+  "motion": {
+    "ease": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.2,
+        0.7,
+        0.2,
+        1
+      ]
+    },
+    "step": {
+      "$type": "duration",
+      "$value": "320ms"
+    }
+  },
+  "$extensions": {
+    "keystone": {
+      "name": "Ink",
+      "fontsUrl": "https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono&display=swap",
+      "assets": {
+        "logo-light": null,
+        "logo-dark": null,
+        "mark": null
+      },
+      "rules": {
+        "maxAccentsPerSlide": 1,
+        "highlightPieces": 1
+      },
+      "textPairs": [
+        [
+          "ink",
+          "bg-light"
+        ],
+        [
+          "ink",
+          "surface-light"
+        ],
+        [
+          "muted",
+          "bg-light"
+        ],
+        [
+          "ink-inverse",
+          "bg-dark"
+        ],
+        [
+          "ink-inverse",
+          "surface-dark"
+        ],
+        [
+          "muted-inverse",
+          "bg-dark"
+        ],
+        [
+          "on-accent",
+          "accent"
+        ],
+        [
+          "on-highlight",
+          "highlight"
+        ],
+        [
+          "accent",
+          "bg-light",
+          "large"
+        ],
+        [
+          "accent-inverse",
+          "bg-dark"
+        ],
+        [
+          "bad",
+          "bg-light"
+        ],
+        [
+          "ok",
+          "bg-light"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,324 @@
+{
+  "$schema": "../../plugins/keystone/schemas/deck.schema.json",
+  "meta": {
+    "title": "Asisto · pitch (startup ficticia)",
+    "brand": "preset:ocean",
+    "type": "pitch",
+    "engine": "stage",
+    "lang": "es",
+    "brand_name": "Asisto",
+    "signature": "· startup ficticia",
+    "logo_svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 40 40\"><rect width=\"40\" height=\"40\" rx=\"11\" fill=\"#1652E0\"/><rect x=\"9\" y=\"11\" width=\"22\" height=\"19\" rx=\"4\" fill=\"none\" stroke=\"#fff\" stroke-width=\"2.6\"/><path d=\"M9 17h22M15 8v6M25 8v6\" stroke=\"#fff\" stroke-width=\"2.6\" stroke-linecap=\"round\"/><path d=\"M15 23.5l3.4 3.2L25.5 20\" stroke=\"#F4A93C\" stroke-width=\"3\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
+    "app": "../app/index.html",
+    "app_reset_keys": [
+      "asisto-demo-v1"
+    ],
+    "audience": "Fondo de inversión de impacto, etapa semilla",
+    "duration": "6:00"
+  },
+  "slides": [
+    {
+      "id": "portada",
+      "layout": "cover",
+      "scene": "portada",
+      "kicker": "Asisto",
+      "title": "Que ninguna hora médica **se pierda**.",
+      "text": "Recordatorios por chat que liberan y reasignan horas en centros de salud.",
+      "device_route": "#/paciente"
+    },
+    {
+      "id": "marta",
+      "layout": "persona",
+      "scene": "marta",
+      "kicker": "Conoce a Marta",
+      "title": "Marta tiene hora el jueves. **Ese día no va a poder ir.**",
+      "text": "58 años, cuida a su madre. La hora se la dieron hace tres semanas; para cambiarla tendría que llamar a una línea que nunca contesta.",
+      "chips": [
+        "58 años",
+        "cuidadora",
+        "usa el chat todos los días"
+      ],
+      "device_route": "#/paciente",
+      "source_note": "Persona ilustrativa. Asisto es ficticia."
+    },
+    {
+      "id": "problema",
+      "layout": "journey",
+      "kicker": "El problema",
+      "title": "De cada 100 personas con hora, **{{fig:no_llegan}} no llegan** y nadie se entera a tiempo.",
+      "total": 100,
+      "arrive": 78,
+      "stages": [
+        "Se agenda",
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves"
+      ],
+      "goal": "Consulta",
+      "proof": "**{{fig:centros_consultados}} centros** consultados coinciden: la hora se pierde porque avisar cuesta."
+    },
+    {
+      "id": "espejo",
+      "layout": "mirror",
+      "kicker": "La solución, en espejo",
+      "title": "Cada razón para no avisar tiene **su respuesta**.",
+      "pairs": [
+        {
+          "problem": "Se olvidan",
+          "problem_text": "La hora se dio hace semanas",
+          "answer": "Recuerda",
+          "answer_text": "48 horas antes, por chat"
+        },
+        {
+          "problem": "No pueden llamar",
+          "problem_text": "La línea siempre está ocupada",
+          "answer": "Libera",
+          "answer_text": "Con un toque, sin llamar"
+        },
+        {
+          "problem": "No hay a quién darla",
+          "problem_text": "La lista de espera es un cuaderno",
+          "answer": "Reasigna",
+          "answer_text": "A quien espera primero, solo"
+        }
+      ]
+    },
+    {
+      "id": "producto",
+      "layout": "product",
+      "scene": "producto",
+      "kicker": "El producto, funcionando",
+      "title": "Marta avisa con un toque y **la agenda se llena sola**.",
+      "laptop_route": "#/centro",
+      "phone_route": "#/paciente"
+    },
+    {
+      "id": "ahora",
+      "layout": "why-now",
+      "kicker": "¿Por qué ahora?",
+      "title": "Dos cambios hacen posible lo que antes **requería un call center**.",
+      "reasons": [
+        {
+          "title": "Las agendas ya son digitales",
+          "text": "La mayoría de los centros agenda en línea: Asisto se conecta sin cambiar su sistema."
+        },
+        {
+          "title": "Todos usan chat",
+          "text": "Pacientes de todas las edades responden por chat; nadie descarga una app nueva."
+        }
+      ]
+    },
+    {
+      "id": "competencia",
+      "layout": "matrix",
+      "kicker": "Competencia",
+      "title": "Todos recuerdan o piden integrarse; **nadie reasigna sin integración**.",
+      "axes": {
+        "x_low": "Requiere integrar",
+        "x_high": "Sin integración",
+        "y_low": "Solo recuerda",
+        "y_high": "Reasigna"
+      },
+      "players": [
+        {
+          "name": "Suites hospitalarias",
+          "note": "caras, meses de integración",
+          "x": 0.22,
+          "y": 0.74
+        },
+        {
+          "name": "Recordatorios por SMS",
+          "note": "avisan, no reasignan",
+          "x": 0.28,
+          "y": 0.28
+        },
+        {
+          "name": "Call center",
+          "note": "llama, nadie contesta",
+          "x": 0.7,
+          "y": 0.2
+        }
+      ],
+      "today": {
+        "name": "El centro hoy",
+        "note": "un cuaderno y el teléfono",
+        "x": 0.62,
+        "y": 0.4
+      },
+      "ours": {
+        "name": "Asisto",
+        "note": "recuerda, libera y reasigna",
+        "x": 0.78,
+        "y": 0.8
+      }
+    },
+    {
+      "id": "modelo",
+      "layout": "model",
+      "scene": "modelo",
+      "kicker": "Modelo de negocio",
+      "title": "Gratis para el paciente. **El centro paga** por las horas que recupera.",
+      "free": {
+        "who": "Paciente",
+        "price": "USD 0",
+        "text": "por chat, sin descargar nada"
+      },
+      "paid": {
+        "who": "Centro de salud",
+        "price": "{{fig:precio}}",
+        "text": "al mes por agenda; se paga con 6 horas recuperadas"
+      },
+      "laptop_route": "#/centro",
+      "phone_route": "#/paciente"
+    },
+    {
+      "id": "mercado",
+      "layout": "funnel",
+      "kicker": "Mercado",
+      "title": "El mercado es **el presupuesto de quien paga**: los centros con agenda digital.",
+      "levels": [
+        {
+          "value": "{{fig:centros}} centros",
+          "text": "de atención primaria en la región"
+        },
+        {
+          "value": "{{fig:digitales}} · {{fig:sam}} al año",
+          "text": "ya agendan en línea"
+        },
+        {
+          "value": "{{fig:meta}} · {{fig:som}} al año",
+          "text": "meta a tres años"
+        }
+      ]
+    },
+    {
+      "id": "traccion",
+      "layout": "timeline",
+      "kicker": "Tracción del piloto",
+      "title": "En seis meses, **de 1 centro a 3** y las horas perdidas a la mitad.",
+      "milestones": [
+        {
+          "when": "Mes 1",
+          "value": "1",
+          "text": "centro de prueba"
+        },
+        {
+          "when": "Mes 3",
+          "value": "3",
+          "text": "centros, con agenda digital"
+        },
+        {
+          "when": "Mes 5",
+          "value": "{{fig:antes}} → {{fig:despues}}",
+          "text": "horas perdidas, en promedio"
+        },
+        {
+          "when": "Mes 6",
+          "value": "{{fig:recuperadas}}",
+          "text": "horas recuperadas"
+        }
+      ]
+    },
+    {
+      "id": "numeros",
+      "layout": "projection",
+      "kicker": "Camino al equilibrio",
+      "title": "En el tercer año, **los centros pagan la operación**.",
+      "text": "El año 1 es piloto. En el año 2 faltan 210k: los cubre esta ronda.",
+      "unit": "k",
+      "legend": [
+        "Costo",
+        "Ingresos"
+      ],
+      "periods": [
+        {
+          "label": "Año 1",
+          "note": "piloto, 3 centros",
+          "cost": 420,
+          "income": 90
+        },
+        {
+          "label": "Año 2",
+          "note": "20 centros",
+          "cost": 510,
+          "income": 300
+        },
+        {
+          "label": "Año 3",
+          "note": "40 centros · equilibrio",
+          "cost": 560,
+          "income": 610
+        }
+      ],
+      "gap": {
+        "period": 1,
+        "text": "faltan 210k"
+      }
+    },
+    {
+      "id": "equipo",
+      "layout": "team",
+      "kicker": "Equipo",
+      "title": "Quien dirigió un centro de salud, con quienes **ya construyeron agendas**.",
+      "people": [
+        {
+          "initials": "AR",
+          "name": "Ana Ríos",
+          "role": "Directora ejecutiva",
+          "text": "Dirigió un centro de atención primaria durante ocho años."
+        },
+        {
+          "initials": "BL",
+          "name": "Bruno Lagos",
+          "role": "Producto y tecnología",
+          "text": "Construyó sistemas de agenda para clínicas."
+        },
+        {
+          "initials": "CM",
+          "name": "Carla Mena",
+          "role": "Despliegue en centros",
+          "text": "Implementó cambios de proceso en redes de salud pública."
+        }
+      ],
+      "source_note": "Equipo ficticio."
+    },
+    {
+      "id": "pedido",
+      "layout": "ask",
+      "kicker": "Lo que pedimos",
+      "amount": "{{fig:ronda}}",
+      "text": "para llegar a 40 centros y al equilibrio en 18 meses.",
+      "centre": {
+        "value": "18",
+        "label": "meses de operación"
+      },
+      "uses": [
+        {
+          "name": "Producto e integraciones",
+          "share": 0.4
+        },
+        {
+          "name": "Despliegue en 40 centros",
+          "share": 0.3
+        },
+        {
+          "name": "Equipo comercial",
+          "share": 0.2
+        },
+        {
+          "name": "Operación",
+          "share": 0.1
+        }
+      ]
+    },
+    {
+      "id": "cierre",
+      "layout": "closing",
+      "scene": "cierre",
+      "title": "Cada hora que vuelve a la agenda **es una persona atendida**.",
+      "text": "Pedimos USD 400k para que Marta, y miles como ella, no pierdan su hora.",
+      "device_route": "#/paciente"
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "$schema": "../../schemas/brand.schema.json",
+  "$description": "Graphite and a clear blue. Safe default for any audience.",
+  "color": {
+    "$type": "color",
+    "bg-dark": {
+      "$value": "#111318"
+    },
+    "bg-light": {
+      "$value": "#FFFFFF"
+    },
+    "surface-dark": {
+      "$value": "#1B1E25"
+    },
+    "surface-light": {
+      "$value": "#F4F5F7"
+    },
+    "ink": {
+      "$value": "#14161A"
+    },
+    "ink-inverse": {
+      "$value": "#F3F4F6"
+    },
+    "muted": {
+      "$value": "#5A6070"
+    },
+    "muted-inverse": {
+      "$value": "#A9AFBC"
+    },
+    "border": {
+      "$value": "#DADDE3"
+    },
+    "accent": {
+      "$value": "#2558E8"
+    },
+    "accent-inverse": {
+      "$value": "#7FA2FF"
+    },
+    "on-accent": {
+      "$value": "#FFFFFF"
+    },
+    "accent-2": {
+      "$value": "#0E8C7A"
+    },
+    "highlight": {
+      "$value": "#F5B841"
+    },
+    "on-highlight": {
+      "$value": "#1A1300"
+    },
+    "ok": {
+      "$value": "#1F7A45"
+    },
+    "bad": {
+      "$value": "#C62F2F"
+    },
+    "warn": {
+      "$value": "#A35F00"
+    },
+    "ai": {
+      "$value": "#6B4FD8"
+    }
+  },
+  "font": {
+    "$type": "fontFamily",
+    "display": {
+      "$value": [
+        "Inter",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ]
+    },
+    "body": {
+      "$value": [
+        "Inter",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ]
+    },
+    "mono": {
+      "$value": [
+        "JetBrains Mono",
+        "Menlo",
+        "monospace"
+      ]
+    }
+  },
+  "shape": {
+    "radius": {
+      "$type": "dimension",
+      "$value": "14px"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "1px"
+    }
+  },
+  "motion": {
+    "ease": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.2,
+        0.7,
+        0.2,
+        1
+      ]
+    },
+    "step": {
+      "$type": "duration",
+      "$value": "320ms"
+    }
+  },
+  "$extensions": {
+    "keystone": {
+      "name": "Neutral",
+      "fontsUrl": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap",
+      "assets": {
+        "logo-light": null,
+        "logo-dark": null,
+        "mark": null
+      },
+      "rules": {
+        "maxAccentsPerSlide": 1,
+        "highlightPieces": 1
+      },
+      "textPairs": [
+        [
+          "ink",
+          "bg-light"
+        ],
+        [
+          "ink",
+          "surface-light"
+        ],
+        [
+          "muted",
+          "bg-light"
+        ],
+        [
+          "ink-inverse",
+          "bg-dark"
+        ],
+        [
+          "ink-inverse",
+          "surface-dark"
+        ],
+        [
+          "muted-inverse",
+          "bg-dark"
+        ],
+        [
+          "on-accent",
+          "accent"
+        ],
+        [
+          "on-highlight",
+          "highlight"
+        ],
+        [
+          "accent",
+          "bg-light",
+          "large"
+        ],
+        [
+          "accent-inverse",
+          "bg-dark"
+        ],
+        [
+          "bad",
+          "bg-light"
+        ],
+        [
+          "ok",
+          "bg-light"
+        ]
+      ]
+    }
+  }
+}

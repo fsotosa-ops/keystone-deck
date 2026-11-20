@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Unit tests
+        run: python -m unittest discover tests/unit -v
+      - name: Presets pass contrast and compile
+        run: |
+          for p in plugins/keystone/presets/*/; do
+            n=$(basename "$p")
+            python plugins/keystone/scripts/keystone.py brand compile "preset:$n" -o "build/$n"
+          done
+      - name: Scaffold and check a deck
+        run: |
+          python plugins/keystone/scripts/keystone.py new /tmp/deck --title CI --brand preset:ink
+          python plugins/keystone/scripts/keystone.py check /tmp/deck
+      - name: JSON files parse
+        run: find . -name '*.json' -not -path './build/*' -print0 | xargs -0 -n1 python -m json.tool > /dev/null
+      - name: No absolute home paths
+        run: "! git grep -nIE '/(Users|home)/[a-z]' -- . ':!scripts/scrub_check.sh' ':!.github/workflows/ci.yml'"

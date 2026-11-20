@@ -1,0 +1,225 @@
+{
+  "$schema": "../../plugins/keystone/schemas/deck.schema.json",
+  "meta": {
+    "title": "Asisto · pitch ficticio",
+    "brand": "preset:ocean",
+    "engine": "pptx",
+    "lang": "es",
+    "theme": "dark",
+    "size": "16:9",
+    "signature": "Asisto es una startup ficticia",
+    "audience": "Fondo de inversión de impacto en etapa semilla",
+    "duration": "6:00"
+  },
+  "slides": [
+    {
+      "id": "portada",
+      "layout": "device",
+      "device": "phone",
+      "kicker": "Asisto · ronda semilla",
+      "title": "Que ninguna hora médica **se pierda**",
+      "caption": "Recordatorios por chat que liberan y reasignan horas en centros de salud.",
+      "src": "assets/telefono.html"
+    },
+    {
+      "id": "problema",
+      "layout": "dots",
+      "kicker": "El problema",
+      "title": "Casi una de cada cuatro horas agendadas **queda vacía**",
+      "total": 100,
+      "highlight": 22,
+      "value": "{{fig:noshow}}",
+      "label": "de las horas agendadas nadie llega ni avisa"
+    },
+    {
+      "id": "barreras",
+      "layout": "cards",
+      "kicker": "Por qué pasa",
+      "title": "Nadie avisa porque **avisar cuesta**",
+      "reveal": "items",
+      "items": [
+        {
+          "label": "Olvido",
+          "title": "Se olvidan",
+          "text": "La hora se dio hace semanas"
+        },
+        {
+          "label": "Fricción",
+          "title": "No pueden llamar",
+          "text": "La línea siempre está ocupada"
+        },
+        {
+          "label": "Espera",
+          "title": "No hay a quién darla",
+          "text": "La lista de espera es un cuaderno"
+        }
+      ]
+    },
+    {
+      "id": "solucion",
+      "layout": "flow",
+      "theme": "light",
+      "kicker": "La solución, en espejo",
+      "title": "Un aviso que **libera y reasigna** la hora",
+      "reveal": "items",
+      "items": [
+        {
+          "title": "Recuerda",
+          "text": "48 horas antes, por chat"
+        },
+        {
+          "title": "Libera",
+          "text": "Con un toque, sin llamar"
+        },
+        {
+          "title": "Reasigna",
+          "text": "A quien espera primero"
+        }
+      ]
+    },
+    {
+      "id": "paciente",
+      "layout": "device",
+      "theme": "light",
+      "device": "phone",
+      "kicker": "Para el paciente",
+      "title": "Confirmar o liberar es **un toque**",
+      "caption": "Marta no puede ir: su hora pasa a otra persona en segundos.",
+      "src": "assets/telefono.html"
+    },
+    {
+      "id": "centro",
+      "layout": "device",
+      "theme": "light",
+      "device": "laptop",
+      "kicker": "Para el centro",
+      "title": "La agenda se **llena sola**",
+      "caption": "Cada hora liberada vuelve a la agenda con alguien de la lista.",
+      "src": "assets/panel.html"
+    },
+    {
+      "id": "traccion",
+      "layout": "bars",
+      "kicker": "Tracción del piloto",
+      "title": "En tres centros, las horas perdidas **bajaron a la mitad**",
+      "categories": [
+        "Centro A",
+        "Centro B",
+        "Centro C"
+      ],
+      "series": [
+        {
+          "name": "Antes",
+          "values": [
+            24,
+            21,
+            20
+          ],
+          "format": "{}%"
+        },
+        {
+          "name": "Con Asisto",
+          "values": [
+            12,
+            11,
+            10
+          ],
+          "format": "{}%"
+        }
+      ],
+      "note": {
+        "category": 1,
+        "text": "la mitad"
+      }
+    },
+    {
+      "id": "mercado",
+      "layout": "funnel",
+      "kicker": "Mercado",
+      "title": "El mercado es **el presupuesto de quien paga**",
+      "highlight": 2,
+      "items": [
+        {
+          "label": "Centros de atención primaria",
+          "value": "{{fig:centros}}"
+        },
+        {
+          "label": "Con agenda digital",
+          "value": "{{fig:digital}}"
+        },
+        {
+          "label": "Meta a tres años",
+          "value": "{{fig:meta}}"
+        }
+      ]
+    },
+    {
+      "id": "proyeccion",
+      "layout": "bars",
+      "kicker": "Camino al equilibrio",
+      "title": "En el tercer año, los centros **pagan la operación**",
+      "categories": [
+        "Año 1",
+        "Año 2",
+        "Año 3"
+      ],
+      "sublabels": [
+        "piloto",
+        "20 centros",
+        "40 centros"
+      ],
+      "series": [
+        {
+          "name": "Costo",
+          "values": [
+            420,
+            510,
+            560
+          ],
+          "format": "{}k"
+        },
+        {
+          "name": "Ingresos",
+          "values": [
+            90,
+            300,
+            610
+          ],
+          "format": "{}k"
+        }
+      ],
+      "note": {
+        "category": 1,
+        "text": "faltan 210k"
+      }
+    },
+    {
+      "id": "pedido",
+      "layout": "figures",
+      "kicker": "Lo que pedimos",
+      "title": "Una ronda para llegar **al equilibrio**",
+      "reveal": "items",
+      "figures": [
+        {
+          "value": "{{fig:ronda}}",
+          "label": "ronda semilla"
+        },
+        {
+          "value": "{{fig:runway}}",
+          "label": "de operación"
+        },
+        {
+          "value": "{{fig:centros_meta}}",
+          "label": "centros al cierre"
+        }
+      ]
+    },
+    {
+      "id": "cierre",
+      "layout": "thesis",
+      "kicker": "Cierre",
+      "title": "Cada hora que vuelve a la agenda es **una persona atendida**",
+      "text": "Asisto es ficticia: este deck existe para mostrar el método."
+    }
+  ]
+}

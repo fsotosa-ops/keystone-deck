@@ -1,0 +1,22 @@
+{
+  "name": "keystone",
+  "displayName": "Keystone",
+  "version": "0.2.0",
+  "description": "The method behind high-impact decks: talk-first narrative, an evidence ledger for every figure, a visual grammar, and bring-your-own-brand design tokens compiled for every engine.",
+  "author": {
+    "name": "Felipe Soto Santibáñez",
+    "url": "https://github.com/fsotosa-ops"
+  },
+  "homepage": "https://github.com/fsotosa-ops/keystone-deck",
+  "repository": "https://github.com/fsotosa-ops/keystone-deck",
+  "license": "MIT",
+  "keywords": [
+    "presentations",
+    "decks",
+    "pitch",
+    "storytelling",
+    "design-tokens",
+    "branding",
+    "slides"
+  ]
+}

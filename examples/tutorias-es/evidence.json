@@ -1,0 +1,29 @@
+{
+  "figures": {
+    "continuidad": {
+      "value": 48,
+      "display": "48",
+      "tier": "S",
+      "method": "Cifra ilustrativa para el ejemplo; en un deck real sale de data/ con su fuente."
+    },
+    "estudiantes": {
+      "value": 120,
+      "display": "120",
+      "tier": "D",
+      "method": "Tamaño del piloto, decisión del equipo."
+    },
+    "costo": {
+      "value": 180,
+      "display": "USD 180",
+      "tier": "S",
+      "method": "Estimación ilustrativa: horas de tutoría y coordinación / estudiantes."
+    },
+    "meses": {
+      "value": 6,
+      "display": "6 meses",
+      "tier": "D",
+      "method": "Plazo definido por el equipo."
+    }
+  },
+  "refs": {}
+}

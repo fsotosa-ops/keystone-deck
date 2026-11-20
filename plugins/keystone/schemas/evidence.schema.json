@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fsotosa-ops/keystone-deck/schemas/evidence.schema.json",
+  "title": "keystone evidence ledger",
+  "type": "object",
+  "properties": {
+    "figures": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "tier"
+        ],
+        "properties": {
+          "value": {},
+          "display": {
+            "type": "string"
+          },
+          "tier": {
+            "enum": [
+              "V",
+              "P",
+              "S",
+              "D"
+            ],
+            "description": "V verified, P project, S assumption, D decision"
+          },
+          "source": {
+            "type": "string",
+            "description": "Key in refs."
+          },
+          "method": {
+            "type": "string"
+          },
+          "asOf": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "refs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Full reference, APA 7 or similar."
+          }
+        }
+      }
+    }
+  }
+}

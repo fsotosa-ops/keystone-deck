@@ -1,0 +1,11 @@
+{
+  "figures": {
+    "example-share": {
+      "value": 0.42,
+      "display": "42%",
+      "tier": "S",
+      "method": "Placeholder. Replace with a computed figure; data/ holds the script that produces it."
+    }
+  },
+  "refs": {}
+}

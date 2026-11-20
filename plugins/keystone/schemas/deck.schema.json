@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fsotosa-ops/keystone-deck/schemas/deck.schema.json",
+  "title": "keystone deck",
+  "type": "object",
+  "required": [
+    "meta",
+    "slides"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "meta": {
+      "type": "object",
+      "required": [
+        "title",
+        "brand"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "brand": {
+          "type": "string",
+          "description": "preset:NAME or a path to brand.json"
+        },
+        "engine": {
+          "enum": [
+            "html",
+            "slides",
+            "video"
+          ]
+        },
+        "audience": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string",
+          "pattern": "^\\d+:\\d{2}$"
+        },
+        "size": {
+          "enum": [
+            "16:9",
+            "4:5",
+            "1:1"
+          ],
+          "description": "Canvas: 16:9 for rooms and screens, 4:5 or 1:1 for social feeds."
+        },
+        "lang": {
+          "type": "string",
+          "description": "Language of engine strings (en, es)."
+        },
+        "theme": {
+          "enum": [
+            "dark",
+            "light"
+          ],
+          "description": "Default slide theme."
+        },
+        "signature": {
+          "type": "string",
+          "description": "Text in the corner of every slide when the brand has no mark."
+        }
+      }
+    },
+    "slides": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "layout"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "layout": {
+            "enum": [
+              "cover",
+              "thesis",
+              "figures",
+              "cards",
+              "flow",
+              "cycle",
+              "funnel",
+              "comparison",
+              "matrix",
+              "device",
+              "quote",
+              "appendix-thread",
+              "code",
+              "dots",
+              "bars",
+              "persona",
+              "journey",
+              "mirror",
+              "product",
+              "why-now",
+              "model",
+              "timeline",
+              "projection",
+              "team",
+              "ask",
+              "closing",
+              "html"
+            ],
+            "description": "cover: title slide: the promise in one sentence; thesis: one claim, large, with an optional supporting line; figures: up to three big numbers, each with a one-line label; cards: two to four parallel items; one may be highlighted; flow: phases left to right; cycle: something that repeats; funnel: something that filters, from many to few; comparison: two things side by side; matrix: a 2x2 positioning; device: the product in a phone or laptop frame, in context; quote: a person's own words, attributed; appendix-thread: backup slides chained as questions; code: a terminal or code block showing real output; dots: a population of N where some share a trait; bars: grouped bars with an optional labelled gap"
+          },
+          "kicker": {
+            "type": "string",
+            "description": "The section, shown small above the title."
+          },
+          "title": {
+            "type": "string",
+            "description": "States the thesis. No numbers: the number lives in the body."
+          },
+          "subtitle": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "figures": {
+            "type": "array",
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "required": [
+                "value",
+                "label"
+              ],
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "highlight": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              }
+            ],
+            "description": "Index of the one highlighted piece."
+          },
+          "appendix": {
+            "type": "boolean"
+          },
+          "steps": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "theme": {
+            "enum": [
+              "dark",
+              "light"
+            ]
+          },
+          "reveal": {
+            "enum": [
+              "items"
+            ],
+            "description": "Reveal items one click at a time."
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 200
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}

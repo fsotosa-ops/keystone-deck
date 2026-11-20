@@ -1,0 +1,456 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fsotosa-ops/keystone-deck/schemas/brand.schema.json",
+  "title": "keystone brand",
+  "description": "A brand as W3C Design Tokens (DTCG). Colours are roles the method needs, not loose swatches.",
+  "type": "object",
+  "required": [
+    "color",
+    "font"
+  ],
+  "properties": {
+    "$description": {
+      "type": "string"
+    },
+    "color": {
+      "type": "object",
+      "required": [
+        "bg-dark",
+        "bg-light",
+        "surface-dark",
+        "surface-light",
+        "ink",
+        "ink-inverse",
+        "muted",
+        "muted-inverse",
+        "border",
+        "accent",
+        "on-accent",
+        "accent-2",
+        "highlight",
+        "on-highlight",
+        "ok",
+        "bad",
+        "warn",
+        "ai"
+      ],
+      "properties": {
+        "bg-dark": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "bg-light": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "surface-dark": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "surface-light": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "ink": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "ink-inverse": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "muted": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "muted-inverse": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "border": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "accent": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "on-accent": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "accent-2": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "highlight": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "on-highlight": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "ok": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "bad": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "warn": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "ai": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        },
+        "accent-inverse": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|\\{[a-z0-9.-]+\\})$"
+            }
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "font": {
+      "type": "object",
+      "required": [
+        "display",
+        "body",
+        "mono"
+      ],
+      "properties": {
+        "display": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              ]
+            }
+          }
+        },
+        "body": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              ]
+            }
+          }
+        },
+        "mono": {
+          "type": "object",
+          "required": [
+            "$value"
+          ],
+          "properties": {
+            "$value": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "shape": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "$value"
+        ],
+        "properties": {
+          "$value": {},
+          "$type": {
+            "type": "string"
+          },
+          "$description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "$value"
+        ],
+        "properties": {
+          "$value": {},
+          "$type": {
+            "type": "string"
+          },
+          "$description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "$extensions": {
+      "type": "object",
+      "properties": {
+        "keystone": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "fontsUrl": {
+              "type": "string"
+            },
+            "assets": {
+              "type": "object",
+              "properties": {
+                "logo-light": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "logo-dark": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "mark": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "rules": {
+              "type": "object",
+              "properties": {
+                "maxAccentsPerSlide": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "highlightPieces": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "textPairs": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 3,
+                "prefixItems": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "enum": [
+                      "normal",
+                      "large"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

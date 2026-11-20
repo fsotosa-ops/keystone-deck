@@ -1,0 +1,127 @@
+{
+  "$schema": "../../plugins/keystone/schemas/deck.schema.json",
+  "meta": {
+    "title": "Programa de tutorías entre pares",
+    "brand": "preset:ocean",
+    "engine": "pptx",
+    "lang": "es",
+    "theme": "light",
+    "size": "16:9",
+    "signature": "Ejemplo ficticio · keystone-deck",
+    "audience": "Comité de financiamiento de una universidad",
+    "duration": "5:00"
+  },
+  "slides": [
+    {
+      "id": "portada",
+      "layout": "cover",
+      "kicker": "Propuesta al comité",
+      "title": "Que llegar a la universidad no dependa de **poder pagarlo**",
+      "subtitle": "Programa de tutorías entre pares · piloto 2027"
+    },
+    {
+      "id": "problema",
+      "layout": "dots",
+      "kicker": "El problema",
+      "title": "Menos de la mitad de quienes egresan sigue estudiando",
+      "total": 100,
+      "highlight": 48,
+      "value": "{{fig:continuidad}}",
+      "label": "de cada cien egresados sigue estudiando al año siguiente"
+    },
+    {
+      "id": "barreras",
+      "layout": "cards",
+      "kicker": "Por qué",
+      "title": "Tres barreras explican casi todos los abandonos",
+      "reveal": "items",
+      "items": [
+        {
+          "label": "Costo",
+          "title": "No alcanza",
+          "text": "Un curso de preparación cuesta lo que la familia no tiene"
+        },
+        {
+          "label": "Tiempo",
+          "title": "No hay horas",
+          "text": "Trabajan o cuidan a alguien en la tarde"
+        },
+        {
+          "label": "Compañía",
+          "title": "Nadie pasó por esto",
+          "text": "No hay a quién preguntarle en casa"
+        }
+      ]
+    },
+    {
+      "id": "propuesta",
+      "layout": "flow",
+      "kicker": "La propuesta",
+      "title": "Tutores que ya pasaron por lo mismo, cada semana",
+      "reveal": "items",
+      "items": [
+        {
+          "title": "Diagnóstico",
+          "text": "Una prueba corta al empezar"
+        },
+        {
+          "title": "Tutoría semanal",
+          "text": "Pares de segundo año, en grupos chicos"
+        },
+        {
+          "title": "Seguimiento",
+          "text": "Una alerta si alguien deja de venir"
+        }
+      ]
+    },
+    {
+      "id": "cambio",
+      "layout": "comparison",
+      "kicker": "Qué cambia",
+      "title": "Del curso pagado a la tutoría entre pares",
+      "highlight": 1,
+      "left": {
+        "title": "Hoy",
+        "items": [
+          "Quien puede pagar, se prepara",
+          "Nadie avisa cuando alguien se va"
+        ]
+      },
+      "right": {
+        "title": "Con el programa",
+        "items": [
+          "Gratis para quien lo necesita",
+          "Un tutor nota la ausencia en una semana"
+        ]
+      }
+    },
+    {
+      "id": "pedido",
+      "layout": "figures",
+      "kicker": "Lo que pedimos",
+      "title": "Un piloto acotado para medir antes de escalar",
+      "reveal": "items",
+      "figures": [
+        {
+          "value": "{{fig:estudiantes}}",
+          "label": "estudiantes en el piloto"
+        },
+        {
+          "value": "{{fig:costo}}",
+          "label": "por estudiante al año"
+        },
+        {
+          "value": "{{fig:meses}}",
+          "label": "hasta el primer resultado"
+        }
+      ]
+    },
+    {
+      "id": "cierre",
+      "layout": "thesis",
+      "kicker": "Cierre",
+      "title": "Si el piloto funciona, escalar será una **decisión con datos**",
+      "text": "Pedimos aprobar el piloto en la sesión de marzo."
+    }
+  ]
+}

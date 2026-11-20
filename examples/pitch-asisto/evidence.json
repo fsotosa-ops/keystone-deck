@@ -1,0 +1,77 @@
+{
+  "figures": {
+    "no_llegan": {
+      "value": 22,
+      "display": "22",
+      "tier": "S",
+      "method": "Cifra ficticia para la demo."
+    },
+    "centros_consultados": {
+      "value": 40,
+      "display": "40",
+      "tier": "S",
+      "method": "Cifra ficticia para la demo."
+    },
+    "precio": {
+      "value": 180,
+      "display": "USD 180",
+      "tier": "D",
+      "method": "Precio ficticio."
+    },
+    "centros": {
+      "value": 1200,
+      "display": "1.200",
+      "tier": "S",
+      "method": "Cifra ficticia para la demo."
+    },
+    "digitales": {
+      "value": 480,
+      "display": "480",
+      "tier": "S",
+      "method": "Cifra ficticia para la demo."
+    },
+    "sam": {
+      "value": 1036800,
+      "display": "USD 1 M",
+      "tier": "S",
+      "method": "Cifra ficticia para la demo."
+    },
+    "meta": {
+      "value": 40,
+      "display": "40",
+      "tier": "D",
+      "method": "Meta ficticia."
+    },
+    "som": {
+      "value": 86400,
+      "display": "USD 86k",
+      "tier": "D",
+      "method": "Meta × precio × 12."
+    },
+    "antes": {
+      "value": 22,
+      "display": "22%",
+      "tier": "S",
+      "method": "Cifra ficticia para la demo."
+    },
+    "despues": {
+      "value": 11,
+      "display": "11%",
+      "tier": "S",
+      "method": "Cifra ficticia para la demo."
+    },
+    "recuperadas": {
+      "value": 1840,
+      "display": "1.840",
+      "tier": "S",
+      "method": "Cifra ficticia para la demo."
+    },
+    "ronda": {
+      "value": 400000,
+      "display": "USD 400k",
+      "tier": "D",
+      "method": "Ronda ficticia."
+    }
+  },
+  "refs": {}
+}

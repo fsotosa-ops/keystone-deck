@@ -1,0 +1,10 @@
+{
+  "name": "keystone-pptx",
+  "version": "0.2.0",
+  "description": "Turn a live keystone deck into a PowerPoint that keeps its motion: each scene recorded to video, titles as native editable text, speaker notes from the talk.",
+  "author": { "name": "Felipe Soto Santibáñez", "url": "https://github.com/fsotosa-ops" },
+  "homepage": "https://github.com/fsotosa-ops/keystone-deck",
+  "repository": "https://github.com/fsotosa-ops/keystone-deck",
+  "license": "MIT",
+  "keywords": ["powerpoint", "pptx", "export", "presentations"]
+}

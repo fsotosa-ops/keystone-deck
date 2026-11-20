@@ -1,0 +1,180 @@
+{
+  "$schema": "../../schemas/brand.schema.json",
+  "$description": "Cream paper, terracotta and a soft serif. Human, community-facing.",
+  "color": {
+    "$type": "color",
+    "bg-dark": {
+      "$value": "#231A16"
+    },
+    "bg-light": {
+      "$value": "#FBF6EE"
+    },
+    "surface-dark": {
+      "$value": "#30251F"
+    },
+    "surface-light": {
+      "$value": "#F3EADC"
+    },
+    "ink": {
+      "$value": "#2A1E18"
+    },
+    "ink-inverse": {
+      "$value": "#FBF3E8"
+    },
+    "muted": {
+      "$value": "#6B5A4E"
+    },
+    "muted-inverse": {
+      "$value": "#C7B5A6"
+    },
+    "border": {
+      "$value": "#E3D5C2"
+    },
+    "accent": {
+      "$value": "#B0452A"
+    },
+    "accent-inverse": {
+      "$value": "#E8896B"
+    },
+    "on-accent": {
+      "$value": "#FFFFFF"
+    },
+    "accent-2": {
+      "$value": "#3D7A5E"
+    },
+    "highlight": {
+      "$value": "#E8B04B"
+    },
+    "on-highlight": {
+      "$value": "#2A1E18"
+    },
+    "ok": {
+      "$value": "#2F6F4A"
+    },
+    "bad": {
+      "$value": "#B3261E"
+    },
+    "warn": {
+      "$value": "#8F5300"
+    },
+    "ai": {
+      "$value": "#6247B8"
+    }
+  },
+  "font": {
+    "$type": "fontFamily",
+    "display": {
+      "$value": [
+        "Fraunces",
+        "Georgia",
+        "serif"
+      ]
+    },
+    "body": {
+      "$value": [
+        "DM Sans",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ]
+    },
+    "mono": {
+      "$value": [
+        "DM Mono",
+        "Menlo",
+        "monospace"
+      ]
+    }
+  },
+  "shape": {
+    "radius": {
+      "$type": "dimension",
+      "$value": "18px"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "1px"
+    }
+  },
+  "motion": {
+    "ease": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.2,
+        0.7,
+        0.2,
+        1
+      ]
+    },
+    "step": {
+      "$type": "duration",
+      "$value": "320ms"
+    }
+  },
+  "$extensions": {
+    "keystone": {
+      "name": "Warm",
+      "fontsUrl": "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=DM+Sans:wght@400;600;700&family=DM+Mono&display=swap",
+      "assets": {
+        "logo-light": null,
+        "logo-dark": null,
+        "mark": null
+      },
+      "rules": {
+        "maxAccentsPerSlide": 1,
+        "highlightPieces": 1
+      },
+      "textPairs": [
+        [
+          "ink",
+          "bg-light"
+        ],
+        [
+          "ink",
+          "surface-light"
+        ],
+        [
+          "muted",
+          "bg-light"
+        ],
+        [
+          "ink-inverse",
+          "bg-dark"
+        ],
+        [
+          "ink-inverse",
+          "surface-dark"
+        ],
+        [
+          "muted-inverse",
+          "bg-dark"
+        ],
+        [
+          "on-accent",
+          "accent"
+        ],
+        [
+          "on-highlight",
+          "highlight"
+        ],
+        [
+          "accent",
+          "bg-light",
+          "large"
+        ],
+        [
+          "accent-inverse",
+          "bg-dark"
+        ],
+        [
+          "bad",
+          "bg-light"
+        ],
+        [
+          "ok",
+          "bg-light"
+        ]
+      ]
+    }
+  }
+}
