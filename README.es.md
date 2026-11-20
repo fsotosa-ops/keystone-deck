@@ -1,32 +1,40 @@
 <div align="center">
 
-<img src="docs/assets/icon.png" width="88" alt="">
+<img src="docs/assets/logo.svg" width="96" alt="keystone-deck">
 
 # keystone-deck
 
-**Presentaciones de alto impacto como código, para Claude Code.** Primero el guion, cada cifra con su fuente, una tesis por lámina, y todo en tu propia marca.
+**Presentaciones que dicen lo que quieres decir, como lo quieres decir.**<br>
+Un plugin de Claude Code que convierte tu argumento, tus cifras y tu marca en un deck en vivo con movimiento, y lo exporta a PowerPoint.
 
-[![Version](https://img.shields.io/badge/version-0.2.0-informational)](CHANGELOG.md)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![CI](https://github.com/fsotosa-ops/keystone-deck/actions/workflows/ci.yml/badge.svg)](https://github.com/fsotosa-ops/keystone-deck/actions/workflows/ci.yml)
-[![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-D97757)](https://docs.claude.com/en/docs/claude-code/plugins)
+[![Versión](https://img.shields.io/badge/versión-0.2.0-1652E0)](CHANGELOG.md)
+[![Licencia: MIT](https://img.shields.io/badge/licencia-MIT-1652E0)](LICENSE)
+[![Plugin de Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-F4A93C)](https://docs.claude.com/en/docs/claude-code/plugins)
 
 [English](README.md) · [Español](README.es.md)
 
-<img src="docs/assets/hero.png" width="860" alt="La misma lámina con cuatro marcas de ejemplo: neutral, ink, ocean y warm">
+<img src="docs/assets/hero.png" width="900" alt="Tres láminas de un pitch hecho con keystone-deck: una población que se queda en el camino, el producto funcionando en un laptop y un celular, y una proyección con la brecha rotulada">
 
 </div>
 
----
-
 ## Por qué
 
-La mayoría de los decks generados con IA fallan igual: las láminas son listas de temas, las cifras no tienen fuente, todo está destacado y el orador lee la lámina. keystone-deck empaqueta un método que evita esas fallas en skills que Claude sigue solo, y agrega chequeos que hacen fallar el build cuando el método se rompe.
+Las herramientas de presentaciones deciden qué puedes decir. Eliges una plantilla y doblas la historia para que quepa en sus cajas: una lista de viñetas donde debería haber una persona, un gráfico genérico donde tus cifras deberían moverse, un menú de animaciones en vez del momento que necesitas mostrar.
 
-1. **El guion va primero.** `talk.md` es la fuente única del orden, las notas del orador y los tiempos. Cada lámina contesta la pregunta que dejó la anterior.
-2. **Toda cifra se calcula y lleva fuente.** Los números viven en un registro de evidencia con su nivel (verificada, propia, supuesto o decisión) y llegan a las láminas solo como `{{fig:id}}`.
-3. **La forma dice la relación.** Un ciclo se repite, un embudo filtra, una matriz posiciona. Cada lámina lleva un acento, una pieza destacada y unas 25 palabras visibles.
-4. **Tu propia marca.** Un `brand.json` (W3C Design Tokens) se revisa por contraste y se compila para cada motor. Cambia la marca y cambian todas las salidas; el contenido no se mueve.
+keystone-deck lo da vuelta. Tú describes el argumento; Claude escribe el guion, revisa cada cifra y compone cada lámina como una escena hecha para ese punto: las personas que se quedan en el camino, el producto funcionando en las manos de alguien, la brecha en la proyección. El resultado corre en el navegador, se abre en PowerPoint y lleva tu marca.
+
+<div align="center">
+<img src="docs/assets/demo.gif" width="760" alt="Una lámina donde una paciente toca «No puedo» en su celular y la agenda del centro reasigna la hora sola">
+<br><sub>La lámina del producto en el pitch de ejemplo: el celular y el laptop son una maqueta en vivo, manejada clic a clic.</sub>
+</div>
+
+## Qué incluye
+
+- **El guion antes que las láminas.** `talk.md` reúne la audiencia, el hilo en una oración y lo que dices en cada lámina. Cada lámina contesta la pregunta que dejó la anterior.
+- **Cifras que puedes defender.** Las cifras viven en un registro de evidencia con su nivel (verificada, dato propio, supuesto, meta) y su fuente. Las láminas las referencian; nada se escribe a mano.
+- **Escenas, no plantillas.** Quince escenas para decks de alto impacto: una persona en un día concreto, una población que se queda en el camino, problema y solución en espejo, el producto funcionando en dispositivos, la competencia en dos ejes, el mercado como presupuesto de quien paga, la tracción, proyecciones con la brecha rotulada y el pedido con uso de fondos. Cuando ninguna calza, Claude compone la lámina.
+- **Tu marca, en todo.** Un solo `brand.json` (design tokens del W3C), revisado por contraste, mueve el deck en vivo, el PowerPoint y las figuras.
+- **Un PowerPoint que conserva el movimiento.** Cada escena se graba en video y se pone en PowerPoint con los títulos como texto nativo editable y las notas del orador de tu guion. Quien nunca toca HTML solo lo abre y presenta.
 
 ## Instalación
 
@@ -35,58 +43,78 @@ En Claude Code:
 ```text
 /plugin marketplace add fsotosa-ops/keystone-deck
 /plugin install keystone@keystone-deck
+/plugin install keystone-html@keystone-deck
+/plugin install keystone-pptx@keystone-deck
 ```
 
-El plugin principal solo necesita Python 3.10 o superior.
+| Plugin | Qué agrega | Requiere |
+|---|---|---|
+| `keystone` | El método: narrativa, evidencia, gramática visual, kit de marca, chequeos | Python 3.10+ |
+| `keystone-html` | El motor de escenas | Python, Chrome |
+| `keystone-pptx` | La exportación a PowerPoint con movimiento | Python, Chrome; `python-pptx`, `playwright`, `imageio-ffmpeg` con `uv run --with …` |
 
 ## Inicio rápido
 
 ```text
-/keystone:new revision-trimestral --brand preset:ocean
+/keystone:new mi-pitch               # Claude pregunta quién decide y qué, y propone la secuencia de láminas
+/keystone:brand ruta/a/guia.pdf      # o un sitio web, o preset:ocean
+/keystone:review mi-pitch            # todos los chequeos y una revisión independiente
 ```
 
-Claude pregunta quién es la audiencia y qué debe decidir, escribe `talk.md` y te muestra la secuencia de láminas antes de escribir `deck.json`. Después:
+Después pide: *«ármalo como deck en vivo»* o *«expórtalo a PowerPoint»*.
 
-```text
-/keystone:brand ruta/a/guia-de-marca.pdf    # o un sitio web, o preset:ink
-/keystone:review revision-trimestral        # todos los chequeos y una revisión independiente
-```
+## Tipos de presentación
 
-El guion acepta etiquetas en español (`En la lámina`, `Pasa a`, `Clic`, `Audiencia`, `Hilo`, `# Anexo`), y las skills responden a pedidos en español.
+Eliges el tipo y el método adapta el orden y las reglas:
 
-## Qué incluye
-
-| Plugin | Estado | Qué hace | Requiere |
-|---|---|---|---|
-| `keystone` | **0.1** | Método, kit de marca, chequeos, andamiaje | Python 3.10+ |
-| `keystone-html` | planificado | Deck en vivo 1920×1080 con pasos, vista de presentador, PDF con y sin notas, GitHub Pages | Python, Playwright |
-| `keystone-slides` | planificado | Google Slides nativo y editable, armado con Apps Script | Node, Playwright, cuenta de Google |
-| `keystone-video` | planificado | Video narrado desde el guion, con voz (ElevenLabs opcional), música que baja bajo la voz y chequeos de cuadros y audio | Node, Remotion, ffmpeg |
-
-| Skill | Se activa cuando… |
+| Tipo | Orden |
 |---|---|
-| `narrative-arc` | planificas o arreglas una charla, pitch o deck, o el hilo parece una lista |
-| `evidence-ledger` | pones cifras, proyecciones o citas en las láminas |
-| `visual-grammar` | diseñas o criticas una lámina, eliges un diagrama o se ve recargada |
-| `brand-kit` | quieres tus colores, tipografías o guía, o cambiar el tema |
-| `render-review` | terminas cualquier cambio visual, antes de darlo por listo |
-
-Comandos: `/keystone:new`, `/keystone:brand` y `/keystone:review`. Agente: `deck-critic`, un revisor de solo lectura.
-
-## Tu propia marca
-
-Una marca es un conjunto de *roles* de color que el método necesita (fondos, tinta, acento, destacado, estados), más tres roles tipográficos. Hay cuatro formas de obtenerla:
-- un **preset** (`neutral`, `ink`, `ocean`, `warm`);
-- **importarla de un sitio web**, leyendo sus estilos computados;
-- **leerla de una guía en PDF**;
-- **seis preguntas** que te hace Claude.
-
-`brand check` revisa cada par de texto declarado contra WCAG 2.2, y `brand compile` se niega a compilar una marca que no pasa. El resultado es `brand.css`, `brand.gs`, `theme.ts`, `palette.py` y una hoja de muestra para aprobar. La referencia completa está en [docs/BRAND-TOKENS.md](docs/BRAND-TOKENS.md).
+| **Pitch** | persona → problema con evidencia propia → solución en espejo → producto en contexto → por qué ahora → competencia → modelo → mercado → tracción → números → equipo → pedido |
+| **Keynote** | un momento vivido → la tensión → el giro → tres ideas con una historia cada una → qué hacer el lunes → la frase que la gente repite |
+| **Clase** | intuición → ejemplo con números → versión formal → pregunta de chequeo → trampas |
+| **Informe** | la decisión que se necesita → qué cambió → evidencia → opciones → recomendación → próximos pasos |
 
 ## Cómo funciona
 
-Los motores son renderizadores sobre tres contratos (contenido, evidencia y marca), así que se pueden intercambiar. Un vocabulario común de doce layouts mantiene un mismo `deck.json` portable entre ellos. El diseño completo está en [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+```text
+   talk.md        evidence.json        brand.json
+  (argumento)       (cifras)        (design tokens)
+       └───────────── keystone check ─────────────┘
+                           │
+                 deck.json  →  escenas
+                           │
+          ┌────────────────┴────────────────┐
+   deck en vivo (navegador)          PowerPoint (.pptx)
+   pasos · presentador · producto    video por escena · texto nativo · notas
+```
 
-## Calidad, hoja de ruta y contribuciones
+Tres contratos separan contenido, evidencia y marca, así que puedes cambiar la marca o la salida sin reescribir la historia. El detalle está en [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
-Las mismas que en el [README en inglés](README.md#quality). Licencia [MIT](LICENSE).
+## Ejemplo
+
+[`examples/pitch-asisto`](examples/pitch-asisto) es un pitch de inversión completo de 14 láminas para una startup ficticia: el guion, el registro de cifras, las láminas, una maqueta del producto con un celular y un panel de clínica, y los guiones de clics. Constrúyelo, preséntalo y expórtalo:
+
+```bash
+python3 plugins/keystone-html/scripts/build_stage.py examples/pitch-asisto
+python3 -m http.server 8770 --directory examples/pitch-asisto/build   # abre /stage/
+uv run --with playwright --with python-pptx --with imageio-ffmpeg \
+  python plugins/keystone-pptx/scripts/build_pptx.py examples/pitch-asisto
+```
+
+## Preguntas frecuentes
+
+**¿Funciona en claude.ai?** El método sí: las skills y los comandos cargan en claude.ai cuando agregas el plugin desde *Personalizar › Plugins*. Construir decks ejecuta scripts locales y un navegador, así que los motores necesitan Claude Code.
+
+**¿Necesito saber programar?** No. Le hablas a Claude y él escribe los archivos. El resultado es un enlace para abrir en el navegador y un `.pptx` para presentar.
+
+**¿Puedo editar el PowerPoint?** Los títulos, el texto y las notas son nativos y editables. La parte animada de cada lámina es un video; para cambiarla, se lo pides a Claude y exportas de nuevo.
+
+**¿Mis datos salen de mi computador?** Los plugins corren en local. Las fuentes se cargan desde Google Fonts; nada más sale de tu equipo salvo que actives una integración.
+
+## Contribuir
+
+Los issues y pull requests son bienvenidos; revisa [CONTRIBUTING.md](CONTRIBUTING.md). Las escenas nuevas mantienen intactos los tres contratos y vienen con un ejemplo renderizado.
+
+## Licencia
+
+[MIT](LICENSE) · Creado por [Felipe Soto Santibáñez](https://github.com/fsotosa-ops).

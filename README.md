@@ -1,32 +1,40 @@
 <div align="center">
 
-<img src="docs/assets/icon.png" width="88" alt="">
+<img src="docs/assets/logo.svg" width="96" alt="keystone-deck">
 
 # keystone-deck
 
-**High-impact presentations as code for Claude Code.** Write the talk first, back every number with a source, keep each slide to one claim, and render it all in your own brand.
+**Presentations that say what you mean, the way you mean it.**<br>
+A Claude Code plugin that turns your argument, your numbers and your brand into a live deck with motion, and exports it to PowerPoint.
 
-[![Version](https://img.shields.io/badge/version-0.2.0-informational)](CHANGELOG.md)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![CI](https://github.com/fsotosa-ops/keystone-deck/actions/workflows/ci.yml/badge.svg)](https://github.com/fsotosa-ops/keystone-deck/actions/workflows/ci.yml)
-[![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-D97757)](https://docs.claude.com/en/docs/claude-code/plugins)
+[![Version](https://img.shields.io/badge/version-0.2.0-1652E0)](CHANGELOG.md)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1652E0)](LICENSE)
+[![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-F4A93C)](https://docs.claude.com/en/docs/claude-code/plugins)
 
 [English](README.md) · [Español](README.es.md)
 
-<img src="docs/assets/hero.png" width="860" alt="The same slide rendered with four brand presets: neutral, ink, ocean and warm">
+<img src="docs/assets/hero.png" width="900" alt="Three slides of a pitch built with keystone-deck: a population that drops out, the product working in a laptop and a phone, and a projection with the gap labelled">
 
 </div>
 
----
-
 ## Why
 
-Most AI-generated decks fail the same way. The slides are lists of topics, the numbers have no source, everything is highlighted, and the speaker reads the slide aloud. keystone-deck packages a method that avoids those failures into skills Claude follows on its own, and adds checks that fail the build when the method is broken.
+Slide tools decide what you can say. You pick a template, then bend the story to fit its boxes: a bullet list where a person should be, a stock chart where your numbers should move, an animation menu instead of the moment you need to show.
 
-1. **The talk comes first.** `talk.md` is the single source for slide order, speaker notes and timing. Each slide answers the question the previous one left open.
-2. **Every figure is computed and sourced.** Numbers live in an evidence ledger, tagged as verified, project, assumption or decision, and reach slides only through `{{fig:id}}`.
-3. **The form says the relation.** A cycle repeats, a funnel filters, a matrix positions. Each slide has one accent, one highlighted piece and about 25 visible words.
-4. **Bring your own brand.** One `brand.json` (W3C Design Tokens) is contrast-checked and compiled for every renderer. Change the brand and every output follows; the content does not move.
+keystone-deck turns it around. You describe the argument; Claude writes the talk, checks every figure, and composes each slide as a scene built for that point: the people who drop out, the product running in someone's hands, the gap in the projection. The result runs in a browser, opens in PowerPoint, and wears your brand.
+
+<div align="center">
+<img src="docs/assets/demo.gif" width="760" alt="A slide where a patient taps 'I can't make it' on her phone and the clinic's agenda reassigns the slot by itself">
+<br><sub>The product slide of the example pitch: the phone and the laptop are a live mock, driven click by click.</sub>
+</div>
+
+## What you get
+
+- **A talk before slides.** `talk.md` holds the audience, the one-sentence thread and what you say on each slide. Every slide answers the question the previous one left open.
+- **Numbers you can defend.** Figures live in an evidence ledger with a tier (verified, own data, assumption, target) and a source. Slides reference them; nothing is typed by hand.
+- **Scenes, not templates.** Fifteen scenes for high-impact decks: a person on a concrete day, a population that drops out, problem and solution in mirror, the product working in devices, competition on two axes, the market as the payer's budget, traction, projections with the gap labelled, the ask with use of funds. When none fits, Claude composes the slide.
+- **Your brand, everywhere.** One `brand.json` (W3C design tokens), checked for contrast, drives the live deck, the PowerPoint and the figures.
+- **PowerPoint that keeps the motion.** Each scene is recorded to video and placed in PowerPoint with the titles as native, editable text and the speaker notes from your talk. People who never touch HTML just open it and present.
 
 ## Install
 
@@ -39,163 +47,74 @@ In Claude Code:
 /plugin install keystone-pptx@keystone-deck
 ```
 
-The core plugin needs Python 3.10 or later and nothing else. The engines need Chrome or Chromium; the PowerPoint export also uses `python-pptx`, `playwright` and `imageio-ffmpeg` (run it with `uv run --with …`).
-
-**Claude Code and claude.ai.** The method (skills and commands) works in both. Building decks runs local scripts and a browser, so the engines need Claude Code.
-
-## Example
-
-`examples/pitch-asisto/` is a complete investor pitch for a fictitious startup: `talk.md`, `deck.json`, `evidence.json`, a mock product in `app/` and the click scripts in `scenes.js`. Build it with `build_stage.py`, present it in the browser, or export it with `build_pptx.py`.
+| Plugin | What it adds | Needs |
+|---|---|---|
+| `keystone` | The method: narrative, evidence, visual grammar, brand kit, checks | Python 3.10+ |
+| `keystone-html` | The stage engine and its scenes | Python, Chrome |
+| `keystone-pptx` | PowerPoint export with motion | Python, Chrome; `python-pptx`, `playwright`, `imageio-ffmpeg` via `uv run --with …` |
 
 ## Quickstart
 
 ```text
-/keystone:new quarterly-review --brand preset:ocean
+/keystone:new my-pitch          # Claude asks who decides and what, then proposes the slide sequence
+/keystone:brand path/to/guide.pdf   # or a website, or preset:ocean
+/keystone:review my-pitch       # every check, plus an independent critic
 ```
 
-Claude asks who the audience is and what they must decide, writes `talk.md`, and shows you the slide sequence before it writes `deck.json`. Then:
+Then ask: *"build it as a live deck"* or *"export it to PowerPoint"*.
 
-```text
-/keystone:brand path/to/brand-guide.pdf     # or a website, or preset:ink
-/keystone:review quarterly-review           # every check, plus an independent critic
-```
+## Presentation types
 
-## What's inside
+Pick the type and the method adapts its order and rules:
 
-### Plugins
-
-| Plugin | Status | What it does | Requires |
-|---|---|---|---|
-| `keystone` | **0.1** | Method, brand kit, checks, scaffolding | Python 3.10+ |
-| `keystone-html` | **0.2** | Live 1920×1080 decks built from high-impact scenes: populations that move, the product running in phones and laptops with live callouts, mirrors, matrices, projections with labelled gaps, use of funds | Python, Chrome |
-| `keystone-pptx` | **0.2** | PowerPoint that keeps the motion: each scene recorded to video, titles as native editable text, speaker notes | Python, Chrome, ffmpeg |
-| `keystone-video` | planned | Narrated video from the talk, with optional voice | Node, ffmpeg |
-
-### Skills (`keystone`)
-
-Skills load automatically when a request matches. They respond to requests in English and Spanish.
-
-| Skill | Triggers when you… |
+| Type | Order |
 |---|---|
-| `narrative-arc` | plan or fix a talk, pitch or deck, or the flow feels like a list |
-| `evidence-ledger` | put numbers, projections or citations on slides |
-| `visual-grammar` | design or critique a slide, choose a diagram, or feel it is crowded |
-| `brand-kit` | want your colours, fonts or guide, or change the theme |
-| `render-review` | finish any visual change, before calling it done |
-| `stage-deck` (keystone-html) | want a pitch or keynote with motion and the product shown working |
-| `pptx-export` (keystone-pptx) | need the deck as PowerPoint for people who don't use HTML |
-
-### Commands and agents
-
-| | Name | Purpose |
-|---|---|---|
-| command | `/keystone:new <folder>` | Scaffold `talk.md`, `deck.json`, `evidence.json`, `data/` |
-| command | `/keystone:brand [source]` | Create, import, check and compile a brand |
-| command | `/keystone:review [folder]` | Run every check and an independent review |
-| agent | `deck-critic` | Read-only reviewer of argument, evidence and rendering |
-
-## Bring your own brand
-
-A brand is a set of colour *roles* the method needs, plus three font roles:
-
-```jsonc
-{
-  "color": {
-    "$type": "color",
-    "bg-dark":  { "$value": "#0A1A2A" },
-    "accent":   { "$value": "#1E74B8" },
-    "on-accent":{ "$value": "#FFFFFF" },
-    "on-highlight": { "$value": "{color.ink}" }   // aliases resolve
-    // … 15 more roles
-  },
-  "font": { "display": { "$value": ["Plus Jakarta Sans", "Arial", "sans-serif"] } },
-  "$extensions": { "keystone": {
-    "textPairs": [["ink", "bg-light"], ["accent", "bg-light", "large"]]
-  } }
-}
-```
-
-There are four ways to get one:
-- a **preset** (`neutral`, `ink`, `ocean`, `warm`);
-- **imported from a website**, by reading its computed styles;
-- **read from a brand-guide PDF**;
-- **six questions** Claude asks you.
-
-`brand check` verifies every declared text pair against WCAG 2.2, and `brand compile` refuses a brand that fails.
-
-```text
-brand.json ──► brand.css    CSS custom properties   (HTML decks, figures)
-           ├─► brand.gs     Apps Script constant    (Google Slides)
-           ├─► theme.ts     typed object            (Remotion video)
-           ├─► palette.py   dict                    (matplotlib, openpyxl)
-           └─► brand-sheet.html  swatches + sample slides, for approval
-```
-
-The full reference is in [docs/BRAND-TOKENS.md](docs/BRAND-TOKENS.md).
+| **Pitch** | person → problem with your own evidence → solution in mirror → product in context → why now → competition → model → market → traction → numbers → team → ask |
+| **Keynote** | a lived moment → the tension → the turn → three ideas with a story each → what to do on Monday → the line people repeat |
+| **Class** | intuition → worked example with numbers → formal version → check question → traps |
+| **Report** | the decision needed → what changed → evidence → options → recommendation → next steps |
 
 ## How it works
 
 ```text
-            content            evidence             brand
-          ┌──────────┐      ┌─────────────┐     ┌────────────┐
-          │ talk.md  │      │ data/*.py   │     │ brand.json │
-          │ deck.json│      │ evidence.json│    │  (tokens)  │
-          └────┬─────┘      └──────┬──────┘     └─────┬──────┘
-               └──────── keystone check / resolve ────┘
-                                   │
-               build/deck.resolved.json  +  build/brand/*
-                                   │
-           ┌───────────────┬───────┴───────┬────────────────┐
-       keystone-html   keystone-slides  keystone-video   your engine
+   talk.md        evidence.json        brand.json
+  (argument)       (figures)        (design tokens)
+       └───────────── keystone check ─────────────┘
+                           │
+                 deck.json  →  scenes
+                           │
+          ┌────────────────┴────────────────┐
+   live deck (browser)              PowerPoint (.pptx)
+   steps · presenter view · product   video per scene · native text · notes
 ```
 
-Engines are renderers over three contracts, so they are interchangeable. A shared vocabulary of twelve layouts (`cover`, `thesis`, `figures`, `cards`, `flow`, `cycle`, `funnel`, `comparison`, `matrix`, `device`, `quote`, `appendix-thread`) keeps one `deck.json` portable across them. Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the full design.
+Three contracts keep content, evidence and brand apart, so you can change the brand or the output without rewriting the story. Details in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
-## The CLI
+## Example
 
-Skills call the CLI for you, and you can also run it directly:
+[`examples/pitch-asisto`](examples/pitch-asisto) is a complete 14-slide investor pitch for a fictitious startup: the talk, the ledger, the slides, a mock product with a phone and a clinic dashboard, and the click scripts. Build it, present it, export it:
 
 ```bash
-K=plugins/keystone/scripts/keystone.py
-python3 $K new my-deck --brand preset:warm
-python3 $K check my-deck          # brand contrast, deck rules, talk, evidence
-python3 $K resolve my-deck        # build/deck.resolved.json for engines
-python3 $K brand compile preset:ink -o build/brand
+python3 plugins/keystone-html/scripts/build_stage.py examples/pitch-asisto
+python3 -m http.server 8770 --directory examples/pitch-asisto/build   # open /stage/
+uv run --with playwright --with python-pptx --with imageio-ffmpeg \
+  python plugins/keystone-pptx/scripts/build_pptx.py examples/pitch-asisto
 ```
 
-It exits non-zero on errors; warnings never fail. Typical output:
+## FAQ
 
-```text
-[brand Ocean] ok, 0 warning(s)
-[deck] ok, 1 warning(s)
-  warn   market: title 'Market' reads like a label; state the claim
-[talk] 1 error(s), 0 warning(s)
-  ERROR  traction: no **Leads to:** (the question the next slide answers)
-[evidence] ok, 1 warning(s)
-  warn   problem: typed number '340'; compute it in the ledger and use {{fig:...}}
-```
+**Does it work in claude.ai?** The method does: skills and commands load in claude.ai when you add the plugin from *Customize › Plugins*. Building decks runs local scripts and a browser, so the engines need Claude Code.
 
-## Quality
+**Do I need to know code?** No. You talk to Claude; it writes the files. The output is a link to open in a browser and a `.pptx` to present.
 
-- `python3 -m unittest discover tests/unit`: brand loading, alias resolution, contrast, compile targets, talk parsing, deck and evidence rules, and the scaffold.
-- `claude plugin validate .`: marketplace and plugin manifests.
-- Every preset passes WCAG 2.2 AA for its declared pairs. CI enforces this.
+**Can I edit the PowerPoint?** Titles, text and notes are native and editable. The animated part of each slide is a video; to change it, ask Claude and export again.
 
-## Roadmap
-
-- [x] 0.1: core method, brand kit, checks, four presets
-- [x] 0.2: stage engine with scenes, presentation types (pitch, keynote, class, report), PowerPoint export, a full pitch example (`examples/pitch-asisto`)
-- [ ] 0.3: narrated video from the talk
-- [ ] 1.0: golden-image tests and trigger evals for the engines
+**Is my data sent anywhere?** The plugins run locally. Fonts load from Google Fonts; nothing else leaves your machine unless you opt into an integration.
 
 ## Contributing
 
-Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md). New layouts or engines must keep the three contracts unchanged.
-
-## Security
-
-The plugins run local scripts only. Optional integrations, such as a voice API in `keystone-video`, read keys from environment variables and never store them. Report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
+Issues and pull requests are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md). New scenes keep the three contracts intact and come with a rendered example.
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) · Built by [Felipe Soto Santibáñez](https://github.com/fsotosa-ops).
