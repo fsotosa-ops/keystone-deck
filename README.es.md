@@ -106,11 +106,11 @@ Eliges el tipo y el método adapta el orden y las reglas:
 
 `keystone-video` convierte el mismo guion en un video narrado, integrado con [ElevenLabs](https://elevenlabs.io):
 
-1. Agrega tu voz a ElevenLabs (clonada o de su biblioteca) y pon su id en `deck.json`:
+1. Agrega tu voz a ElevenLabs (clonada o de su biblioteca) y define el tono en `deck.json`:
    ```json
-   "voice": { "id": "<id de la voz>", "model": "eleven_v4", "direction": "cálida, segura, tono de charla" }
+   "voice": { "model": "eleven_v4", "direction": "cálida, segura, tono de charla" }
    ```
-2. Exporta tu clave: `export ELEVENLABS_API_KEY=…` (se lee del entorno y nunca se escribe en disco).
+2. Exporta tu clave y el id de tu voz: `export ELEVENLABS_API_KEY=… ELEVENLABS_VOICE_ID=…`. Los dos se leen del entorno y nunca quedan en el deck, así que puedes compartirlo.
 3. Pídele a Claude: *«haz un video narrado del deck»*.
 
 Toda la narración se genera en una sola toma y se corta por lámina con las marcas de tiempo de cada palabra. Cada escena dura lo que su frase: las escenas leen cuánto dura la línea y ajustan su movimiento a ella, y los clics caen cuando la voz los nombra. Cada corte se transcribe y se compara con el guion, y el build falla si el video terminado tiene un silencio de más de 0,8 s. Con `--captions` el guion queda como subtítulos en el video, porque las redes lo reproducen en silencio. Sin clave, el video sale sin voz. Al volver a generarlo, solo se regraban las láminas que cambiaron.

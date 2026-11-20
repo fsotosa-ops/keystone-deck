@@ -28,6 +28,8 @@ sys.path.insert(0, str(STAGE))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import scenes  # noqa: E402
+
+SUP = str.maketrans("0123456789", "\u2070\u00b9\u00b2\u00b3\u2074\u2075\u2076\u2077\u2078\u2079")
 from build import core, find_core  # noqa: E402
 
 
@@ -75,9 +77,10 @@ def main(argv=None):
             raise SystemExit(f"{s.get('id')}: layout {layout!r} is not a stage scene ({', '.join(scenes.SCENES)})")
         theme = s.get("theme") or ("light" if layout in scenes.LIGHT else "dark")
         body = scenes.SCENES[layout]({**s, "logo": logo})
-        src = " ".join(f"[{n}] {t}" for n, t in s.get("_sources", []))
+        src = "  ·  ".join(f"{str(n).translate(SUP)} {t}" for n, t in s.get("_sources", []))
         tiers = [x for x in s.get("_tiers", []) if x in ("S", "D")]
-        note = s.get("source_note") or (("Fuentes: " + src) if src else "") or ("Cifras ilustrativas." if tiers else "")
+        lbl = ("Fuentes: ", "Cifras ilustrativas.") if meta.get("lang", "en").startswith("es") else ("Sources: ", "Illustrative figures.")
+        note = s.get("source_note") or ((lbl[0] + src) if src else "") or (lbl[1] if tiers else "")
         foot = f'<div class="fuente">{html.escape(note)}</div>' if note else ""
         t = s.get("_talk") or {}
         esc = f' data-escena="{html.escape(s["scene"])}"' if s.get("scene") else ""

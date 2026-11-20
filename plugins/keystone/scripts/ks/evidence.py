@@ -95,6 +95,9 @@ def check(ledger: dict, deck: dict | None = None) -> tuple[list[str], list[str]]
     return errors, warnings
 
 
+SUP = str.maketrans("0123456789", "\u2070\u00b9\u00b2\u00b3\u2074\u2075\u2076\u2077\u2078\u2079")
+
+
 def resolve(deck: dict, ledger: dict) -> dict:
     """Replace placeholders, number refs by first use, attach per-slide sources."""
     figs, refs = ledger["figures"], ledger["refs"]
@@ -113,10 +116,12 @@ def resolve(deck: dict, ledger: dict) -> dict:
                 return f"[{num(key)}]"
             f = figs[key]
             slide_tiers.add(f["tier"])
+            shown = str(f.get("display", f.get("value")))
             if f.get("source"):
                 slide_refs.add(f["source"])
-                num(f["source"])
-            return str(f.get("display", f.get("value")))
+                # the number carries its reference, so the audience can see where it comes from
+                shown += str(num(f["source"])).translate(SUP)
+            return shown
         return PLACEHOLDER.sub(rep, text)
 
     def walk(node, slide_refs, slide_tiers):

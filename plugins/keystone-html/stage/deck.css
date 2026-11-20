@@ -23,8 +23,8 @@ body { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overf
 .clara .firma b { color: var(--azul); }
 .num-l { position: absolute; right: 140px; bottom: 50px; font-size: 18px; color: var(--suave-o); font-variant-numeric: tabular-nums; }
 .clara .num-l { color: var(--suave-c); }
-.fuente { position: absolute; left: 330px; right: 260px; bottom: 50px; font-size: 17px; line-height: 1.35; color: var(--suave-o); }
-.clara .fuente { color: var(--suave-c); }
+.fuente { position: absolute; left: 330px; right: 260px; bottom: 46px; font-size: 21px; line-height: 1.4; color: var(--tinta-o); opacity: .82; }
+.clara .fuente { color: var(--tinta-c); opacity: .78; }
 .kick { font-size: 24px; font-weight: 700; color: var(--menta); letter-spacing: .02em; margin-bottom: 18px; }
 .clara .kick { color: var(--azul); }
 .tit { font-size: 66px; font-weight: 700; line-height: 1.06; letter-spacing: -.025em; max-width: 24ch; text-wrap: balance; }

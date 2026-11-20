@@ -145,7 +145,7 @@ class DeckAndEvidence(unittest.TestCase):
     def test_resolve_numbers_refs(self):
         out = evidence.resolve(self.DECK, self.LEDGER)
         s1 = out["slides"][0]
-        self.assertEqual(s1["figures"][0]["value"], "40%")
+        self.assertEqual(s1["figures"][0]["value"], "40%¹")   # the figure carries its reference
         self.assertEqual(s1["figures"][0]["label"], "get help [1]")
         self.assertEqual(s1["_sources"], [(1, "Org. (2025). Report.")])
         self.assertEqual(s1["_tiers"], ["V"])

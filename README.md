@@ -106,11 +106,11 @@ Pick the type and the method adapts its order and rules:
 
 `keystone-video` turns the same talk into a narrated video, integrated with [ElevenLabs](https://elevenlabs.io):
 
-1. Add your voice to ElevenLabs (a cloned or a library voice) and put its id in `deck.json`:
+1. Add your voice to ElevenLabs (a cloned or a library voice) and set the tone in `deck.json`:
    ```json
-   "voice": { "id": "<voice id>", "model": "eleven_v4", "direction": "warm, confident, conference talk" }
+   "voice": { "model": "eleven_v4", "direction": "warm, confident, conference talk" }
    ```
-2. Export your key: `export ELEVENLABS_API_KEY=…` (read from the environment, never written to disk).
+2. Export your key and your voice id: `export ELEVENLABS_API_KEY=… ELEVENLABS_VOICE_ID=…`. Both are read from the environment and never written to the deck, so you can share it.
 3. Ask Claude: *"make a narrated video of the deck"*.
 
 The whole talk is generated in one take and cut per slide by word timestamps. Each scene lasts as long as its line: scenes read the line's length and fit their motion to it, and clicks fire on the spoken cue. Each cut is transcribed and checked against the talk, and the build fails if the finished video has a silence longer than 0.8 s. Add `--captions` to burn the talk in as subtitles, since social feeds play video muted. Without a key, the video comes out silent. Re-runs only re-record the slides that changed.

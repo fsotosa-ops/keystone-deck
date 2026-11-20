@@ -10,7 +10,7 @@ uv run --with playwright --with imageio-ffmpeg \
   python "${CLAUDE_PLUGIN_ROOT}/scripts/build_video.py" <deck-dir> [--brand brand.json] [--out video.mp4]
 ```
 
-- **Voice:** set `meta.voice` in deck.json: `{"id": "<ElevenLabs voice id>", "model": "eleven_v4", "direction": "accent and tone in a few words"}`. The key comes from `ELEVENLABS_API_KEY` in the environment and is never written to disk. Ask the user before generating: it spends their credits (about one per character).
+- **Voice:** set `meta.voice` in deck.json: `{"model": "eleven_v4", "direction": "accent and tone in a few words"}`. The key and the voice id come from `ELEVENLABS_API_KEY` and `ELEVENLABS_VOICE_ID` in the environment; never write a personal voice id into a deck that will be shared. Ask the user before generating: it spends their credits (about one per character).
 - **One take:** the whole talk is generated in a single take and cut per slide by character timestamps; short per-slide takes make the model repeat lines (`--per-slide` exists, but avoid it).
 - **Clicks:** `**Click:**` markers in talk.md fire the next step when the voice reaches them. Avoid `hold`: a scene that outlasts its line leaves the viewer in silence.
 - **Fit the motion to the voice:** while recording, `window.KS_DUR` holds the seconds the line lasts. Scene scripts schedule their steps as fractions of it (`setTimeout(fn, .4 * KS_DUR * 1000)`), so the picture follows the voice.

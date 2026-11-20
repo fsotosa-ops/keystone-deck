@@ -8,7 +8,7 @@
    next step of the slide fires.
 2. The voice: ElevenLabs text-to-speech with character timestamps (needs ELEVENLABS_API_KEY in the
    environment; never written to disk). Audio is cached per text, so re-runs cost nothing.
-   meta.voice in deck.json can set {"id", "model", "direction", "speed"}. Without a key, or with
+   meta.voice in deck.json can set {"id", "model", "direction", "speed"}; the id can also come from ELEVENLABS_VOICE_ID. Without a key, or with
    --no-voice, each slide gets 2.6 words per second of silence and the video comes out mute.
 3. The picture: the stage deck is recorded slide by slide (Chrome DevTools screencast); each slide
    lasts as long as its voice, and clicks fire when the voice reaches the marker.
@@ -178,7 +178,7 @@ def record_slide(page, cdp, n, seconds, clicks_at, line=None, caption=None, lead
     frames = []
 
     def on(ev):
-        frames.append((ev["metadata"]["timestamp"], base64.b64decode(ev["data"])))
+        frames.append((time.time(), base64.b64decode(ev["data"])))  # wall clock: same clock as t0 and end
         try:
             cdp.send("Page.screencastFrameAck", {"sessionId": ev["sessionId"]})
         except Exception:
@@ -188,6 +188,7 @@ def record_slide(page, cdp, n, seconds, clicks_at, line=None, caption=None, lead
     page.wait_for_timeout(200)
     # Scenes read window.KS_DUR to fit their motion to the spoken line instead of the other way round.
     page.evaluate(f"window.KS_DUR = {line or seconds:.3f}")
+    page.evaluate("document.getElementById('ks-cap')?.remove()")  # never carry the last slide's subtitle
     page.evaluate(f"window.__deck.ir({n}, false)")
     page.wait_for_timeout(450)       # skip the cross-fade from the previous slide
     t0 = time.time()
@@ -222,7 +223,7 @@ CAPTION_JS = """({text, dur, lead}) => {
   el.style.cssText = 'position:fixed;left:50%;bottom:26px;transform:translateX(-50%);max-width:1500px;z-index:99998;' +
     'font:600 40px/1.3 var(--ks-font-body, sans-serif);color:#fff;background:rgba(15,23,42,.82);padding:14px 30px;border-radius:12px;text-align:center;opacity:0;transition:opacity .15s'
   document.body.appendChild(el)
-  const parts = text.match(/[^.!?]+[.!?]*/g).map(x => x.trim()).filter(Boolean)
+  const parts = text.split(/(?<=[.!?])\\s+/).map(x => x.trim()).filter(Boolean)   // split at sentence ends, not inside claude.ai
   const total = parts.reduce((n, x) => n + x.length, 0)
   let t = lead * 1000
   parts.forEach(x => { setTimeout(() => { el.textContent = x; el.style.opacity = 1 }, t); t += (dur - lead) * 1000 * x.length / total })
@@ -250,11 +251,12 @@ def encode(frames, end, out_mp4, ff, audio=None, lead=0.0):
         Path(td, "l.txt").write_text("\n".join(lines) + "\n")
         args = [ff, "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", Path(td, "l.txt")]
         if audio:
-            args += ["-i", audio, "-filter_complex", f"[1:a]adelay={int(lead * 1000)}:all=1,apad[a]", "-map", "0:v", "-map", "[a]", "-shortest"]
+            args += ["-i", audio, "-filter_complex", f"[1:a]adelay={int(lead * 1000)}:all=1,apad[a]", "-map", "0:v", "-map", "[a]"]
         else:
-            args += ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo", "-map", "0:v", "-map", "1:a", "-shortest"]
+            args += ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo", "-map", "0:v", "-map", "1:a"]
         # -shortest overshoots by an AAC frame or more; clips that run long drift the concat and add silence.
-        args += ["-t", f"{end - frames[0][0]:.3f}", "-r", "30", "-pix_fmt", "yuv420p", "-c:v", "libx264", "-crf", "18", "-preset", "veryfast",
+        # The concat demuxer drops the last frame's duration: hold the last frame, then cut to length.
+        args += ["-vf", "fps=30,tpad=stop_mode=clone:stop_duration=60", "-t", f"{end - frames[0][0]:.3f}", "-r", "30", "-pix_fmt", "yuv420p", "-c:v", "libx264", "-crf", "18", "-preset", "veryfast",
                  "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-ac", "2", out_mp4]
         run(*args)
 
@@ -292,6 +294,7 @@ def main(argv=None):
         if val:
             v["id" if k == "voice_id" else k] = val
     key = os.environ.get("ELEVENLABS_API_KEY")
+    v.setdefault("id", os.environ.get("ELEVENLABS_VOICE_ID"))   # keep personal voice ids out of shared decks
     use_voice = bool(key and v.get("id") and not a.no_voice)
     if not use_voice and not a.no_voice:
         print("no ELEVENLABS_API_KEY or voice id: building a silent video")
@@ -314,7 +317,8 @@ def main(argv=None):
         mp3_all, info_all = tts(full_all, v, cache, key)
         ends, off = info_all["ends"], info_all["prompt_chars"]
         # Cut where each line was actually spoken: transcribe the take and align line by line.
-        al = align_lines([t for t in texts if t], stt_words(mp3_all, key, cache))
+        words_all = stt_words(mp3_all, key, cache)
+        al = align_lines([t for t in texts if t], words_all)
         it_al = iter(al)
         bounds = [(lambda a_: (a_[0], a_[1]))(next(it_al)) if t else (0.0, 0.0) for t in texts]
         for sid_, t, a_ in zip([x for x, t in zip(ids, texts) if t], [t for t in texts if t], al):
@@ -328,7 +332,14 @@ def main(argv=None):
         for i_ in range(len(ids)):
             b0, b1 = sp[i_]
             w0 = max(0.0, b0 - 0.25) if i_ == 0 else (sp[i_ - 1][1] + b0) / 2
-            w1 = b1 + 0.8 if i_ == len(ids) - 1 else (b1 + sp[i_ + 1][0]) / 2
+            if i_ == len(ids) - 1:
+                # The model sometimes keeps talking after the last line (repeats a phrase): stop before it.
+                extra = [w["start"] for w in words_all if w["start"] > b1 + 0.05]
+                w1 = min(b1 + 0.8, extra[0] - 0.08) if extra else b1 + 0.8
+                if extra:
+                    print(f"  note: the take has {len(extra)} extra word(s) after the last line; cut before them")
+            else:
+                w1 = (b1 + sp[i_ + 1][0]) / 2
             win.append((w0, w1))
     for i_sid, sid in enumerate(ids):
         parts = segs.get(sid, [])
@@ -445,7 +456,7 @@ def main(argv=None):
             prev = f"x{k}"
         total = sum(it["len"] for it in plan)
         args += ["-ss", f"{win[0][0]:.3f}", "-i", take[0], "-filter_complex",
-                 ";".join(chain) + f";[{len(clips)}:a]volume=2.0,alimiter=limit=0.9,apad,atrim=0:{total:.3f}[a]",
+                 ";".join(chain) + f";[{len(clips)}:a]volume=2.0,alimiter=limit=0.9,apad,atrim=0:{total:.3f},afade=t=out:st={max(0, total - 0.25):.3f}:d=0.25[a]",
                  "-map", f"[{prev}]" if chain else "0:v", "-map", "[a]", "-t", f"{total:.3f}",
                  "-r", "30", "-pix_fmt", "yuv420p", "-c:v", "libx264", "-crf", "18", "-preset", "veryfast",
                  "-c:a", "aac", "-b:a", "160k", target]

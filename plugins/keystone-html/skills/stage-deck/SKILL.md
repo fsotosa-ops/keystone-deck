@@ -1,11 +1,13 @@
 ---
 name: stage-deck
-description: Use when building a high-impact live deck (pitch, keynote, product demo) that needs motion, the product shown working, or slides at the level of a funded startup's pitch. Composes deck.json from stage scenes (cover, persona, journey, mirror, product, why-now, matrix, model, funnel, timeline, projection, team, ask, closing, html) and builds it with build_stage.py. Also triggers on "pitch deck", "deck con animaciones", "que se vea pro", "efecto wow".
+description: Use for every live deck — pitch, project or initiative proposal, keynote, class, report — whenever the user wants a presentation, a deck or slides. It is the default engine: scenes with motion, the product shown working and figures that cite their source. Composes deck.json from stage scenes (cover, persona, journey, mirror, product, why-now, matrix, model, funnel, timeline, projection, team, ask, closing, html) and builds it with build_stage.py. Also triggers on "pitch deck", "deck con animaciones", "que se vea pro", "efecto wow".
 ---
 
 # Stage deck
 
-The stage engine renders each slide as a composed scene on a 1920×1080 stage, with click steps, a presenter view (P) and the product running inside phones and laptops. Use it when a slide must *show*, not list.
+The stage engine renders each slide as a composed scene on a 1920×1080 stage, with click steps, a presenter view (P) and the product running inside phones and laptops. Use it by default for any deck; the basic `build.py` engine is only for plain documents the user asks to keep simple.
+
+Every figure that comes from the ledger shows its reference as a superscript (42%¹), and the slide lists the numbered sources at the foot. Keep it that way: never type a figure by hand, and give each external number a `source` in evidence.json.
 
 ## Before writing deck.json
 1. Write talk.md with **narrative-arc**, and pick the type (`meta.type`: pitch, keynote, class, report). For a pitch, follow `references/pitch.md` of narrative-arc: it maps each slide to a scene.
